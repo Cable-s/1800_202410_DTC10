@@ -2,141 +2,143 @@
 <html lang="en">
 
 <head>
-  <title>Timecraft</title>
-  <meta name="comp1800 template" content="My 1800 App">
+    <title>Timecraft</title>
+    <meta name="comp1800 template" content="My 1800 App">
 
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap Library CSS CDN go here -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <!-- Boostrap Library JS CDN  go here -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
-  <!-- Other libraries go here -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-    rel="stylesheet">
+    <!-- Bootstrap Library CSS CDN go here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Boostrap Library JS CDN  go here -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        </script>
+    <!-- Other libraries go here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
 
-  <!-- Google Icons (Material Design) -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Icons (Material Design) -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!-- Link to styles of your own -->
-  <link rel="stylesheet" href="./styles/style.css">
-  <!-- Link to styles of your own -->
-  <link rel="stylesheet" href="./styles/style.css">
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="./styles/style.css">
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="./styles/style.css">
 
-  <!-- Color Palette -->
-  <!-- Violet:#554ce4 Blush:#FFECE6 Periwinkle:#bfd1fe Gramps:#8692b2 -->
+    <!-- Color Palette -->
+    <!-- Violet:#554ce4 Blush:#FFECE6 Periwinkle:#bfd1fe Gramps:#8692b2 -->
 </head>
 
 <body>
 
-  <!------------------------------>
-  <!-- Your HTML Layout go here -->
-  <!------------------------------>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
 
-  <nav class="navbar bg-body-tertiary bg-warning fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img src="./images/logoTime.png" height="60px">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-        aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-end bg-warning" style="width: 40%; height: 40%" tabindex="-1" id="offcanvasNavbar"
-        aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-          <button type="button" class="btn-close" style="width: 32px;height: 32px;" data-bs-dismiss="offcanvas"
-            aria-label="Close"></button>
+    <nav class="navbar bg-body-tertiary bg-warning fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./images/logoTime.png" height="60px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end bg-warning" style="width: 40%; height: 40%" tabindex="-1"
+                id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close" style="width: 32px;height: 32px;"
+                        data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <hr style="margin-top: 2px; margin-bottom: 2px">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <hr style="margin-top: 2px; margin-bottom: 2px">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Account</a>
+                        </li>
+                        <hr style="margin-top: 2px; margin-bottom: 2px">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Social</a>
+                        </li>
+                        <hr style="margin-top: 2px; margin-bottom: 2px">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Settings</a>
+                        </li>
+                        <hr style="margin-top: 2px; margin-bottom: 2px">
+                    </ul>
+                </div>
+                <div class="p-3">
+                    <a clas="nav-link active" aria-current="page" href="#">log in</a>
+                </div>
+            </div>
         </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <hr style="margin-top: 2px; margin-bottom: 2px">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
-            </li>
-            <hr style="margin-top: 2px; margin-bottom: 2px">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Account</a>
-            </li>
-            <hr style="margin-top: 2px; margin-bottom: 2px">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Social</a>
-            </li>
-            <hr style="margin-top: 2px; margin-bottom: 2px">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Settings</a>
-            </li>
-            <hr style="margin-top: 2px; margin-bottom: 2px">
-          </ul>
+    </nav>
+
+
+
+
+    <!-- Stuff for body goes here -->
+    <div class="px-4 pt-5 my-5 text-center">
+        <h1 class="display-4 fw-bold">Timecraft</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s
+                most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system,
+                extensive prebuilt components, and powerful JavaScript plugins.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+                <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Primary button</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
+            </div>
         </div>
-        <div class="p-3">
-          <a clas="nav-link active" aria-current="page" href="#">log in</a>
+        <div class="overflow-hidden" style="max-height: 30vh;">
+            <div class="container px-5">
+            </div>
         </div>
-      </div>
     </div>
-  </nav>
 
-
-  <!-- Stuff for body goes here -->
-
-  <div class="modal-dialog" role="document">
-    <div class="modal-content rounded-4 shadow">
-      <div class="modal-body p-4 text-center">
-        <h5 class="mb-0">Would you like to see a walkthrough of Timecraft?</h5>
-        <p class="mb-0">You can always access this at a later time.</p>
-      </div>
-      <div class="modal-footer flex-nowrap p-0">
-        <button type="button"
-          class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right"><strong>Yes</strong></button>
-        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"
-          data-bs-dismiss="modal">No thanks</button>
-      </div>
+    <!-- Stuff for body goes here -->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-body p-4 text-center">
+                <h5 class="mb-0">Would you like to see a walkthrough of Timecraft?</h5>
+                <p class="mb-0">You can always access this at a later time.</p>
+            </div>
+            <div class="modal-footer flex-nowrap p-0">
+                <button type="button"
+                    class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right"><strong>Yes</strong></button>
+                <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"
+                    data-bs-dismiss="modal">No thanks</button>
+            </div>
+        </div>
     </div>
-  </div>
-  <!-- Stuff for body goes here -->
-  <div class="px-4 pt-5 my-5 text-center">
-    <h1 class="display-4 fw-bold">Timecraft</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s
-        most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system,
-        extensive prebuilt components, and powerful JavaScript plugins.</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-        <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Primary button</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
-      </div>
-    </div>
-    <div class="overflow-hidden" style="max-height: 30vh;">
-      <div class="container px-5">
-      </div>
-    </div>
-  </div>
 
-  <!---------------------------------------------->
-  <!-- Your own JavaScript functions go here    -->
-  <!---------------------------------------------->
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
 
-  <!-- Link to scripts of your own -->
-  <!-- <script src="./scripts/script.js"></script> -->
+    <!-- Link to scripts of your own -->
+    <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
 
 <footer class="navbar bg-warning fixed-bottom">
-  <div class="container">
-    <a href="#"><span class="material-icons">account_circle </span></a>
-    <a href="#"><img src="./images/timeline.png" height="40px"></a>
-    <a href="#"><span class="material-icons">add_circle </span></a>
-    <a href="#"><img src="./images/priority1.png" height="50px"></a>
-    <a href="#"><span class="material-icons">home</span></a>
+    <div class="container">
+        <a href="#"><span class="material-icons">account_circle </span></a>
+        <a href="#"><img src="./images/timeline.png" height="40px"></a>
+        <a href="#"><span class="material-icons">add_circle </span></a>
+        <a href="#"><img src="./images/priority1.png" height="50px"></a>
+        <a href="#"><span class="material-icons">home</span></a>
 
-  </div>
+    </div>
 </footer>
 
 </html>
