@@ -1,1 +1,25 @@
+* {
+  font-family: 'Nunito';
+}
 
+.navbar-toggler.toggler-example {
+  cursor: pointer;
+}
+
+.material-icons {
+  font-size: 40px;
+  color: black;
+}
+
+.bg-warning {
+  background-color: bisque !important;
+}
+
+.card {
+  background-color: bisque;
+  border-color: bisque;
+}
+
+.btn-link {
+  text-decoration: none;
+}

@@ -19,7 +19,7 @@
     <!-- Other libraries go here -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
         rel="stylesheet">
 
     <!-- Google Icons (Material Design) -->
@@ -27,7 +27,6 @@
 
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="./styles/style.css">
-
 </head>
 
 <body>
@@ -35,6 +34,30 @@
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
+
+    <nav class="navbar navbar-light bg-warning sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./images/logoTime.png" height="60px">
+            </a>
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="material-icons">menu</span>
+            </button>
+        </div>
+    </nav>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="card">
+            <ul class="flex-column">
+                <li><button class="btn btn-link btn-block">Link 1</button></li>
+                <li><button class="btn btn-link btn-block">Link 2</button></li>
+                <li><button class="btn btn-link btn-block">Link 3</button></li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
 
     <!-- Stuff for body goes here -->
 
@@ -47,5 +70,16 @@
     <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
+
+<footer class="navbar bg-warning fixed-bottom">
+    <div class="container">
+        <a href="#"><span class="material-icons">account_circle </span></a>
+        <a href="#"><img src="./images/timeline.png" height="40px"></a>
+        <a href="#"><span class="material-icons">add_circle </span></a>
+        <a href="#"><img src="./images/priority1.png" height="50px"></a>
+        <a href="#"><span class="material-icons">home</span></a>
+
+    </div>
+</footer>
 
 </html>
