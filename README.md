@@ -9,7 +9,7 @@ List team members and/or short bio's here...
 * Hi, my name is Yeali but I go by Jamie.
 * My name is Caleb
 * My name is Michael.  I'm excited to build my first web app!
-* ...
+* Hi I'm Travis Gooden and I love writing code and making applications. 
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
