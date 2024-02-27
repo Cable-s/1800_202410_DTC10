@@ -19,7 +19,7 @@ function loadSkeleton() {
             // User is signed in.
             // Do something for the user here.
             console.log($('#navbarTemplate').load('./text/nav_after_login.html'));
-            console.log($('#footerTemplate').load('./text/footer.html'));
+            console.log($('#footerTemplate').load('./text/footer_after_login.html'));
         } else {
             // No user is signed in.
             console.log($('#navbarTemplate').load('./text/nav_before_login.html'));
