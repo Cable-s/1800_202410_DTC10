@@ -2,16 +2,8 @@
 // This function loads the parts of your skeleton 
 // (navbar, footer, and other things) into html doc. 
 //---------------------------------------------------
-function loadSkeleton(){
-    console.log($('#navbarTemplate').load('./text/nav.html'));
-    console.log($('#footerTemplate').load('./text/footer.html'));
-}
-loadSkeleton();  //invoke the function
+let firebaseAppDefined = false
 
-//---------------------------------------------------
-// This function loads the parts of your skeleton 
-// (navbar, footer, and other things) into html doc. 
-//---------------------------------------------------
 function loadSkeleton() {
 
     firebase.auth().onAuthStateChanged(function (user) {
@@ -27,5 +19,14 @@ function loadSkeleton() {
         }
     });
 }
-loadSkeleton(); //invoke the function
+setInterval(() => {
+  if (!firebaseAppDefined) {
+    if (firebase.app()) {
+      // Your code here
 
+      firebaseAppDefined = true
+            
+      loadSkeleton(); //invoke the function
+    }
+  }
+}, 100)
