@@ -22,16 +22,3 @@ function loadSkeleton() {
 
 }
 loadSkeleton();
-
-//
-// setInterval(() => {
-  // if (!firebaseAppDefined) {
-    // if (firebase.app()) {
-      // Your code here
-
-      // firebaseAppDefined = true
-            
-      // loadSkeleton(); //invoke the function
-    // }
-  // }
-// }, 100)
