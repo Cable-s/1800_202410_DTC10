@@ -47,28 +47,27 @@
     <!-- Your HTML Layout go here -->
     <!------------------------------>
 
-    <nav id="navbarTemplate"></nav>
-
-
-
-    <!-- Stuff for body goes here -->
-
     <div class="container">
+        <nav id="navbarTemplate"></nav>
+
+
+
+        <!-- Stuff for body goes here -->
+
         <h1>Please log in to continue</h1>
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">Loading...</div>
+
+        <footer id="footerTemplate"></footer>
+        <!---------------------------------------------->
+        <!-- Your own JavaScript functions go here    -->
+        <!---------------------------------------------->
     </div>
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
-
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-
     <!-- Link to scripts of your own -->
-    <script src="./scripts/skeleton.js"></script>
     <script src="./scripts/firebaseAPI_TEAM10.js"></script>
+    <script src="./scripts/skeleton.js"></script>
     <script src="./scripts/authentication.js"></script>
 </body>
 
-<footer id="footerTemplate"></footer>
 
 </html>

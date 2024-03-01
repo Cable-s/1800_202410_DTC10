@@ -1,8 +1,9 @@
+
+
 //---------------------------------------------------
 // This function loads the parts of your skeleton 
 // (navbar, footer, and other things) into html doc. 
 //---------------------------------------------------
-let firebaseAppDefined = false
 
 function loadSkeleton() {
 
@@ -18,15 +19,19 @@ function loadSkeleton() {
             console.log($('#footerTemplate').load('./text/footer.html'));
         }
     });
+
 }
-setInterval(() => {
-  if (!firebaseAppDefined) {
-    if (firebase.app()) {
+loadSkeleton();
+
+//
+// setInterval(() => {
+  // if (!firebaseAppDefined) {
+    // if (firebase.app()) {
       // Your code here
 
-      firebaseAppDefined = true
+      // firebaseAppDefined = true
             
-      loadSkeleton(); //invoke the function
-    }
-  }
-}, 100)
+      // loadSkeleton(); //invoke the function
+    // }
+  // }
+// }, 100)
