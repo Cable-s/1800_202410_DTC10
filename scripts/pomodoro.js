@@ -13,7 +13,7 @@ function startTimer() {
             }
 
             updateDisplay();
-        }, 1000); 
+        }, 1000);
     }
 }
 
@@ -26,7 +26,7 @@ function stopTimer() {
 
 function resetTimer() {
     minutes = 25;
-    seconds = 0;
+    seconds = 60;
     updateDisplay();
 }
 
