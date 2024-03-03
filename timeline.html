@@ -28,14 +28,6 @@
 
   <!-- Link to styles of your own -->
   <link rel="stylesheet" href="./styles/style.css">
-  <!-- Load jQuery library and jQuery Schedule.js -->
-  <script src="jquery.min.js"></script>
-  <script src="dist/jquery.schedule.js"></script>
-
-  <!-- Load jQuery UI Library for the edition mode -->
-  <link rel="stylesheet" href="jquery-ui.css">
-  <script src="jquery-ui.min.js"></script>
-
 
   <!-- Color Palette -->
   <!-- Violet:#554ce4 Blush:#FFECE6 Lavender:#DADDE7 French Gray:#B3BBD1 -->
@@ -61,7 +53,7 @@
     <!-- Stuff for body goes here -->
 
     <!-- Today's date automated -->
-    <h1 class="today text-center" style="margin-top: 100px">Today's date automated</h1>
+    <div style="margin-top:100px" class ="fs-1 fw-bold text-center bg-periwinkle rounded-3 py-2 mb-2" id="date-goes-here"></div>
 
     <!-- Day Scheduler -->
     <table class="calendar table table-sm table-striped-columns table-bordered mx-auto p-1" style="margin-bottom:150px">
@@ -256,6 +248,7 @@
   <script src="./scripts/firebaseAPI_TEAM10.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/date.js"></script>
 </body>
 
 
