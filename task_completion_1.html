@@ -49,32 +49,75 @@
     <!------------------------------>
     <div class="container">
         <nav id="navbarTemplate"></nav>
-        <div class="card" style="width: 70%; margin-top:100px; margin-left:75px">
-            <div class="card-body">
-              <h5 class="card-title" style="text-align:center">TASK 1</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <div style="display:flex; place-content:space-between">
-                <p style="padding: 5px">Delete</p>
-                <p style="padding: 5px">Reschedule</p>
-                <p style="padding: 5px">Complete</p>
+        <div class="card" style="width: 70%; margin-top:100px; margin-left:75px; padding:10px">
+            <div>
+              <h5 class="card-title" style="text-align:center;font-weight:bold; margin-bottom:-3px">TASK 1</h5>
+              <div style="display:flex; font-size:smaller; margin-bottom:-10px; place-content:space-evenly">
+                <p style ="background-color:#FFECE6; padding:2px; border-radius:9999px ">Category 1</p>
+                <p style ="background-color: #DADDE7; padding:2px; border-radius:9999px">Category 2</p>
               </div>
-              <div style="display:flex">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-x" style="margin-left: 7px" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <div>
+                <p style="text-align:center; margin-bottom:5px"> Saturday, November 5th</p>
+              </div>
+              <div style ="display:flex; place-content:center; font-size:smaller; margin-bottom:-10px">
+                <p style="background-color:#B3BBD1; border-radius:9999px; padding-inline:3px"> 9:00 AM</p>
+                <p style="margin-inline:5px"> to</p>
+                <p style="background-color:#B3BBD1; border-radius:9999px; padding-inline:3px"> 5:00 PM</p>
+              </div>
+              <div style="display:flex; place-content:center; margin-bottom:-10px">
+                <p style="padding-right:2px; font-size:smaller">Repeats</p>
+                <p style="background-color:#B3BBD1; border-radius:9999px; padding-inline:3px; font-size:smaller">Every Saturday</p>
+              </div>
+              <div>
+                <p style="font-weight:bold; margin-bottom:-5px">Details</p>
+                <p style="font-size:x-small">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore nemo iusto numquam! Sequi dolorem vitae, cum dicta eum iure corporis fuga, excepturi, quas possimus incidunt provident? Itaque, libero a sed atque consectetur quis tempore blanditiis? Nisi quidem harum tempore iste reprehenderit facilis. Velit in quos commodi nesciunt ad quis consequatur.</p>
+              </div>
+              <div>
+                <p style="font-weight:bold; margin-bottom:-5px"> Sub-Tasks</p>
+              </div>
+              <div style ="display:flex; place-content:space-evenly; margin-bottom:5px">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-note" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M13 20l7 -7" />
+                  <path d="M13 20v-6a1 1 0 0 1 1 -1h6v-7a2 2 0 0 0 -2 -2h-12a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-note" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M13 20l7 -7" />
+                  <path d="M13 20v-6a1 1 0 0 1 1 -1h6v-7a2 2 0 0 0 -2 -2h-12a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-note" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M13 20l7 -7" />
+                  <path d="M13 20v-6a1 1 0 0 1 1 -1h6v-7a2 2 0 0 0 -2 -2h-12a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7" />
+                </svg>
+              </div>
+
+              <div style="display:flex; place-content:space-evenly">
+                <div style="display:flex; flex-direction:column; place-items:center">
+                  <p style="margin-bottom:-5px">Delete</p>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-x" width="60" height="60" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
                     <path d="M10 10l4 4m0 -4l-4 4" />
                   </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-clockwise" style="margin-left: 65px" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                </div>
+                <div style="display:flex; flex-direction:column; place-items:center">
+                  <p style="margin-bottom:-5px">Reschedule</p>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-clockwise" width="60" height="60" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M4.05 11a8 8 0 1 1 .5 4m-.5 5v-5h5" />
                   </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check-filled" style="margin-left: 80px" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                </div>
+                <div style="display:flex; flex-direction:column; place-items:center">
+                  <p style="margin-bottom:-5px">Complete</p>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check-filled" width="60" height="60" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" stroke-width="0" fill="currentColor" />
                   </svg>
+                </div>
               </div>
-              <div>
-
+               
               </div>
             </div>
           </div>
