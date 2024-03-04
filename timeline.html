@@ -38,7 +38,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css">
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 </head>
 
@@ -47,13 +47,17 @@
   <!------------------------------>
   <!-- Your HTML Layout go here -->
   <!------------------------------>
-  <div class="container">
-    <nav id="navbarTemplate"></nav>
+
+  <div class="container-fluid">
+    <nav id="navbarTemplate" class="sticky-top"></nav>
 
     <!-- Stuff for body goes here -->
 
     <!-- Today's date automated -->
-    <div style="margin-top:100px" class ="fs-1 fw-bold text-center bg-periwinkle rounded-3 py-2 mb-2" id="date-goes-here"></div>
+    <div style="margin-top:100px" class="fs-1 fw-bold text-center bg-periwinkle rounded-3 py-2 mb-2"
+      id="date-goes-here"></div>
+
+    <div id="addTaskModal"></div>
 
     <!-- Day Scheduler -->
     <table class="calendar table table-sm table-striped-columns table-bordered mx-auto p-1" style="margin-bottom:150px">
@@ -237,7 +241,7 @@
       </tr>
     </table>
 
-    <footer id="footerTemplate"></footer>
+    <footer id="footerTemplate" class="sticky-bottom"></footer>
 
   </div>
   <!---------------------------------------------->

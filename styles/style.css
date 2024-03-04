@@ -5,6 +5,19 @@ Violet:#554ce4 Blush:#FFECE6 Periwinkle:#bfd1fe Gramps:#8692b2 */
   font-family: 'Nunito';
 }
 
+
+#addTaskBtn {
+  left: calc(50% - 50px);
+}
+
+.container,
+.container-fluid {
+  --bs-gutter-x: 0;
+  margin: auto;
+  min-width: 100%;
+}
+
+
 .navbar-toggler.toggler-example {
   cursor: pointer;
 }
@@ -38,6 +51,10 @@ footer.navbar {
   background-color: #bfd1fe;
 }
 
+.bg-nav-footer-grey {
+  background-color: #B3BBD1;
+}
+
 .bg-gramps {
   background-color: #8692b2;
 }
@@ -55,10 +72,51 @@ hr {
   height: 1px;
 }
 
+#user-portrait {
+  fill: #B3BBD1;
+}
+
 .time {
   text-align: right;
 }
 
 .fw-lighter {
   font-size: 12px;
+}
+
+.task {
+  background-color: lightgray;
+  margin: 20px;
+}
+
+.task>div {
+  background-color: rgb(170, 170, 170);
+  margin: 20px;
+}
+
+.task>div>div {
+  background-color: lightgray;
+  margin: 20px;
+}
+
+#subtaskbtn {
+  margin: 20px;
+  background-color: rgb(9, 207, 9)
+}
+
+.friends {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+
+}
+
+.friendProfile {
+  width: 45%;
+  margin: 10px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  background-color: lightgray;
+  height: 50px;
 }

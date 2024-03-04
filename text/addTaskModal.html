@@ -6,7 +6,40 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Add Task Info
+        <input type="text" placeholder="Name Of Task">
+        <br><br>
+        <textarea placeholder="Decription"></textarea>
+        <br><br>
+        Date Range
+        <select name="firstDay" id="firstDay">
+          <option value="sunday">Sunday</option>
+          <option value="monday">Monday</option>
+          <option value="tueday">Tuesday</option>
+          <option value="wednesday">Wednesday</option>
+          <option value="thursday">Thursday</option>
+          <option value="friday">Friday</option>
+          <option value="saturday">Saturday</option>
+        </select>
+        <select name="lastDay" id="lastDay">
+          <option value="sunday">Sunday</option>
+          <option value="monday">Monday</option>
+          <option value="tueday">Tuesday</option>
+          <option value="wednesday">Wednesday</option>
+          <option value="thursday">Thursday</option>
+          <option value="friday">Friday</option>
+          <option value="saturday">Saturday</option>
+        </select>
+        <br><br>
+        Repeat
+        <select name="repeat" id="repeat" style="width: 50%">
+          <option value="noRepeat">Dont Repeat</option>
+          <option value="weekly">Every Week</option>
+          <option value="biweekly">Bi-Weekly</option>
+          <option value="monthly">Monthly</option>
+          <option value="quarterly">Quarterly</option>
+          <option value="biyearly">Bi-Yearly</option>
+          <option value="yearly">Yearly</option>
+        </select>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

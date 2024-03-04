@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Congratulations</title>
+  <title>Timecraft</title>
   <meta name="comp1800 template" content="My 1800 App">
 
   <!-- Required meta tags -->
@@ -43,53 +43,62 @@
 
 <body>
 
-
   <!------------------------------>
   <!-- Your HTML Layout go here -->
   <!------------------------------>
   <div class="container">
     <nav id="navbarTemplate" class="sticky-top"></nav>
-    <div style="display:flex; place-content:center">
-      <div class="card" style="width: 70%; margin-top:100px; padding:10px">
-        <div>
-          <h5 class="card-title" style="text-align:center;font-weight:bold">Congratulations!</h5>
-          <div style="display:flex; flex-direction:column; place-items:center">
-            <img style="max-width:40%" src="./images/on-mountain.jpg">
-            <p style="font-size:large">You completed Task 1!</p>
-          </div>
-          <div>
-            <div style="display:flex; place-content:space-evenly">
-              <div style="display:flex; flex-direction:column; place-items:center">
-                <p style="margin-bottom:-5px">Go Back</p>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-clockwise" width="60"
-                  height="60" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M4.05 11a8 8 0 1 1 .5 4m-.5 5v-5h5" />
-                </svg>
-              </div>
-              <div style="display:flex; flex-direction:column; place-items:center">
-                <p style="margin-bottom:-5px">Go Home</p>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="60" height="60"
-                  viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
-                  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-                  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
+
+
+    <!-- Stuff for body goes here -->
+    <!-- Task HTML moved to jquery append next sprint -->
+
+
+    <!-- Today's date automated -->
+    <div style="margin-top:100px" class="fs-1 fw-bold text-center bg-periwinkle rounded-3 py-2 mb-2"
+      id="date-goes-here"></div>
+
+    <div id="addTaskModal"></div>
+
+    <div class="task">
+      <h1 style="margin: 5px;">Task Title</h1>
+      <p style="margin: 5px;">Description</p>
+      <div>
+        <h2 style="margin: 5px;">SubTask Title</h2>
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore quam amet ullam qui debitis doloribus?
+        </div><br>
+      </div>
+      <div>
+        <h2 style="margin: 5px;">SubTask Title 2</h2>
+        <div>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni libero, qui quae laborum delectus ex.
+        </div><br>
+      </div>
+      <button id="subtaskbtn">Add Subtask</button>
     </div>
 
-
-
-
-    <footer id="footerTemplate" class="sticky-bottom"></footer>
+    <div class="task">
+      <h1 style="margin: 5px;">Task Title 2</h1>
+      <p style="margin: 5px;">Description 2</p>
+      <div>
+        <h2 style="margin: 5px;">SubTask Title</h2>
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore quam amet ullam qui debitis doloribus?
+        </div><br>
+      </div>
+      <div>
+        <h2 style="margin: 5px;">SubTask Title 2</h2>
+        <div>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni libero, qui quae laborum delectus ex.
+        </div><br>
+      </div>
+      <button id="subtaskbtn">Add Subtask</button>
+    </div>
+    <Br><Br><BR><Br><Br>
+    <footer id="footerTemplate" class="sticky-bottom">
+    </footer>
 
   </div>
   <!---------------------------------------------->
@@ -99,8 +108,9 @@
   <!-- Link to scripts of your own -->
   <script src="./scripts/firebaseAPI_TEAM10.js"></script>
   <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/main.js"></script>
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/date.js"></script>
 </body>
-
 
 </html>
