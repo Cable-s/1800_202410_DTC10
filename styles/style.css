@@ -75,3 +75,23 @@ hr {
 .fw-lighter {
   font-size: 12px;
 }
+
+.task {
+  background-color: lightgray;
+  margin: 20px;
+}
+
+.task>div {
+  background-color: rgb(170, 170, 170);
+  margin: 20px;
+}
+
+.task>div>div {
+  background-color: lightgray;
+  margin: 20px;
+}
+
+#subtaskbtn {
+  margin: 20px;
+  background-color: rgb(9, 207, 9)
+}
