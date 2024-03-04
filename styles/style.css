@@ -72,6 +72,10 @@ hr {
   height: 1px;
 }
 
+#user-portrait {
+  fill: #B3BBD1;
+}
+
 .time {
   text-align: right;
 }
