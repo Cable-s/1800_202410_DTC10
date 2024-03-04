@@ -99,3 +99,20 @@ hr {
   margin: 20px;
   background-color: rgb(9, 207, 9)
 }
+
+.friends {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+
+}
+
+.friendProfile {
+  width: 45%;
+  margin: 10px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  background-color: lightgray;
+  height: 50px;
+}
