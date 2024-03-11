@@ -2,35 +2,37 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Task Creation</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <input type="text" placeholder="Name Of Task">
+        Title: <Br>
+        <input type="text" placeholder="Name Of Task" id="title">
         <br><br>
-        <textarea placeholder="Decription"></textarea>
+        Description <br><textarea placeholder="Decription" id="discription"></textarea>
         <br><br>
-        Date Range
-        <select name="firstDay" id="firstDay">
-          <option value="sunday">Sunday</option>
-          <option value="monday">Monday</option>
-          <option value="tueday">Tuesday</option>
-          <option value="wednesday">Wednesday</option>
-          <option value="thursday">Thursday</option>
-          <option value="friday">Friday</option>
-          <option value="saturday">Saturday</option>
-        </select>
-        <select name="lastDay" id="lastDay">
-          <option value="sunday">Sunday</option>
-          <option value="monday">Monday</option>
-          <option value="tueday">Tuesday</option>
-          <option value="wednesday">Wednesday</option>
-          <option value="thursday">Thursday</option>
-          <option value="friday">Friday</option>
-          <option value="saturday">Saturday</option>
+        dont know how to do categories yet
+        <br><br>
+        Priority: <br>
+        <select id="prioritySelect">
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
         </select>
         <br><br>
-        Repeat
+        Starting Date: <br>
+        <input type="date" id="dateRange1"></input>
+        <br><br>
+        Days: <br>
+        <input type="checkbox" value="monday"> Monday<Br>
+        <input type="checkbox" value="tuesday"> Tuesday<br>
+        <input type="checkbox" value="wednesday"> Wednesday<br>
+        <input type="checkbox" value="thursday"> Thursday<br>
+        <input type="checkbox" value="friday"> Friday<br>
+        <input type="checkbox" value="saturday"> Saturday<br>
+        <input type="checkbox" value="sunday"> Sunday
+        <br><br>
+        Repeat: <br>
         <select name="repeat" id="repeat" style="width: 50%">
           <option value="noRepeat">Dont Repeat</option>
           <option value="weekly">Every Week</option>
@@ -40,6 +42,9 @@
           <option value="biyearly">Bi-Yearly</option>
           <option value="yearly">Yearly</option>
         </select>
+        <br><br>
+        Complete By: <br>
+        <input type="time" id="time" value="00:00"></input>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
