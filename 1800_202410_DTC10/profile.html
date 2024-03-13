@@ -46,26 +46,50 @@
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
-
     <div class="container">
         <nav id="navbarTemplate" class="sticky-top"></nav>
 
 
+
         <!-- Stuff for body goes here -->
+        <div id="profile" class="d-flex justify-content-center mt-5">
+            <div id="user-portrait">
+                <svg xmlns="http://www.w3.org/2000/svg" height="8em" viewBox="0 0 24 24" width="8em">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
+                <div id="user-interests" class="d-flex flex-column mx-3">
+                    <p id="interests">Interests:</p>
+                    <p id="sports" class="badge bg-warning">Pickleball</p>
+                    <p id="entertainment" class="badge bg-success">Movies</p>
+                    <p id="crafts" class="badge bg-secondary">Quilting</p>
+                    <p id="academic" class="badge bg-dark">Quantum Mechanics</p>
+                </div>
+            </div>
+            <div id="user-details">
+                <p class="m-1">First Name:</p>
+                <input type="text" value="Testy" class="form-text"></input>
+                <p class="mt-3 mb-1">Last Name:</p>
+                <input type="text" value="Testerson" class="form-text"></input>
+                <p class="mt-3 mb-1">Email:</p>
+                <input type="text" value="test@tester.test" class="form-text"></input>
+                <p class="mt-3 mb-1">About Me:</p>
+                <textarea class="form-control" rows="3">Hello!</textarea>
+                <br>
+                <em class="mt-5">Member since Apr 1, 1901</em>
+            </div>
 
-        <h1>Please log in to continue</h1>
-        <div id="firebaseui-auth-container"></div>
-        <div id="loader">Loading...</div>
-
-        <footer id="footerTemplate" class="sticky-bottom"></footer>
+            <footer id="footerTemplate" class="sticky-bottom"></footer>
+        </div>
         <!---------------------------------------------->
         <!-- Your own JavaScript functions go here    -->
         <!---------------------------------------------->
-    </div>
-    <!-- Link to scripts of your own -->
-    <script src="./scripts/firebaseAPI_TEAM10.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/authentication.js"></script>
+
+        <!-- Link to scripts of your own -->
+        <script src="./scripts/firebaseAPI_TEAM10.js"></script>
+        <script src="./scripts/skeleton.js"></script>
+        <script src="./scripts/script.js"></script>
 </body>
 
 

@@ -349,14 +349,19 @@ var worldTimeZones = [
   'Africa/Johannesburg'
 ];
 
-let date = new Date();
-const pacificTime = date.toLocaleString("en-US", {timeZone: "America/Vancouver"});
+let defaultTimeZone = "America/Vancouver"
 
+function convertTime() {
+  let date = new Date().toLocaleDateString("en-US", { timeZone: "defaultTimezone" });
+  if document.getElementById("timezoneSelect").value;
+}
 
+let date = new Date().toLocaleDateString();
 document.getElementById("date-goes-here").innerHTML = date;
 
+// let time = new Date().toLocaleTimeString("en-US", {timeZone: "timezone"});
 
-// let dateTime = new Date().toLocaleString();
-// console.log(dateTime);
+
+
 
 // document.getElementById("date-time-goes-here").innerHTML = dateTime;
