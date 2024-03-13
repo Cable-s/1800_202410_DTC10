@@ -7,48 +7,65 @@
       </div>
       <div class="modal-body">
         Title: <Br>
-        <input type="text" placeholder="Name Of Task" id="title">
+        <input type="text" placeholder="Name Of Task" id="title-input">
+        <br>
+        Description
+        <br>
+        <textarea placeholder="description" id="description-input"></textarea>
         <br><br>
-        Description <br><textarea placeholder="Decription" id="discription"></textarea>
-        <br><br>
+        Categories
+        <br>
+        <input type="text" placeholder="category" id="category-input"></input>
         dont know how to do categories yet
         <br><br>
+        Start Date: <br>
+        <input type="date" id="startDate"></input>
+        <br>
+        Start Time:
+        <input type="time" id="startTime" value="00:00"></input>
+        <br>
+        End Date: <br>
+        <input type="date" id="endDate"></input>
+        <br>
+        End Time:
+        <input type="time" id="endTime" value="00:00"></input>
+        <br><br>
+        <br><br>
         Importance: <br>
-        <select id="prioritySelect">
+        <select id="importanceSelect">
           <option value="high">High</option>
           <option value="medium">Medium</option>
           <option value="low">Low</option>
         </select>
         <br><br>
-        Starting Date: <br>
-        <input type="date" id="dateRange1"></input>
-        <br><br>
-        Days: <br>
-        <input type="checkbox" value="monday"> Monday<Br>
-        <input type="checkbox" value="tuesday"> Tuesday<br>
-        <input type="checkbox" value="wednesday"> Wednesday<br>
-        <input type="checkbox" value="thursday"> Thursday<br>
-        <input type="checkbox" value="friday"> Friday<br>
-        <input type="checkbox" value="saturday"> Saturday<br>
-        <input type="checkbox" value="sunday"> Sunday
-        <br><br>
-        Repeat: <br>
-        <select name="repeat" id="repeat" style="width: 50%">
+        Repeat:
+        <br>
+        <select name="repeat" id="repeatSelect">
           <option value="noRepeat">Dont Repeat</option>
           <option value="weekly">Every Week</option>
           <option value="biweekly">Bi-Weekly</option>
+          <option value="semiMonthly">Semi-Monthly</option>
           <option value="monthly">Monthly</option>
           <option value="quarterly">Quarterly</option>
-          <option value="biyearly">Bi-Yearly</option>
           <option value="yearly">Yearly</option>
         </select>
-        <br><br>
-        Complete By: <br>
-        <input type="time" id="time" value="00:00"></input>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Add Task</button>
+        <!-- only show up when repeat option is "everyweek"-->
+        <div id="daysSelection">
+          <br>
+          <input type="checkbox" value="monday"> Monday
+          <input type="checkbox" value="tuesday"> Tuesday
+          <input type="checkbox" value="wednesday"> Wednesday
+          <input type="checkbox" value="thursday"> Thursday
+          <input type="checkbox" value="friday"> Friday
+          <input type="checkbox" value="saturday"> Saturday
+          <input type="checkbox" value="sunday"> Sunday
+          <br><br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="addTaskBtn" type="button" class="btn btn-primary" onclick="submitForm()">Add Task</button>
+          
+        </div>
       </div>
     </div>
   </div>
