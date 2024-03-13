@@ -38,7 +38,7 @@
           <option value="low">Low</option>
         </select>
         <br><br>
-        Repeat:
+        <label for="repeatSelect">Repeat:</label>
         <br>
         <select name="repeat" id="repeatSelect">
           <option value="noRepeat">Dont Repeat</option>
@@ -50,7 +50,7 @@
           <option value="yearly">Yearly</option>
         </select>
         <!-- only show up when repeat option is "everyweek"-->
-        <div id="daysSelect">
+        <div id="daysSelect" class="hidden">
           <br>
           <input type="checkbox" id="monday" class="day" value="monday"> Monday
           <input type="checkbox" id="tuesday" class="day" value="tuesday"> Tuesday

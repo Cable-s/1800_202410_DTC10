@@ -1,12 +1,15 @@
 // days selection shows up when repeat says weekly
 document.getElementById("repeatSelect").addEventListener("change", function () {
     var daysSelect = document.getElementById("daysSelect");
+    console.log("Dropdown value:", this.value); // Log the value to check if it's "weekly"
     if (this.value === "weekly") {
+        console.log("Showing days select");
         daysSelect.classList.remove("hidden");
     } else {
+        console.log("Hiding days select");
         daysSelect.classList.add("hidden");
     }
-});
+  });
 
 // check all checkboxes
 function checkAll() {
@@ -27,7 +30,7 @@ function submitForm() {
     var importance = document.getElementById('importanceSelect').value;
     var repeat = document.getElementById('repeatSelect').value;
     // need to work on the days selected.
-    // var daysChecked = document.getElementsByName('day');
+    var daysChecked = document.getElementsByName('day');
 
     var task = db.collection("tasks");
     task.add({
