@@ -120,3 +120,7 @@ hr {
   background-color: lightgray;
   height: 50px;
 }
+
+.hidden {
+  display: none;
+}

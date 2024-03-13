@@ -1,3 +1,20 @@
+// days selection shows up when repeat says weekly
+document.getElementById("repeatSelect").addEventListener("change", function () {
+    var daysSelect = document.getElementById("daysSelect");
+    if (this.value === "weekly") {
+        daysSelect.classList.remove("hidden");
+    } else {
+        daysSelect.classList.add("hidden");
+    }
+});
+
+// check all checkboxes
+function checkAll() {
+    var inputs = document.querySelectorAll('.day');
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].checked = true;
+    }
+}
 // send data to firestore when add task button clicked
 function submitForm() {
     var title = document.getElementById('title-input').value;
@@ -9,6 +26,8 @@ function submitForm() {
     var endTime = document.getElementById('endTime').value;
     var importance = document.getElementById('importanceSelect').value;
     var repeat = document.getElementById('repeatSelect').value;
+    // need to work on the days selected.
+    // var daysChecked = document.getElementsByName('day');
 
     var task = db.collection("tasks");
     task.add({
@@ -22,22 +41,12 @@ function submitForm() {
         endDate: endDate,
         endTime: endTime,
         repeat: repeat,
+        // repeatDay: daysChecked,
         status: [],
     }).then(function () {
         location.href = 'categoryView.html';
     });
 }
-
-
-// days selection shows up when repeat says weekly
-document.getElementById("repeatSelect").addEventListener("change", function () {
-    var daysSelection = document.getElementById("daysSelection");
-    if (this.value === "weekly") {
-        daysSelection.classList.remove("hidden");
-    } else {
-        daysSelection.classList.add("hidden");
-    }
-});
 
 
 function addTask() {
