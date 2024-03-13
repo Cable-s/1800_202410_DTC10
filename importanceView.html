@@ -52,8 +52,8 @@
 
     <!-- Today's date automated -->
 
-    <div style="margin-top:10px" class="fs-1 fw-bold text-center bg-periwinkle rounded-3 py-2 mb-2"
-      id="date-goes-here"></div>
+    <div style="margin-top:10px" class="fs-1 fw-bold text-center bg-periwinkle rounded-3 py-2 mb-2" id="date-goes-here">
+    </div>
     <!-- Day Scheduler -->
 
     <div id="addTaskModal"></div>
@@ -64,10 +64,13 @@
       <div class="priority-high my-4"><span class="bg-danger px-2 py-1 text-white">High Priority</span>
         <div class="task-high row g-0 my-1 p-2 border-start border-2 border-danger rounded-3 bg-blush">
           <div class="description col-8">
-            <div class="fw-bold title">Finish sprint</div>
-            <div>details details details</div>
+            <div id="title-goes-here" class="fw-bold title">Finish sprint</div>
+            <div id="description-goes-here">details details details</div>
           </div>
-          <div class="time col-4 text-end">10:00am-12:00pm</div>
+          <div id="period" class="col-4 text-end">
+            <div id="startTime-goes-here">10:00am-</div>
+            <div id="endTime-goes-here">12:00pm</div>
+          </div>
         </div>
         <div class="task-high row g-0 my-1 p-2 border-start border-2 border-danger rounded-3 bg-blush">
           <div class="description col-8">
