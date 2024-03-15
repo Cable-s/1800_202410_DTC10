@@ -23,6 +23,14 @@ var uiConfig = {
                     country: "Canada",                      //optional default profile info      
 										school: "BCIT"                          //optional default profile info
              }).then(function () {
+                    db.collection("users").doc(user.uid).collection('tasks')
+                    .add({})
+                    .then( function() {
+                      console.log("Task collection added") })
+                    .catch(function (error) {
+                      console.log(error)
+                    })
+
                     console.log("New user added to firestore");
                     window.location.assign("main.html");       //re-direct to main.html after signup
              }).catch(function (error) {

@@ -32,7 +32,7 @@ function submitForm() {
     // need to work on the days selected.
     var daysChecked = document.getElementsByName('day');
 
-    var task = db.collection("tasks");
+    var task = db.collection("users").doc(firebase.auth().currentUser.uid).collection("tasks");
     task.add({
         user: firebase.auth().currentUser.uid,
         category: category,
