@@ -17,14 +17,13 @@ function getNameFromAuth() {
             lastSignIn = getDate(user);
             
             //method #1:  insert with JS
-            //document.getElementById("name-goes-here").innerText = userName;    
+            document.getElementById("name-goes-here").innerText = userName;    
 
             //method #2:  insert using jquery
-            $("#name-goes-here").text(userName); //using jquery
             
-            $("#last-signin").text(lastSignIn);
+            document.getElementById("last-signin").innerText = lastSignIn;
             //method #3:  insert using querySelector
-            //document.querySelector("#name-goes-here").innerText = userName
+            document.getElementById("name-goes-here").innerText = userName
 
         } else {
             // No user is signed in.
