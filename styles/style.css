@@ -59,6 +59,20 @@ footer.navbar {
   background-color: #8692b2;
 }
 
+.bg-high {
+  background-color:#e5a0a7
+}
+
+.bg-medium {
+  background-color: #ffebb0
+}
+
+.bg-low {
+  background-color: #5a8b74
+}
+
+
+
 .btn-link {
   text-decoration: none;
 }
