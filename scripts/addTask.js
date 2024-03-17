@@ -44,6 +44,7 @@ function submitForm() {
         endDate: endDate,
         endTime: endTime,
         repeat: repeat,
+        id: task.doc().id,
         // repeatDay: daysChecked,
         status: [],
     }).then(function () {
