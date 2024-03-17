@@ -357,8 +357,8 @@ function convertTime() {
 }
 
 let date = new Date().toLocaleDateString();
-document.getElementById("date-goes-here").innerHTML = date;
 
+document.getElementById("date-goes-here").innerHTML = date;
 // let time = new Date().toLocaleTimeString("en-US", {timeZone: "timezone"});
 
 
