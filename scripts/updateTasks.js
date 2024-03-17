@@ -4,7 +4,7 @@ let tasks = await query();
 export function updateTask(){
     console.log(tasks);
     for (let i = 0; i < tasks.length; i++){
-        console.log(tasks[0].id)
+        console.log(tasks[i].id)
     }
 }
 function showButton(element, state) {

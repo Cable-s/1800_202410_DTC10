@@ -11,18 +11,18 @@ function priorityTasks () {
         <div class = "bg-high task-card" style="display:flex; flex-direction:column; margin: 5px 15px; padding: 10px;">
             <div style="display:flex; place-content:space-between"> 
                 <div>   
-                    <p style="font-weight:bold">`+tasks[i].title+`
+                    <p class="title" style="font-weight:bold">`+tasks[i].title+`
                 </div>
                 <div style="display:flex; flex-direction:column;">
                     <button class="edit" style="display:none;">Edit</button> 
                     <div style="display:flex;">
-                        <p>`+tasks[i].startTime+`
-                        <p>-`+tasks[i].endTime+`
+                        <p class="start-time">`+tasks[i].startTime+`
+                        <p class="end-time">-`+tasks[i].endTime+`
                     </div>
                 </div>
             </div>
             <div>
-                <p>`+tasks[i].description+`
+                <p class="description">`+tasks[i].description+`
             </div> 
         </div >
         `;
@@ -33,18 +33,18 @@ function priorityTasks () {
         <div class = "bg-medium task-card" style="display:flex; flex-direction:column; margin: 5px 15px; padding: 10px;">
             <div style="display:flex; place-content:space-between"> 
                 <div>   
-                    <p style="font-weight:bold">`+tasks[i].title+`
+                    <p class="title" style="font-weight:bold">`+tasks[i].title+`
                 </div>
                 <div style="display:flex; flex-direction:column;">
                     <button class="edit" style="display:none;">Edit</button> 
                     <div style="display:flex;">
-                        <p>`+tasks[i].startTime+`
-                        <p>-`+tasks[i].endTime+`
+                        <p class="start-time">`+tasks[i].startTime+`
+                        <p class="end-time">-`+tasks[i].endTime+`
                     </div>
                 </div>
             </div>
             <div>
-                <p>`+tasks[i].description+`
+                <p class="description">`+tasks[i].description+`
             </div> 
         </div >
         `;
@@ -55,17 +55,17 @@ function priorityTasks () {
         <div class = "bg-low task-card" style="display:flex; flex-direction:column; margin: 5px 15px; margin-bottom: 100px; padding: 10px;">
             <div style="display:flex; place-content:space-between"> 
                 <div>   
-                    <p style="font-weight:bold">`+tasks[i].title+`
+                    <p class="title" style="font-weight:bold">`+tasks[i].title+`
                 </div>
                 <div style="display:flex; flex-direction:column;">
                     <button class="edit" style="display:none;">Edit</button> 
                     <div style="display:flex;">
-                        <p>`+tasks[i].startTime+`
-                        <p>-`+tasks[i].endTime+`
+                        <p class="start-time">`+tasks[i].startTime+`
+                        <p class="end-time">-`+tasks[i].endTime+`
                     </div>
             </div>
             <div>
-                <p>`+tasks[i].description+`
+                <p class="description">`+tasks[i].description+`
             </div> 
         </div >
         `;
