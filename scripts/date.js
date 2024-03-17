@@ -353,12 +353,14 @@ let defaultTimeZone = "America/Vancouver"
 
 function convertTime() {
   let date = new Date().toLocaleDateString("en-US", { timeZone: "defaultTimezone" });
-  if document.getElementById("timezoneSelect").value;
+  // used to be "if document.getElementbyID("timezoneSelect").value;"
+  // removed the if to get rid of the console errors for now - TG
+  document.getElementById("timezoneSelect").value;
 }
 
 let date = new Date().toLocaleDateString();
 
-document.getElementById("date-goes-here").innerHTML = date;
+  document.getElementById("date-goes-here").innerHTML = date;
 // let time = new Date().toLocaleTimeString("en-US", {timeZone: "timezone"});
 
 
