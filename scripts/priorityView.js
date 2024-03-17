@@ -5,7 +5,7 @@ console.log(tasks);
 console.log(tasks.length);
 
 function priorityTasks () {
-    for (let i = 0; i <= tasks.length; i++) {
+    for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].importance === 'high'){
             document.getElementById('high-tasks').innerHTML +=
             `
