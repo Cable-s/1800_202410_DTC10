@@ -32,8 +32,9 @@ function submitForm() {
     // need to work on the days selected.
     var daysChecked = document.getElementsByName('day');
 
-    var task = db.collection("users").doc(firebase.auth().currentUser.uid).collection("tasks");
-    task.add({
+    const task = db.collection("users").doc(firebase.auth().currentUser.uid).collection("tasks")
+    task.add({}).then(docRef => {
+        task.doc(docRef.id).set({
         user: firebase.auth().currentUser.uid,
         category: category,
         description: description,
@@ -44,13 +45,15 @@ function submitForm() {
         endDate: endDate,
         endTime: endTime,
         repeat: repeat,
-        id: task.doc().id,
+        id: docRef.id,
         // repeatDay: daysChecked,
         status: [],
-    }).then(function () {
-        location.href = 'categoryView.html';
+        })
+    })
+    .then(function() {
+       location.href = 'categoryView.html';
     });
-}
+    }
 
 
 function addTask() {
