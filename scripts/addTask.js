@@ -32,6 +32,7 @@ function submitForm() {
     // need to work on the days selected.
     var daysChecked = document.getElementsByName('day');
 
+    // Add a blank task, grab it's id in "docRef" then add all of the info for the task
     const task = db.collection("users").doc(firebase.auth().currentUser.uid).collection("tasks")
     task.add({}).then(docRef => {
         task.doc(docRef.id).set({

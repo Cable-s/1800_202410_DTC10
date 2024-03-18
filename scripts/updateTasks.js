@@ -3,22 +3,22 @@ import { query} from './queryTasks.js';
 let tasks = await query();
 function sendUpdate(id, valuesArray){
     firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      let userID = user.uid;
-      // User is signed in.
-      console.log(userID, id);
-      db.collection("users").doc(userID).collection("tasks").doc(id).update({
-                    title: valuesArray.title,
-                    description: valuesArray.description,
-                    category: valuesArray.category,
-                    StartDate: valuesArray.startDate,
-                    endDate: valuesArray.endDate,
-                    startTime: valuesArray.startTime,
-                    endTime: valuesArray.endTime,
-                    importance: valuesArray.importance,
-                    repeat: valuesArray.repeat
-                });
-    }
+        if (user) {
+          let userID = user.uid;
+          // User is signed in.
+          console.log(userID, id);
+          db.collection("users").doc(userID).collection("tasks").doc(id).update({
+                        title: valuesArray.title,
+                        description: valuesArray.description,
+                        category: valuesArray.category,
+                        startDate: valuesArray.startDate,
+                        endDate: valuesArray.endDate,
+                        startTime: valuesArray.startTime,
+                        endTime: valuesArray.endTime,
+                        importance: valuesArray.importance,
+                        repeat: valuesArray.repeat
+          }).then(() => {location.reload()})
+        }
     })
 }
 
@@ -39,6 +39,7 @@ export function updateTask(id){
 
             let repeatSelect = document.getElementById("repeatSelect");
             let submitButton = document.getElementById("addTaskBtn");
+            submitButton.innerText = "Update Task";
             form.reset();
 
             titleInput.setAttribute("value", tasks[i].title);
@@ -83,7 +84,6 @@ export function updateTask(id){
                     "repeat": repeatSelect.value}
                    
                 sendUpdate(tasks[i].id, adjustedValues)
-                
             }
             
         }
