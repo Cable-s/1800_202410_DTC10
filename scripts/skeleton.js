@@ -36,7 +36,7 @@ function loadSkeleton() {
             //console.log($('#navbarTemplate').load('./text/nav_before_login.html'));
             //console.log($('#footerTemplate').load('./text/footer.html'));
             load("./text/nav_before_login.html", document.getElementById("navbarTemplate"));
-            load("./text/footer_after_login.html", document.getElementById("footerTemplate"));
+            load("./text/footer.html", document.getElementById("footerTemplate"));
         }
     });
 

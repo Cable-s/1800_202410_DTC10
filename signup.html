@@ -39,6 +39,17 @@
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <style>
+        h1.firebaseui-title {
+            visibility: hidden;
+        }
+
+        h1.firebaseui-title:after {
+            content: "Sign up";
+            display: block;
+            visibility: visible;
+        }
+    </style>
 </head>
 
 <body>

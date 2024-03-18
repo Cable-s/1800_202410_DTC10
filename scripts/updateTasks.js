@@ -6,7 +6,6 @@ function sendUpdate(id, valuesArray){
         if (user) {
           let userID = user.uid;
           // User is signed in.
-          console.log(userID, id);
           db.collection("users").doc(userID).collection("tasks").doc(id).update({
                         title: valuesArray.title,
                         description: valuesArray.description,
