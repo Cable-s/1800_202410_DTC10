@@ -1,10 +1,11 @@
 import { query } from './queryTasks.js';
-import {addHandlers} from './updateTasks.js';
+import { addHandlers } from './updateTasks.js';
 let tasks = await query();
 console.log(tasks);
 
 for (let i = 0; i < tasks.length; i++) {
   let title = tasks[i].title
+  let id = tasks[i].id
   let desc = tasks[i].description
   let end = tasks[i].endTime
   let start = tasks[i].startTime
@@ -21,7 +22,6 @@ for (let i = 0; i < tasks.length; i++) {
   endMinute = minuteRound(endMinute)
   let rowspan = (endHour * 2) + (endMinute) - (startHour * 2) + (startMinute)
   let startID = (startHour * 2) + (startMinute)
-  console.log(rowspan)
 
   let height = 100 + ((rowspan - 2) * 35)
 
@@ -33,6 +33,7 @@ for (let i = 0; i < tasks.length; i++) {
           <h3>${title}</h3>
           <button class="edit" style="display:none;">Edit</button>
           <p>${desc}</p>
+          <button class="complete" onclick="complete('${id}')">Complete</button>
           </div>
         </div>
       </td>
