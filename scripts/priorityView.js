@@ -1,5 +1,5 @@
 import { query } from './queryTasks.js';
-import {addHandlers, updateTask } from './updateTasks.js';
+import {addHandlers} from './updateTasks.js';
 let tasks = await query();
 
 

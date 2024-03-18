@@ -1,4 +1,5 @@
 import { query } from './queryTasks.js';
+import {addHandlers} from './updateTasks.js';
 let tasks = await query();
 console.log(tasks);
 
@@ -28,8 +29,9 @@ for (let i = 0; i < tasks.length; i++) {
     `
       <td rowspan = "${rowspan}">
         <div id="task-goes-here" style="height: 100%">
-          <div style="height: ${height}px; display: flex;justify-content: center;align-items: center; flex-direction: column;" class="border border-secondary bg-blush rounded-3 text-center text-wrap p-3">
+          <div style="height: ${height}px; display: flex;justify-content: center;align-items: center; flex-direction: column;" class="border border-secondary bg-blush rounded-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
           <h3>${title}</h3>
+          <button class="edit" style="display:none;">Edit</button>
           <p>${desc}</p>
           </div>
         </div>
@@ -48,3 +50,5 @@ function minuteRound(minute) {
     return 2
   }
 }
+
+addHandlers()

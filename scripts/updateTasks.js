@@ -22,11 +22,13 @@ function sendUpdate(id, valuesArray){
     })
 }
 
-export function updateTask(id){
+function updateTask(id){
     for (let i = 0; i < tasks.length; i++){
         if (id === tasks[i].id){
             let modal = new bootstrap.Modal(document.getElementById("exampleModal"));
             modal.show();
+
+            let label = document.getElementById("exampleModalLabel");
             let form = document.getElementById("input-form");
             let titleInput = document.getElementById("title-input");
             let descriptionInput = document.getElementById("description-input");
@@ -39,6 +41,8 @@ export function updateTask(id){
 
             let repeatSelect = document.getElementById("repeatSelect");
             let submitButton = document.getElementById("addTaskBtn");
+
+            label.innerText = "Edit Task";
             submitButton.innerText = "Update Task";
             form.reset();
 
