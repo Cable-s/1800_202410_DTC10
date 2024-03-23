@@ -4,18 +4,23 @@ console.log(tasks);
 
 
 function getCategoryLabels() {
-    
+
     let categoryLabels = [];
     for (let i = 0; i < tasks.length; i++) {
-        let category = tasks[i].category;
-        categoryLabels.push(category);
+        let startDate = tasks[i].startDate
+        let endDate = tasks[i].endDate
+        let d = new Date()
+        let todayDate = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`
+        console.log(i, startDate <= todayDate && todayDate <= endDate)
+        if ((startDate <= todayDate && todayDate <= endDate)) {
+            let category = tasks[i].category;
+            categoryLabels.push(category);
+        }
     }
     categoryLabels.sort();
-    //console.log(categoryLabels);
     let categories = [...new Set(categoryLabels)];
-    categories.shift();
+    //categories.shift();  // didn't know the purpose of this. It was deleting the first element which was a category
     categories.unshift('Un-categorized');
-    // console.log(categories);
     return categories
 }
 
@@ -25,27 +30,33 @@ function getCategoryLabels() {
 
 function displayCategorized() {
     let categories = getCategoryLabels();
-    console.log(categories)
+    //console.log(categories)
     for (let i = 0; i < categories.length; i++) {
         document.getElementById('categorized').innerHTML +=
-        `
-        <h1> `+categories[i]+` </h1>
-        `
+            `
+            <h1> `+ categories[i] + ` </h1>
+            `
         for (let j = 0; j < tasks.length; j++) {
-            if(categories[i] == tasks[j].category) {
-                document.getElementById('categorized').innerHTML +=
-                `<div>
-                    <p> `+tasks[j].title+` </p>
-                    <p> `+tasks[j].description+`</p>
-                 </div>   
-                `
-
+            let startDate = tasks[j].startDate
+            let endDate = tasks[j].endDate
+            let d = new Date()
+            let todayDate = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`
+            if ((startDate <= todayDate && todayDate <= endDate)) {
+                if (categories[i] == tasks[j].category) {
+                    document.getElementById('categorized').innerHTML +=
+                        `<div style="border-style:dotted">
+                        <p> `+ tasks[j].title + ` </p>
+                        <p> `+ tasks[j].description + `</p>
+                        </div>   
+                        `
+                }
             }
         }
-    }        
+    }
 }
 
-getCategoryLabels()
+
+//getCategoryLabels()
 // uncategorizedLabel()
 displayCategorized()
 

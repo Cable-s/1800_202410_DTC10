@@ -18,15 +18,20 @@ for (let i = 0; i < tasks.length; i++) {
   let endMinute = endArray[1]
 
 
-  startMinute = minuteRound(startMinute)
-  endMinute = minuteRound(endMinute)
-  let rowspan = (endHour * 2) + (endMinute) - (startHour * 2) + (startMinute)
-  let startID = (startHour * 2) + (startMinute)
+  let startDate = tasks[i].startDate
+  let endDate = tasks[i].endDate
+  let d = new Date()
+  let todayDate = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`
+  if ((startDate <= todayDate && todayDate <= endDate)) {
+    startMinute = minuteRound(startMinute)
+    endMinute = minuteRound(endMinute)
+    let rowspan = (endHour * 2) + (endMinute) - (startHour * 2) + (startMinute)
+    let startID = (startHour * 2) + (startMinute)
 
-  let height = 100 + ((rowspan - 2) * 35)
+    let height = 100 + ((rowspan - 2) * 35)
 
-  document.getElementById(startID).innerHTML +=
-    `
+    document.getElementById(startID).innerHTML +=
+      `
       <td rowspan = "${rowspan}">
         <div id="task-goes-here" style="height: 100%">
           <div style="height: ${height}px; display: flex;justify-content: center;align-items: center; flex-direction: column;" class="border border-secondary bg-blush rounded-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
@@ -38,6 +43,7 @@ for (let i = 0; i < tasks.length; i++) {
         </div>
       </td>
     `
+  }
 }
 
 function minuteRound(minute) {
