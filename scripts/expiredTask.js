@@ -43,9 +43,6 @@ function checkExpiredTasks() {
   if (counter > 0) {
     $('#expiredModal').modal('show')
   }
-  else {
-    document.getElementById
-  }
 }
 window.checkExpiredTasks = checkExpiredTasks
 
