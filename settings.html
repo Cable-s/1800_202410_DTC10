@@ -46,7 +46,7 @@
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
-    <div class="container-fluid">
+    <div class="container">
         <nav id="navbarTemplate" class="sticky-top"></nav>
 
         <!-- title "User Settings" -->
@@ -76,26 +76,23 @@
             <ul>
                 <li class="">Font Size</li>
                 <select id="fontSelect" class="">
-                    <option value="English">English</option>
-                    <option value="French">French</option>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
                 </select>
                 <button onclick="convertFont()">Select</button>
 
                 <li class="">Color Theme</li>
                 <select id="themeSelect" class="">
-                    <option value="English">English</option>
-                    <option value="French">French</option>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
                 </select>
                 <button onclick="convertTheme()">Select</button>
             </ul>
             <a class="mt-5" href="#">support</a>
+            <footer id="footerTemplate" class="sticky-bottom"></footer>
+            <div id="addTaskModal"></div>
         </div>
-
-
-
-
-
-
 
         <!---------------------------------------------->
         <!-- Your own JavaScript functions go here    -->
@@ -106,6 +103,7 @@
         <script src="./scripts/skeleton.js"></script>
         <script src="./scripts/script.js"></script>
         <script src="./scripts/date.js"></script>
+        <script src="./scripts/settings.js" type="module"></script>
         <script src="./scripts/addTask.js"></script>
 
 </body>
