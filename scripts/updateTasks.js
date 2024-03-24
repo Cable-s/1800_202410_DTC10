@@ -42,7 +42,7 @@ function updateTask(id) {
             let submitButton = document.getElementById("addTaskBtn");
             let closeButton = document.getElementById("closeModal");
 
-            closeButton.addEventListener("click", () => { checkExpiredTasks() })
+            closeButton.addEventListener("click", () => { modal.hide(); checkExpiredTasks() })
             label.innerText = "Edit Task";
             submitButton.innerText = "Update Task";
             form.reset();

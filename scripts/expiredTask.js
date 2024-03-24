@@ -44,7 +44,7 @@ function checkExpiredTasks() {
     $('#expiredModal').modal('show')
   }
   else {
-    $('#expiredModal').modal('hide')
+    document.getElementById
   }
 }
 window.checkExpiredTasks = checkExpiredTasks
