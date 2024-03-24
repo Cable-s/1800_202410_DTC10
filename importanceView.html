@@ -48,12 +48,15 @@
   <!------------------------------>
   <div class="container">
     <nav id="navbarTemplate" class="sticky-top"></nav>
+    <br>
+
     <!-- Stuff for body goes here -->
-
-    <!-- Today's date automated -->
-
-    <div style="margin-top:10px" class="fs-1 fw-bold text-center bg-periwinkle rounded-3 py-2 mb-2" id="date-goes-here">
+    <div class="d-flex justify-content-center">
+      <label for="selectedDate">Select Date:</label>
+      <input type="date" id="selectedDate">
+      <p>Selected Date: <span id="displayDate"></span></p>
     </div>
+    <br>  
     <!-- Day Scheduler -->
 
     <div id="addTaskModal"></div>

@@ -1,88 +1,78 @@
 import { query } from './queryTasks.js';
 import { addHandlers } from './updateTasks.js';
-let tasks = await query();
 
+async function priorityTasks(selectedDate) {
+    let tasks = await query();
 
-function priorityTasks() {
-
-    for (let i = 0; i < tasks.length; i++) {
-        let startDate = tasks[i].startDate
-        let endDate = tasks[i].endDate
-        let d = new Date()
-        let todayDate = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`
-        if ((startDate <= todayDate && todayDate <= endDate)) {
-            if (tasks[i].importance === 'high') {
-                document.getElementById('high-tasks').innerHTML +=
-                    ` 
-        <div class = "bg-high task-card" id=${tasks[i].id} style="display:flex; flex-direction:column; margin: 5px 15px; padding: 10px;">
-            <div style="display:flex; place-content:space-between"> 
-                <div>   
-                    <p class="title" style="font-weight:bold">`+ tasks[i].title + `
-                </div>
-                <div style="display:flex; flex-direction:column;">
-                    <button class="edit" style="display:none;">Edit</button> 
-                    <div style="display:flex;">
-                        <p class="start-time">`+ tasks[i].startTime + `
-                        <p class="end-time">-`+ tasks[i].endTime + `
-                    </div>
-                    <button class="complete" onclick="complete('`+ tasks[i].id + `')">Complete</button>
-                </div>
-            </div>
-            <div>
-                <p class="description">`+ tasks[i].description + `</p>
-            </div> 
-        </div >
-        `;
-            }
-            if (tasks[i].importance === 'medium') {
-                document.getElementById('medium-tasks').innerHTML +=
-                    `
-        <div class = "bg-medium task-card" id=${tasks[i].id} style="display:flex; flex-direction:column; margin: 5px 15px; padding: 10px;">
-            <div style="display:flex; place-content:space-between"> 
-                <div>   
-                    <p class="title" style="font-weight:bold">`+ tasks[i].title + `
-                </div>
-                <div style="display:flex; flex-direction:column;">
-                    <button class="edit" style="display:none;">Edit</button> 
-                    <div style="display:flex;">
-                        <p class="start-time">`+ tasks[i].startTime + `
-                        <p class="end-time">-`+ tasks[i].endTime + `
-                    </div>
-                    <button class="complete" onclick="complete('`+ tasks[i].id + `')">Complete</button>
-                </div>
-            </div>
-            <div>
-                <p class="description">`+ tasks[i].description + `</p>
-            </div> 
-        </div >
-        `;
-            }
-            if (tasks[i].importance === 'low') {
-                document.getElementById('low-tasks').innerHTML +=
-                    `
-        <div class = "bg-low task-card" id=${tasks[i].id} style="display:flex; flex-direction:column; margin: 5px 15px; margin-bottom: 100px; padding: 10px;">
-            <div style="display:flex; place-content:space-between"> 
-                <div>   
-                    <p class="title" style="font-weight:bold">`+ tasks[i].title + `
-                </div>
-                <div style="display:flex; flex-direction:column;">
-                    <button class="edit" style="display:none;">Edit</button> 
-                    <div style="display:flex;">
-                        <p class="start-time">`+ tasks[i].startTime + `
-                        <p class="end-time">-`+ tasks[i].endTime + `
-                    </div>
-                    <button class="complete" onclick="complete('`+ tasks[i].id + `')">Complete</button>
-              </div>
-            </div>
-            <div>
-                <p class="description">`+ tasks[i].description + `</p>
-            </div> 
-        </div >
-        `;
-            }
+    tasks.forEach(task => {
+        if (task.startDate === selectedDate) {
+            displayTask(task);
         }
-    }
+    });
+
+    // Add event handlers after displaying tasks
+    addHandlers();
 }
 
-priorityTasks()
-addHandlers()
+function displayTask(task) {
+    let taskContainer;
+    switch (task.importance) {
+        case 'high':
+            taskContainer = document.getElementById('high-tasks');
+            break;
+        case 'medium':
+            taskContainer = document.getElementById('medium-tasks');
+            break;
+        case 'low':
+            taskContainer = document.getElementById('low-tasks');
+            break;
+    }
+
+    let taskCard = `
+        <div class="bg-${task.importance} task-card" id="${task.id}" style="display:flex; flex-direction:column; margin: 5px 15px; padding: 10px;">
+            <div style="display:flex; place-content:space-between"> 
+                <div>   
+                    <p class="title" style="font-weight:bold">${task.title}</p>
+                </div>
+                <div style="display:flex; flex-direction:column;">
+                    <button class="edit" style="display:none;">Edit</button> 
+                    <div style="display:flex;">
+                        <p class="start-time">${task.startTime}</p>
+                        <p class="end-time">-${task.endTime}</p>
+                    </div>
+                    <button class="complete" onclick="complete('${task.id}')">Complete</button>
+                </div>
+            </div>
+            <div>
+                <p class="description">${task.description}</p>
+            </div> 
+        </div>
+    `;
+
+    taskContainer.innerHTML += taskCard;
+}
+
+// Change today's date
+function setDefaultDate() {
+    var today = new Date().toISOString().slice(0, 10);
+    document.getElementById('selectedDate').value = today;
+    updateDate(today); // Update displayed date
+}
+
+// Function to update the displayed date
+function updateDate(selectedDate) {
+    document.getElementById('displayDate').textContent = selectedDate;
+}
+
+// Set today's date as the default value
+setDefaultDate();
+
+// Add event listener to update displayed date and tasks when date input changes
+document.getElementById('selectedDate').addEventListener('input', function () {
+    var selectedDate = this.value;
+    updateDate(selectedDate);
+    priorityTasks(selectedDate);
+});
+
+// Initial display of tasks based on today's date
+priorityTasks(new Date().toISOString().slice(0, 10));
