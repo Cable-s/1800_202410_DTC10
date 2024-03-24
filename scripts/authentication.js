@@ -27,8 +27,20 @@ var uiConfig = {
                     .add({
                                                             // Add 'tasks' collection to users 
                     })
+                    db.collection("users").doc(user.uid).collection("settings")
+                    .add({
+                    language: "English",
+                    timezoneSelect: "America/Vancouver",
+                    notifications: "on",
+                    fontSelect: "medium",
+                    themeSelect: "light"
+                                                            // Add 'settings' collection to users
+                    })
+                    db.collection("users").doc(user.uid).collection("profile")
+                    .add({
+                    })
                     .then( function() {
-                      console.log("Task collection added") })
+                      console.log("User collections added") })
                     .catch(function (error) {
                       console.log(error)
                     })
