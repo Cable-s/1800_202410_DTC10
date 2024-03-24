@@ -22,7 +22,7 @@ function checkExpiredTasks() {
     let d = new Date()
     let time = d.getTime()
     let todayDate = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`
-    if ((todayDate > endDate || time > endTime)) {
+    if ((todayDate > endDate || todayDate == endDate && time > endTime)) {
       counter++
       document.getElementById("expiredTasks").innerHTML +=
         `
