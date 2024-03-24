@@ -9,6 +9,7 @@
         <form id="input-form">
           Title: <Br>
           <input type="text" placeholder="Name Of Task" id="title-input">
+          <span id="title-error" style="color: red;"></span> <!-- Error message for title -->
           <br>
           Description:
           <br>
@@ -21,15 +22,21 @@
           <br><br>
           Start Date:
           <input type="date" id="startDate"></input>
+          <span id="startDate-error" style="color: red;"></span> <!-- Error message for start date -->
+
           <br>
           Start Time:
           <input type="time" id="startTime" value="00:00"></input>
+          <span id="startTime-error" style="color: red;"></span> <!-- Error message for start time -->
+
           <br>
           End Date:
           <input type="date" id="endDate"></input>
+          <span id="endDate-error" style="color: red;"></span> <!-- Error message for end date -->
           <br>
           End Time:
           <input type="time" id="endTime" value="00:00"></input>
+          <span id="endTime-error" style="color: red;"></span> <!-- Error message for end time -->
           <br><br>
           <br><br>
           Importance: <br>
@@ -38,31 +45,10 @@
             <option value="medium">Medium</option>
             <option value="low">Low</option>
           </select>
+          <span id="importance-error" style="color: red;"></span> <!-- Error message for importance -->
+
           <br><br>
-          <label for="repeatSelect">Repeat:</label>
-          <br>
-          <select name="repeat" id="repeatSelect">
-            <option value="noRepeat">Dont Repeat</option>
-            <option value="weekly">Weekly</option>
-            <option value="biweekly">Bi-Weekly</option>
-            <option value="semiMonthly">Semi-Monthly</option>
-            <option value="monthly">Monthly</option>
-            <option value="quarterly">Quarterly</option>
-            <option value="yearly">Yearly</option>
-          </select>
-          <!-- only show up when repeat option is "everyweek"-->
-          <div id="daysSelect" class="hidden">
-            <br>
-            <input type="checkbox" id="monday" class="day" value="monday"> Monday
-            <input type="checkbox" id="tuesday" class="day" value="tuesday"> Tuesday
-            <input type="checkbox" id="wednesday" class="day" value="wednesday"> Wednesday
-            <input type="checkbox" id="thursday" class="day" value="thursday"> Thursday
-            <input type="checkbox" id="friday" class="day" value="friday"> Friday
-            <input type="checkbox" id="saturday" class="day" value="saturday"> Saturday
-            <input type="checkbox" id="sunday" class="day" value="sunday"> Sunday
-            <button onclick="checkAll()">Check all</button>
-            <br><br>
-          </div>
+
           <div class="modal-footer">
             <button id="closeModal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button id="addTaskBtn" type="button" class="btn btn-primary" onclick="submitForm()">Add Task</button>
