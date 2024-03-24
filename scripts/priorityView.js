@@ -4,10 +4,16 @@ let tasks = await query();
 
 
 function priorityTasks() {
-  for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i].importance === 'high') {
-      document.getElementById('high-tasks').innerHTML +=
-        ` 
+
+    for (let i = 0; i < tasks.length; i++) {
+        let startDate = tasks[i].startDate
+        let endDate = tasks[i].endDate
+        let d = new Date()
+        let todayDate = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`
+        if ((startDate <= todayDate && todayDate <= endDate)) {
+            if (tasks[i].importance === 'high') {
+                document.getElementById('high-tasks').innerHTML +=
+                    ` 
         <div class = "bg-high task-card" id=${tasks[i].id} style="display:flex; flex-direction:column; margin: 5px 15px; padding: 10px;">
             <div style="display:flex; place-content:space-between"> 
                 <div>   
@@ -27,10 +33,10 @@ function priorityTasks() {
             </div> 
         </div >
         `;
-    }
-    if (tasks[i].importance === 'medium') {
-      document.getElementById('medium-tasks').innerHTML +=
-        `
+            }
+            if (tasks[i].importance === 'medium') {
+                document.getElementById('medium-tasks').innerHTML +=
+                    `
         <div class = "bg-medium task-card" id=${tasks[i].id} style="display:flex; flex-direction:column; margin: 5px 15px; padding: 10px;">
             <div style="display:flex; place-content:space-between"> 
                 <div>   
@@ -50,10 +56,10 @@ function priorityTasks() {
             </div> 
         </div >
         `;
-    }
-    if (tasks[i].importance === 'low') {
-      document.getElementById('low-tasks').innerHTML +=
-        `
+            }
+            if (tasks[i].importance === 'low') {
+                document.getElementById('low-tasks').innerHTML +=
+                    `
         <div class = "bg-low task-card" id=${tasks[i].id} style="display:flex; flex-direction:column; margin: 5px 15px; margin-bottom: 100px; padding: 10px;">
             <div style="display:flex; place-content:space-between"> 
                 <div>   
@@ -73,9 +79,9 @@ function priorityTasks() {
             </div> 
         </div >
         `;
+            }
+        }
     }
-
-  }
 }
 
 priorityTasks()
