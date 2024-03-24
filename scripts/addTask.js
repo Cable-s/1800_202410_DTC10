@@ -29,8 +29,15 @@ function submitForm() {
     var endTime = document.getElementById('endTime').value;
     var importance = document.getElementById('importanceSelect').value;
     var repeat = document.getElementById('repeatSelect').value;
-    // need to work on the days selected.
-    var daysChecked = document.getElementsByName('day');
+    var daysChecked = []; // Array to hold the selected days
+
+    // If repeat is weekly, capture the selected days
+    if (repeat === "weekly") {
+        var checkboxes = document.querySelectorAll('.day:checked');
+        checkboxes.forEach(function(checkbox) {
+            daysChecked.push(checkbox.value);
+        });
+    }
 
     // Add a blank task, grab it's id in "docRef" then add all of the info for the task
     const task = db.collection("users").doc(firebase.auth().currentUser.uid).collection("tasks")
@@ -47,7 +54,7 @@ function submitForm() {
         endTime: endTime,
         repeat: repeat,
         id: docRef.id,
-        // repeatDay: daysChecked,
+        repeatDay: daysChecked,
         status: [],
         })
     })
