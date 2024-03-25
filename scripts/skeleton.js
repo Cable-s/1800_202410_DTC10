@@ -28,6 +28,7 @@ function loadSkeleton() {
             load("./text/nav_after_login.html", document.getElementById("navbarTemplate"));
             load("./text/footer_after_login.html", document.getElementById("footerTemplate"));
             load("./text/addTaskModal.html", document.getElementById("addTaskModal"));
+            load("./text/defineCategoriesModal.html", document.getElementById("CategoriesModal"));
             load("./text/expiredTaskModal.html", document.getElementById("expiredTaskModal"));
         } else {
             // No user is signed in.
