@@ -2,9 +2,7 @@ var userID;
 var checked;
 var languageSelect = document.getElementById("languageSelect");
 var timezoneSelect = document.getElementById("timezoneSelect");
-var flexSwitch = document.querySelector(
-  "#flexSwitchCheckChecked.form-check-input",
-);
+var flexSwitch = document.getElementById("flexSwitchCheckChecked");
 var fontSelect = document.getElementById("fontSelect");
 var themeSelect = document.getElementById("themeSelect");
 var submitBtn = document.getElementById("submitBtn");
@@ -44,9 +42,16 @@ async function userSettings() {
     timezoneSelect.value = localStorage.getItem("timezoneSelect");
     themeSelect.value = localStorage.getItem("themeSelect");
     fontSelect.value = localStorage.getItem("fontSelect");
+    flexSwitch.value = localStorage.getItem("notifications");
+    if (localStorage.getItem("notifications") == "true") {
+      flexSwitch.checked = true;
+    } else {
+      flexSwitch.checked = false;
+    }
   });
 }
 function updateSettings(newSetting) {
+  console.log(newSetting);
   Object.entries(newSetting).forEach(([key, value]) => {
     db.collection("users")
       .doc(`${userID}`)
@@ -62,15 +67,15 @@ function updateSettings(newSetting) {
   });
   userSettings();
 }
-function addListener() {
-  submitBtn.addEventListener("submit", () => {
-    updateSettings({
-      language: languageSelect.value,
-      fontSelect: fontSelect.value,
-      themeSelect: themeSelect.value,
-      notifications: flexSwitch.value,
-    });
+function submitForm() {
+  updateSettings({
+    language: languageSelect.value,
+    fontSelect: fontSelect.value,
+    themeSelect: themeSelect.value,
+    notifications: flexSwitch.checked,
+    timezoneSelect: timezoneSelect.value,
   });
 }
-addListeners();
+
+submitBtn.addEventListener("click", submitForm);
 userSettings();

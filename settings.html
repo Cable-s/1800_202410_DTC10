@@ -51,7 +51,6 @@
 
         <!-- title "User Settings" -->
 
-        <form>
         <h1 class="text-center fw-bold mt-5">SETTINGS</h1>
         <div id="settings" class="ms-3">
             <h2 class="mt-5">LANGUAGE</h2>
@@ -68,7 +67,7 @@
 
             <h2 class="mt-5">NOTIFICATIONS</h2>
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" value="true">
                 <label class="form-check-label" for="flexSwitchCheckChecked"></label>
             </div>
             <h2 class="mt-5">APPEARANCE</h2>
@@ -86,8 +85,7 @@
                     <option value="light">Light</option>
                 </select>
             </ul>
-            <button type="submit" id="submitBtn">Submit</button>
-        </form>
+            <button id="submitBtn">Submit</button>
             <footer id="footerTemplate" class="sticky-bottom"></footer>
             <div id="addTaskModal"></div>
         </div>
