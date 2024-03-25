@@ -51,6 +51,7 @@
 
         <!-- title "User Settings" -->
 
+        <form>
         <h1 class="text-center fw-bold mt-5">SETTINGS</h1>
         <div id="settings" class="ms-3">
             <h2 class="mt-5">LANGUAGE</h2>
@@ -58,18 +59,16 @@
                 <option value="English">English</option>
                 <option value="French">French</option>
             </select>
-            <button onclick="convertLanguage()">Select</button>
 
             <h2 class="mt-5">TIME ZONE</h2>
             <select id="timezoneSelect" class="">
                 <option value="America/Vancouver">Pacific Time (PST)</option>
                 <option value="America/Edmonton">Eastern Time (EST)</option>
             </select>
-            <button onclick="convertTime()">Select</button>
 
             <h2 class="mt-5">NOTIFICATIONS</h2>
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
                 <label class="form-check-label" for="flexSwitchCheckChecked"></label>
             </div>
             <h2 class="mt-5">APPEARANCE</h2>
@@ -80,16 +79,15 @@
                     <option value="medium">Medium</option>
                     <option value="large">Large</option>
                 </select>
-                <button onclick="convertFont()">Select</button>
 
                 <li class="">Color Theme</li>
                 <select id="themeSelect" class="">
                     <option value="dark">Dark</option>
                     <option value="light">Light</option>
                 </select>
-                <button onclick="convertTheme()">Select</button>
             </ul>
-            <a class="mt-5" href="#">support</a>
+            <button type="submit" id="submitBtn">Submit</button>
+        </form>
             <footer id="footerTemplate" class="sticky-bottom"></footer>
             <div id="addTaskModal"></div>
         </div>
