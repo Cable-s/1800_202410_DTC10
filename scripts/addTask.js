@@ -25,24 +25,29 @@ function submitForm() {
     // Check for start and end date/time validation
     var category = document.getElementById('category-input').value;
     var description = document.getElementById('description-input').value;
+    console.log(document.getElementById('endDate').value)
     var startDate = new Date(document.getElementById('startDate').value);
     var endDate = new Date(document.getElementById('endDate').value);
+    startDate = new Date(startDate.getTime() - startDate.getTimezoneOffset() * -60000)
+    endDate = new Date(endDate.getTime() - endDate.getTimezoneOffset() * -60000)
     var startTime = document.getElementById('startTime').value;
     var endTime = document.getElementById('endTime').value;
     var error = false
-
     if (startDate.getTime() > endDate.getTime()) {
         error = true
+        console.log('true')
         showError('endDate', "End date must be after start date");
     }
 
     if (startDate.getTime() == endDate.getTime() && startTime >= endTime) {
         error = true
+        console.log('true')
         showError('endTime', "End time must be after start time");
     }
 
     if (endDate.getTime() < startDate.getTime()) {
         error = true
+        console.log('true')
         showError('endDate', "End date cannot be before start date");
     }
 

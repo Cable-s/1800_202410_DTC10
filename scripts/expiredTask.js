@@ -18,13 +18,20 @@ function checkExpiredTasks() {
     let end = tasks[i].endTime
 
     let endTimestamp = tasks[i].endDate
-    let endDate = new Date(endTimestamp.seconds * 1000)
+    let endDate = new Date(endTimestamp.seconds * 1000 + endTimestamp.nanoseconds)
     let endTime = tasks[i].endTime
     let d = new Date()
     let time = d.getTime()
+
+    console.log("d is " + d)
+    console.log("endDate is " + endDate)
+    console.log(endTimestamp)
+
     let todayDate = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`
     let endDates = endDate.toDateString()
-    if ((todayDate > endTimestamp || todayDate == endTimestamp && time > endTime)) {
+
+
+    if ((todayDate > endDates || todayDate == endTimestamp && time > endTime)) {
       counter++
       document.getElementById("expiredTasks").innerHTML +=
         `
