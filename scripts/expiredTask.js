@@ -17,12 +17,14 @@ function checkExpiredTasks() {
     let desc = tasks[i].description
     let end = tasks[i].endTime
 
-    let endDate = tasks[i].endDate
+    let endTimestamp = tasks[i].endDate
+    let endDate = new Date(endTimestamp.seconds * 1000)
     let endTime = tasks[i].endTime
     let d = new Date()
     let time = d.getTime()
     let todayDate = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`
-    if ((todayDate > endDate || todayDate == endDate && time > endTime)) {
+    let endDates = endDate.toDateString()
+    if ((todayDate > endTimestamp || todayDate == endTimestamp && time > endTime)) {
       counter++
       document.getElementById("expiredTasks").innerHTML +=
         `
@@ -30,7 +32,7 @@ function checkExpiredTasks() {
           <div style="width:50% align-self: start" id=${tasks[i].id}>
             <h3>${title}</h3>
             <p>${desc}</p>
-            <p>Task expired on ${endDate} at ${end}</p>
+            <p>Task expired on ${endDates} at ${end}</p>
           </div>
           <div class="task-card" style="align-self: end; display: flex; flex-direction: column">
             <button class="edit" onclick="$('#expiredModal').modal('hide'); updateTask('${id}')">Edit Date</button>
