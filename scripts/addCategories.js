@@ -1,39 +1,43 @@
 // check all checkboxes
 function checkAll() {
-    var inputs = document.querySelectorAll('.aspect');
-    for (var i = 0; i < inputs.length; i++) {
-        inputs[i].checked = true;
-    }
+  var inputs = document.querySelectorAll(".aspect");
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].checked = true;
+  }
 }
 // send data to firestore when add categories button clicked
 function submitForm() {
-    var categoriesChecked = []; // Array to hold the selected categories
+  var categoriesChecked = []; // Array to hold the selected categories
 
-    // Capture all selected categories
-        var checkboxes = document.querySelectorAll('.aspect:checked');
-        checkboxes.forEach(function(checkbox) {
-            categoriesChecked.push(checkbox.value);
-        });
+  // Capture all selected categories
+  var checkboxes = document.querySelectorAll(".aspect:checked");
+  checkboxes.forEach(function (checkbox) {
+    categoriesChecked.push(checkbox.value);
+  });
 
-    // Add a blank category, grab it's id in "docRef" then add all of the info for the task
-    const categories = db.collection("users").doc(firebase.auth().currentUser.uid).collection("categories")
-    categories.add({}).then(docRef => {
-        task.doc(docRef.id).set({
-        Categories: categoriesChecked
-        })
+  // Add a blank category, grab it's id in "docRef" then add all of the info for the task
+  const categories = db
+    .collection("users")
+    .doc(firebase.auth().currentUser.uid)
+    .collection("categories");
+  categories
+    .add({})
+    .then((docRef) => {
+      task.doc(docRef.id).set({
+        Categories: categoriesChecked,
+      });
     })
-    .then(function() {
-       location.href = 'categoryView.html';
+    .then(function () {
+      location.href = "categoryView.html";
     });
-    }
-
+}
 
 function addCategories() {
-    console.log($('#CategoriesModal').load('./text/defineCategoriesModal.html'));
+  console.log($("#CategoriesModal").load("./text/defineCategoriesModal.html"));
 }
 
 function setup() {
-    console.log('Category setup complete');
+  console.log("Category setup complete");
 }
 
 $(document).ready(setup);

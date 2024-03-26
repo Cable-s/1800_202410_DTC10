@@ -69,15 +69,17 @@
             </div>
             <div id="user-details">
                 <p class="m-1">First Name:</p>
-                <input type="text" value="Testy" class="form-text"></input>
-                <p class="mt-3 mb-1">Last Name:</p>
-                <input type="text" value="Testerson" class="form-text"></input>
-                <p class="mt-3 mb-1">Email:</p>
-                <input type="text" value="test@tester.test" class="form-text"></input>
-                <p class="mt-3 mb-1">About Me:</p>
+                <input type="text" value="Testy" class="form-text mt-1"></input>
+                <p class="mt-1 mb-1">Last Name:</p>
+                <input type="text" value="Testerson" class="form-text mt-1"></input>
+                <p class="mt-1 mb-1">About Me:</p>
                 <textarea class="form-control" rows="3">Hello!</textarea>
+                <p class="mt-1 mb-1">Birthday:</p>
+                <input type="date" id="birthday" class="mb-1">
                 <br>
-                <em class="mt-5">Member since Apr 1, 1901</em>
+                <em class="mt-1">Member since Apr 1, 1901</em>
+                <br>
+                <button class="btn bg-blush mt-1" type="button" id="submit">Update</button>
             </div>
 
             <footer id="footerTemplate" class="sticky-bottom"></footer>
@@ -89,6 +91,7 @@
         <!-- Link to scripts of your own -->
         <script src="./scripts/firebaseAPI_TEAM10.js"></script>
         <script src="./scripts/skeleton.js"></script>
+        <script src="./scripts/profile.js"></script>
         <script src="./scripts/script.js"></script>
         <script src="./scripts/addTask.js"></script>
 </body>
