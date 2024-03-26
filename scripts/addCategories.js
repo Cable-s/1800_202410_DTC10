@@ -23,17 +23,17 @@ function submitForm() {
   categories
     .add({})
     .then((docRef) => {
-      task.doc(docRef.id).set({
-        Categories: categoriesChecked,
+      categories.doc(docRef.id).set({
+        categories: categoriesChecked,
       });
     })
     .then(function () {
-      location.href = "categoryView.html";
+      location.href = "main.html";
     });
 }
 
 function addCategories() {
-  console.log($("#CategoriesModal").load("./text/defineCategoriesModal.html"));
+  console.log($("#CategoriesModal").load("./defineCategories.html"));
 }
 
 function setup() {
