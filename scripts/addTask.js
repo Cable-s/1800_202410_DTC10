@@ -28,8 +28,6 @@ function submitForm() {
     console.log(document.getElementById('endDate').value)
     var startDate = new Date(document.getElementById('startDate').value);
     var endDate = new Date(document.getElementById('endDate').value);
-    startDate = new Date(startDate.getTime() - startDate.getTimezoneOffset() * -60000)
-    endDate = new Date(endDate.getTime() - endDate.getTimezoneOffset() * -60000)
     var startTime = document.getElementById('startTime').value;
     var endTime = document.getElementById('endTime').value;
     var error = false

@@ -1,7 +1,6 @@
 import { query } from './queryTasks.js';
 import { addHandlers } from './updateTasks.js';
 let tasks = await query();
-console.log(tasks);
 
 $(document).ready(() => {
   checkExpiredTasks()
@@ -12,26 +11,33 @@ function checkExpiredTasks() {
   let counter = 0
   document.getElementById("expiredTasks").innerHTML = ""
   for (let i = 0; i < tasks.length; i++) {
+    const zeroPad = (num, places) => String(num).padStart(places, '0')
+
     let title = tasks[i].title
     let id = tasks[i].id
     let desc = tasks[i].description
-    let end = tasks[i].endTime
 
-    let endTimestamp = tasks[i].endDate
-    let endDate = new Date(endTimestamp.seconds * 1000 + endTimestamp.nanoseconds)
     let endTime = tasks[i].endTime
-    let d = new Date()
-    let time = d.getTime()
 
-    console.log("d is " + d)
-    console.log("endDate is " + endDate)
-    console.log(endTimestamp)
-
-    let todayDate = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`
-    let endDates = endDate.toDateString()
+    let endDate = new Date(tasks[i].endDate.seconds * 1000)
+    endDate = endDate.getFullYear() + "-" + zeroPad((endDate.getMonth() + 1), 2) + "-" + endDate.getDate()
 
 
-    if ((todayDate > endDates || todayDate == endTimestamp && time > endTime)) {
+    let todayDate = new Date().toLocaleDateString()
+
+    let timeNow = new Date()
+    timeNow = timeNow.getHours() + ":" + timeNow.getMinutes()
+
+
+    // console.log("timeNow " + timeNow)
+    // console.log("endTime " + endTime)
+    // console.log(endTime < timeNow)
+    // console.log("endDate " + endDate)
+    // console.log("todayDate " + todayDate)
+    // console.log(todayDate > endDate)
+    // console.log(todayDate == endDate)
+
+    if ((todayDate > endDate || todayDate == endDate && endTime < timeNow)) {
       counter++
       document.getElementById("expiredTasks").innerHTML +=
         `
@@ -39,7 +45,7 @@ function checkExpiredTasks() {
           <div style="width:50% align-self: start" id=${tasks[i].id}>
             <h3>${title}</h3>
             <p>${desc}</p>
-            <p>Task expired on ${endDates} at ${end}</p>
+            <p>Task expired on ${endDate} at ${endTime}</p>
           </div>
           <div class="task-card" style="align-self: end; display: flex; flex-direction: column">
             <button class="edit" onclick="$('#expiredModal').modal('hide'); updateTask('${id}')">Edit Date</button>

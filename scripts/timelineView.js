@@ -3,11 +3,23 @@ import { addHandlers } from './updateTasks.js';
 
 async function displayTasksByDate(selectedDate) {
   let tasks = await query();
-  console.log(tasks);
+  //console.log(tasks);
 
   for (let i = 0; i < tasks.length; i++) {
-    let taskStartDate = new Date(tasks[i].startDate);
-    let taskEndDate = new Date(tasks[i].endDate);
+    const zeroPad = (num, places) => String(num).padStart(places, '0')
+
+    let taskStartDate = new Date(tasks[i].startDate.seconds * 1000)
+    let taskEndDate = new Date(tasks[i].endDate.seconds * 1000)
+
+    taskStartDate = taskStartDate.getFullYear() + "-" + zeroPad((taskStartDate.getMonth() + 1), 2) + "-" + taskStartDate.getDate()
+    taskEndDate = taskEndDate.getFullYear() + "-" + zeroPad((taskEndDate.getMonth() + 1), 2) + "-" + taskEndDate.getDate()
+    // console.log(selectedDate)
+    // console.log(taskStartDate)
+    // console.log(taskEndDate)
+    // console.log(selectedDate >= taskStartDate)
+    // console.log(selectedDate <= taskEndDate)
+
+
 
     // Check if the selected date falls within the range of task's start and end dates
     if (selectedDate >= taskStartDate && selectedDate <= taskEndDate) {
@@ -61,9 +73,23 @@ function minuteRound(minute) {
   }
 }
 
+function clearTasks() {
+  console.log("clearing")
+  for (let i = 0; i < 48; i++) {
+    let times = ["am 00:00", "00:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00"]
+    document.getElementById(i).innerHTML = ""
+    document.getElementById(i).innerHTML = `
+    <tr id="${i}">
+    <td class="time" style="width:19%">${times[i]}</td>
+    </tr>
+    `
+
+  }
+}
+
 // Change today's date
 function setDefaultDate() {
-  var today = new Date().toISOString().slice(0, 10);
+  var today = new Date().toLocaleDateString()
   document.getElementById('selectedDate').value = today;
   updateDate(today); // Update displayed date
 }
@@ -77,8 +103,7 @@ function updateDate(selectedDate) {
 setDefaultDate();
 
 // Add event listener to update displayed date when date input changes
-document.getElementById('selectedDate').addEventListener('input', function() {
-  var selectedDate = new Date(this.value);
-  updateDate(selectedDate.toISOString().slice(0, 10));
-  displayTasksByDate(selectedDate);
+document.getElementById('selectedDate').addEventListener('input', function () {
+  clearTasks()
+  displayTasksByDate(this.value);
 });

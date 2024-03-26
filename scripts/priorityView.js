@@ -2,10 +2,17 @@ import { query } from './queryTasks.js';
 import { addHandlers } from './updateTasks.js';
 
 async function priorityTasks(selectedDate) {
+    console.log(selectedDate)
     let tasks = await query();
 
     tasks.forEach(task => {
-        if (task.startDate === selectedDate) {
+        const zeroPad = (num, places) => String(num).padStart(places, '0')
+        let taskStartDate = new Date(task.startDate.seconds * 1000)
+        taskStartDate = taskStartDate.getFullYear() + "-" + zeroPad((taskStartDate.getMonth() + 1), 2) + "-" + taskStartDate.getDate()
+
+        console.log(taskStartDate)
+        console.log(taskStartDate == selectedDate)
+        if (taskStartDate === selectedDate) {
             displayTask(task);
         }
     });
@@ -52,9 +59,10 @@ function displayTask(task) {
     taskContainer.innerHTML += taskCard;
 }
 
+
 // Change today's date
 function setDefaultDate() {
-    var today = new Date().toISOString().slice(0, 10);
+    var today = new Date().toLocaleDateString()
     document.getElementById('selectedDate').value = today;
     updateDate(today); // Update displayed date
 }
@@ -67,12 +75,18 @@ function updateDate(selectedDate) {
 // Set today's date as the default value
 setDefaultDate();
 
-// Add event listener to update displayed date and tasks when date input changes
+// Add event listener to update displayed date when date input changes
 document.getElementById('selectedDate').addEventListener('input', function () {
-    var selectedDate = this.value;
-    updateDate(selectedDate);
-    priorityTasks(selectedDate);
+    clearTasks()
+    priorityTasks(this.value);
 });
 
 // Initial display of tasks based on today's date
-priorityTasks(new Date().toISOString().slice(0, 10));
+priorityTasks(new Date().toLocaleDateString());
+
+function clearTasks() {
+    console.log("clear")
+    document.getElementById('high-tasks').innerHTML = ""
+    document.getElementById('medium-tasks').innerHTML = ""
+    document.getElementById('low-tasks').innerHTML = ""
+}
