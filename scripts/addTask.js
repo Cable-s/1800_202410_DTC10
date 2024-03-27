@@ -76,6 +76,12 @@ function submitForm() {
 }
 
 
+function populateCategories() {
+    const getThis = localStorage.getItem("categories");
+    console.log(getThis);
+}
+
+
 
 function addTask() {
     console.log($('#taskModal').load('./text/addTaskModal.html'));
@@ -86,3 +92,4 @@ function setup() {
 }
 
 $(document).ready(setup);
+populateCategories();

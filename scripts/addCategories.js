@@ -6,7 +6,7 @@ function checkAll() {
   }
 }
 // send data to firestore when add categories button clicked
-function submitForm() {
+function submitCategoryForm() {
   var categoriesChecked = []; // Array to hold the selected categories
 
   // Capture all selected categories
@@ -24,7 +24,7 @@ function submitForm() {
     .add({})
     .then((docRef) => {
       categories.doc(docRef.id).set({
-        categories: categoriesChecked,
+        categories: categoriesChecked
       });
     })
     .then(function () {
