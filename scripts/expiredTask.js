@@ -30,13 +30,13 @@ function checkExpiredTasks() {
     timeNow = timeNow.getHours() + ":" + zeroPad(timeNow.getMinutes(), 2)
 
 
-    console.log("timeNow " + timeNow)
-    console.log("endTime " + endTime)
-    console.log(endTime < timeNow)
-    console.log("endDate " + endDate)
-    console.log("todayDate " + todayDate)
-    console.log(todayDate > endDate)
-    console.log(todayDate == endDate)
+    // console.log("timeNow " + timeNow)
+    // console.log("endTime " + endTime)
+    // console.log(endTime < timeNow)
+    // console.log("endDate " + endDate)
+    // console.log("todayDate " + todayDate)
+    // console.log(todayDate > endDate)
+    // console.log(todayDate == endDate)
 
     if ((todayDate > endDate || todayDate == endDate && endTime < timeNow)) {
       counter++
