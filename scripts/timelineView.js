@@ -160,7 +160,6 @@ function setDefaultDate() {
   const zeroPad = (num, places) => String(num).padStart(places, '0')
   let today = new Date()
   today = today.getFullYear() + "-" + zeroPad((today.getMonth() + 1), 2) + "-" + today.getDate()
-  console.log(today)
   document.getElementById('selectedDate').value = today;
   updateDate(today); // Update displayed date
   displayTasksByDate(today);
