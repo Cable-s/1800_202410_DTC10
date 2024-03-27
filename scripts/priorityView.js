@@ -2,40 +2,40 @@ import { query } from './queryTasks.js';
 import { addHandlers } from './updateTasks.js';
 
 async function priorityTasks(selectedDate) {
-    console.log(selectedDate)
-    let tasks = await query();
+  console.log(selectedDate)
+  let tasks = await query();
 
-    tasks.forEach(task => {
-        const zeroPad = (num, places) => String(num).padStart(places, '0')
-        let taskStartDate = new Date(task.startDate.seconds * 1000)
-        taskStartDate = taskStartDate.getFullYear() + "-" + zeroPad((taskStartDate.getMonth() + 1), 2) + "-" + taskStartDate.getDate()
+  tasks.forEach(task => {
+    const zeroPad = (num, places) => String(num).padStart(places, '0')
+    let taskStartDate = new Date(task.startDate.seconds * 1000)
+    taskStartDate = taskStartDate.getFullYear() + "-" + zeroPad((taskStartDate.getMonth() + 1), 2) + "-" + taskStartDate.getDate()
 
-        console.log(taskStartDate)
-        console.log(taskStartDate == selectedDate)
-        if (taskStartDate === selectedDate) {
-            displayTask(task);
-        }
-    });
+    console.log(taskStartDate)
+    console.log(taskStartDate == selectedDate)
+    if (taskStartDate === selectedDate) {
+      displayTask(task);
+    }
+  });
 
-    // Add event handlers after displaying tasks
-    addHandlers();
+  // Add event handlers after displaying tasks
+  addHandlers();
 }
 
 function displayTask(task) {
-    let taskContainer;
-    switch (task.importance) {
-        case 'high':
-            taskContainer = document.getElementById('high-tasks');
-            break;
-        case 'medium':
-            taskContainer = document.getElementById('medium-tasks');
-            break;
-        case 'low':
-            taskContainer = document.getElementById('low-tasks');
-            break;
-    }
+  let taskContainer;
+  switch (task.importance) {
+    case 'high':
+      taskContainer = document.getElementById('high-tasks');
+      break;
+    case 'medium':
+      taskContainer = document.getElementById('medium-tasks');
+      break;
+    case 'low':
+      taskContainer = document.getElementById('low-tasks');
+      break;
+  }
 
-    let taskCard = `
+  let taskCard = `
         <div class="bg-${task.importance} task-card" id="${task.id}" style="display:flex; flex-direction:column; margin: 5px 15px; padding: 10px;">
             <div style="display:flex; place-content:space-between"> 
                 <div>   
@@ -56,20 +56,24 @@ function displayTask(task) {
         </div>
     `;
 
-    taskContainer.innerHTML += taskCard;
+  taskContainer.innerHTML += taskCard;
 }
 
 
 // Change today's date
 function setDefaultDate() {
-    var today = new Date().toLocaleDateString()
-    document.getElementById('selectedDate').value = today;
-    updateDate(today); // Update displayed date
+  const zeroPad = (num, places) => String(num).padStart(places, '0')
+  let today = new Date()
+  today = today.getFullYear() + "-" + zeroPad((today.getMonth() + 1), 2) + "-" + today.getDate()
+  console.log(today)
+  document.getElementById('selectedDate').value = today;
+  updateDate(today); // Update displayed date
+  priorityTasks(today);
 }
 
 // Function to update the displayed date
 function updateDate(selectedDate) {
-    document.getElementById('displayDate').textContent = selectedDate;
+  document.getElementById('displayDate').textContent = selectedDate;
 }
 
 // Set today's date as the default value
@@ -77,16 +81,15 @@ setDefaultDate();
 
 // Add event listener to update displayed date when date input changes
 document.getElementById('selectedDate').addEventListener('input', function () {
-    clearTasks()
-    priorityTasks(this.value);
+  clearTasks()
+  priorityTasks(this.value);
 });
 
 // Initial display of tasks based on today's date
-priorityTasks(new Date().toLocaleDateString());
 
 function clearTasks() {
-    console.log("clear")
-    document.getElementById('high-tasks').innerHTML = ""
-    document.getElementById('medium-tasks').innerHTML = ""
-    document.getElementById('low-tasks').innerHTML = ""
+  console.log("clear")
+  document.getElementById('high-tasks').innerHTML = ""
+  document.getElementById('medium-tasks').innerHTML = ""
+  document.getElementById('low-tasks').innerHTML = ""
 }
