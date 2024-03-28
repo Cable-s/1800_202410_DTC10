@@ -1,5 +1,6 @@
 var userID;
 var docID;
+var categoriesDocID;
 var ImageFile;
 var accountDate;
 const firstName = document.getElementById("firstName");
@@ -30,6 +31,29 @@ function query() {
               resolve(doc.id);
             });
           });
+      }
+    });
+  });
+}
+function queryCategories() {
+  var categories;
+  return new Promise((resolve, reject) => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        userID = user.uid;
+        accountDate = user.metadata.creationTime;
+        // User is signed in.
+        categories = db
+          .collection("users")
+          .doc(`${userID}`)
+          .collection("categories")
+          .get()
+          .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              categoriesDocID = doc.id;
+              resolve(doc.id);
+            });
+          })
       }
     });
   });
@@ -122,9 +146,31 @@ async function queryProfile() {
   return profile;
 }
 
+async function getCategories() {
+  let categories = await queryCategories();
+  return categories;
+}
+
 queryProfile().then((doc) => {
   loadProfile();
 });
+
+getCategories().then((doc) => {
+  console.log(doc)
+  db.collection("users")
+    .doc(`${userID}`)
+    .collection("categories")
+    .doc(`${doc}`)
+    .get()
+    .then((doc) => {
+      categoryArray = doc.data().categories;
+      console.log(categoryArray)
+      for (i = 0; i < categoryArray.length; i++) {
+        document.getElementById("user-categories").innerHTML += `<p class="badge bg-success">${categoryArray[i]}</p>`
+      }
+    })
+  // document.getElementById("categories").innerHTML
+})
 
 function showButton(element, state) {
   state === "show"
