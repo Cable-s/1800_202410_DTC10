@@ -20,11 +20,14 @@ function categoryQuery() {
         // User is signed in.
         performCategoryQuery(userID).then((result) => {
           resolve(result);
-          localStorage.setItem("categories", result);
         });
       }
     });
   });
 }
-let firstStep = categoryQuery();
-let nextStep = firstStep.then
+
+categoryQuery().then((diffCat) => {
+  localStorage.setItem("categories", JSON.stringify(diffCat));
+  // testing = JSON.parse(localStorage.getItem("categories"));
+  // console.log(testing);
+});

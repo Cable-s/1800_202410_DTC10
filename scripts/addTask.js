@@ -79,14 +79,22 @@ function submitForm() {
 
 
 function populateCategories() {
-    const getThis = localStorage.getItem("categories");
-    console.log(getThis);
-}
+  const categoryNames = JSON.parse(localStorage.getItem("categories"))[0].categories;
+  console.log(categoryNames);
+  document.getElementById("category-input").innerHTML = ``
+  categoryNames.forEach((category) => {
+    document.getElementById("category-input").innerHTML +=
+      `
+    <option value = "${category}">${category}</option>
+    `
 
+  })
+};
 
 
 function addTask() {
   console.log($('#taskModal').load('./text/addTaskModal.html'));
+
 }
 
 function setup() {
@@ -94,4 +102,6 @@ function setup() {
 }
 
 $(document).ready(setup);
-populateCategories();
+
+
+
