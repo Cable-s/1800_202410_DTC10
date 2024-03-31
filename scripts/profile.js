@@ -137,7 +137,7 @@ function loadProfile() {
       if (result.image != null) {
         userPortrait.src = result.image;
       } else {
-        userPortrait.src = "../images/png-transparent-user.png";
+        userPortrait.src = "../images/user-icon.png";
       }
     });
 }
