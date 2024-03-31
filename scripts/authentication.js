@@ -42,7 +42,7 @@ var uiConfig = {
               });
 
             console.log("New user added to firestore");
-            window.location.assign("defineCategories.html"); //re-direct to main.html after signup
+            window.location.assign("defineCategories.html"); //set up categories after signup
           })
           .catch(function (error) {
             console.log("Error adding new user: " + error);
