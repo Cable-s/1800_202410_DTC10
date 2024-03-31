@@ -51,10 +51,9 @@
     <br>
 
     <!-- Stuff for body goes here -->
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center mt-4">
       <label for="selectedDate">Select Date:</label>
-      <input value="" type="date" id="selectedDate">
-      <p>Selected Date: <span id="displayDate"></span></p>
+      <input class="ms-3" value="" type="date" id="selectedDate">
     </div>
     <br>
 
@@ -63,9 +62,10 @@
     <div id="expiredTaskModal"></div>
 
     <!-- Day Scheduler -->
+    <div class="d-flex justify-content-center mx-2">
     <table class="calendar table table-sm table-striped-columns table-bordered mx-auto p-1" style="margin-bottom:150px">
       <tr id="0">
-        <td class="time" style="width:19%"><span class="fw-lighter">am </span>00:00</td>
+        <td class="time" style="width:16%"><span class="fw-lighter">am </span>00:00</td>
       </tr>
       <tr id="1">
         <td class="time fw-light">00:30</td>
