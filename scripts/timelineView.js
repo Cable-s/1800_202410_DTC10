@@ -161,13 +161,7 @@ function setDefaultDate() {
   let today = new Date()
   today = today.getFullYear() + "-" + zeroPad((today.getMonth() + 1), 2) + "-" + today.getDate()
   document.getElementById('selectedDate').value = today;
-  updateDate(today); // Update displayed date
   displayTasksByDate(today);
-}
-
-// Function to update the displayed date
-function updateDate(selectedDate) {
-  document.getElementById('displayDate').textContent = selectedDate;
 }
 
 // Set today's date as the default value

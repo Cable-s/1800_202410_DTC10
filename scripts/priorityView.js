@@ -59,21 +59,13 @@ function displayTask(task) {
   taskContainer.innerHTML += taskCard;
 }
 
-
 // Change today's date
 function setDefaultDate() {
   const zeroPad = (num, places) => String(num).padStart(places, '0')
   let today = new Date()
   today = today.getFullYear() + "-" + zeroPad((today.getMonth() + 1), 2) + "-" + today.getDate()
-  console.log(today)
   document.getElementById('selectedDate').value = today;
-  updateDate(today); // Update displayed date
-  priorityTasks(today);
-}
-
-// Function to update the displayed date
-function updateDate(selectedDate) {
-  document.getElementById('displayDate').textContent = selectedDate;
+  displayTasksByDate(today);
 }
 
 // Set today's date as the default value
@@ -82,11 +74,10 @@ setDefaultDate();
 // Add event listener to update displayed date when date input changes
 document.getElementById('selectedDate').addEventListener('input', function () {
   clearTasks()
-  priorityTasks(this.value);
+  displayTasksByDate(this.value);
 });
 
 // Initial display of tasks based on today's date
-
 function clearTasks() {
   console.log("clear")
   document.getElementById('high-tasks').innerHTML = ""
