@@ -40,7 +40,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 </head>
 
-<body>
+<body style="background-color: #e1e5f7">
 
   <!------------------------------>
   <!-- Your HTML Layout go here -->
@@ -48,22 +48,18 @@
   <div class="container">
     <nav id="navbarTemplate" class="sticky-top"></nav>
 
-
-
     <!-- Stuff for body goes here -->
     <div class="jumbotron text-center mt-5 d-flex flex-column">
-      <h1 class="display-4">Welcome, <span class="fw-bold" id="name-goes-here"></span>!</h1>
+      <h1 class="display-4 mt-5">Welcome, <span class="fw-bold" id="name-goes-here"></span>!</h1>
       <p class="lead">Your last sign in was <span id="last-signin"></span></p>
       <hr class="mx-4 my-4">
 
-      <div class="col-6 mx-auto"><img src="images/luis-villasmil-mlVbMbxfWI4-unsplash.jpg"
+      <div class="col-6 mx-auto mt-5"><img src="images/luis-villasmil-mlVbMbxfWI4-unsplash.jpg"
           class="img-fluid rounded-circle" alt="" >
       </div>
       <div id="addTaskModal"></div>
 
-
       <footer id="footerTemplate" class="sticky-bottom"></footer>
-
     </div>
 
     <!-- Link to scripts of your own -->
@@ -74,6 +70,5 @@
     <script src="./scripts/addTask.js"></script>
     <script src="./scripts/queryCategory.js"></script>
 </body>
-
 
 </html>
