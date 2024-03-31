@@ -23,7 +23,6 @@ function getCategoryLabels() {
     categoryLabels.sort();
     let categories = [...new Set(categoryLabels)];
     //categories.shift();  // didn't know the purpose of this. It was deleting the first element which was a category
-    categories.unshift('Un-categorized');
     return categories
 }
 

@@ -47,14 +47,14 @@
     <!------------------------------>
     <div class="container">
         <nav id="navbarTemplate" class="sticky-top"></nav>
-        <div style="margin:10px">
+        <div style="display:flex; flex-direction:column; place-items:center; margin:10px">
             <div>
                 <h5 class="modal-title" id="exampleModalLabel">Tell us about yourself!</h5>
             </div>
             <div>
                 <p> Select some Categories you can use to organize your tasks. You can always change these later if you
                     choose or even make your own!</p>
-                <form id="input-form">
+                <form id="input-form" style="display:flex; flex-direction:column; place-items:center">
                     <!-- only show up when repeat option is "everyweek"-->
                     <div id="categorySelect">
                         <br>
@@ -62,6 +62,7 @@
                         <input type="checkbox" id="school" class="aspect" value="School"> School
                         <input type="checkbox" id="gym" class="aspect" value="Gym"> Gym
                         <input type="checkbox" id="shopping" class="aspect" value="Shopping"> Shopping
+                        <br>
                         <input type="checkbox" id="dining" class="aspect" value="Dining"> Dining
                         <input type="checkbox" id="medical" class="aspect" value="Medical"> Medical
                         <input type="checkbox" id="dental" class="aspect" value="Dental"> Dental
@@ -71,15 +72,18 @@
                         <input type="checkbox" id="friends" class="aspect" value="Friends"> Friends
                         <input type="checkbox" id="movies" class="aspect" value="Movies"> Movies
                         <input type="checkbox" id="travel" class="aspect" value="Travel"> Travel
+                        <br>
                         <input type="checkbox" id="music" class="aspect" value="Music"> Music
                         <input type="checkbox" id="gaming" class="aspect" value="Gaming"> Gaming
                         <input type="checkbox" id="reading" class="aspect" value="Reading"> Reading
                         <br>
-                        <button onclick="checkAll()">Check all</button>
-                        <br><br>
+                        
+                        <br><br>   
+                    </div>
+                    <button type="button" class ="btn btn-warning" style = "max-width:fit-content; margin-bottom:10px" onclick="checkAll()">Check all</button>
                 </form>
             </div>
-            <div>
+            <div style="display:flex; place-items:center">
                 <button id="addCatBtn" type="button" class="btn btn-primary" onclick="submitCategoryForm()">Add
                     Categories</button>
             </div>

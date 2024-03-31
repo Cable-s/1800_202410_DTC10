@@ -81,6 +81,7 @@ function submitForm() {
 function populateCategories() {
   const categoryNames = JSON.parse(localStorage.getItem("categories"))[0].categories;
   console.log(categoryNames);
+  categoryNames.sort();
   document.getElementById("category-input").innerHTML = ``
   categoryNames.forEach((category) => {
     document.getElementById("category-input").innerHTML +=
