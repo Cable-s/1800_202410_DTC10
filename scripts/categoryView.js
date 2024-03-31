@@ -7,10 +7,13 @@ function getCategoryLabels() {
 
     let categoryLabels = [];
     for (let i = 0; i < tasks.length; i++) {
-        let startDate = tasks[i].startDate
-        let endDate = tasks[i].endDate
+        let startDate = tasks[i].startDate.seconds*1000
+        let endDate = tasks[i].endDate.seconds*1000
         let d = new Date()
-        let todayDate = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`
+        let todayDate = new Date(`${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`);
+        console.log(startDate);
+        console.log(todayDate);
+        console.log(endDate);
         console.log(i, startDate <= todayDate && todayDate <= endDate)
         if ((startDate <= todayDate && todayDate <= endDate)) {
             let category = tasks[i].category;
@@ -37,10 +40,10 @@ function displayCategorized() {
             <h1> `+ categories[i] + ` </h1>
             `
         for (let j = 0; j < tasks.length; j++) {
-            let startDate = tasks[j].startDate
-            let endDate = tasks[j].endDate
+            let startDate = tasks[j].startDate.seconds*1000
+            let endDate = tasks[j].endDate.seconds*1000
             let d = new Date()
-            let todayDate = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`
+            let todayDate = new Date(`${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`)
             if ((startDate <= todayDate && todayDate <= endDate)) {
                 if (categories[i] == tasks[j].category) {
                     document.getElementById('categorized').innerHTML +=
@@ -75,5 +78,5 @@ function setDefaultDate() {
 
 //getCategoryLabels()
 // uncategorizedLabel()
-displayCategorized()
+// displayCategorized()
 
