@@ -47,7 +47,6 @@ function loadSkeleton() {
         "./text/nav_before_login.html",
         document.getElementById("navbarTemplate"),
       );
-      load("./text/footer.html", document.getElementById("footerTemplate"));
     }
   });
 }
