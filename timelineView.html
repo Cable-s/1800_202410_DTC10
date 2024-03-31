@@ -20,8 +20,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="dist/jquery.schedule.css">
 
   <!-- Google Icons (Material Design) -->
@@ -46,12 +46,12 @@
   <!-- Your HTML Layout go here -->
   <!------------------------------>
 
-  <div class="container-fluid">
+  <div class="container-fluid" style="background-color: #e1e5f7">
     <nav id="navbarTemplate" class="sticky-top"></nav>
     <br>
 
     <!-- Stuff for body goes here -->
-    <div class="d-flex justify-content-center mt-4">
+    <div class="d-flex justify-content-center">
       <label for="selectedDate">Select Date:</label>
       <input class="ms-3" value="" type="date" id="selectedDate">
     </div>
@@ -62,176 +62,176 @@
     <div id="expiredTaskModal"></div>
 
     <!-- Day Scheduler -->
-    <div class="d-flex justify-content-center mx-2">
-    <table class="calendar table table-sm table-striped-columns table-bordered mx-auto p-1" style="margin-bottom:150px">
-      <tr id="0">
-        <td class="time" style="width:16%"><span class="fw-lighter">am </span>00:00</td>
-      </tr>
-      <tr id="1">
-        <td class="time fw-light">00:30</td>
-      </tr>
-      <tr id="2">
-        <td class="time">01:00</td>
-      </tr>
-      <tr id="3">
-        <td class="time fw-light">01:30</td>
-      </tr>
-      <tr id="4">
-        <td class="time">02:00</td>
-      </tr>
-      <tr id="5">
-        <td class="time fw-light">02:30</td>
-      </tr>
-      <tr id="6">
-        <td class="time">03:00</td>
-      </tr>
-      <tr id="7">
-        <td class="time fw-light">03:30</td>
-      </tr>
-      <tr id="8">
-        <td class="time">04:00</td>
-      </tr>
-      <tr id="9">
-        <td class="time fw-light">04:30</td>
-      </tr>
-      <tr id="10">
-        <td class="time">05:00</td>
-      </tr>
-      <tr id="11">
-        <td class="time fw-light">05:30</td>
-      </tr>
-      <tr id="12">
-        <td class="time">06:00</td>
-      </tr>
-      <tr id="13">
-        <td class="time fw-light">06:30</td>
-      </tr>
-      <tr id="14">
-        <td class="time">07:00</td>
-      </tr>
-      <tr id="15">
-        <td class="time fw-light">07:30</td>
-      </tr>
-      <tr id="16">
-        <td class="time">08:00</td>
-      </tr>
-      <tr id="17">
-        <td class="time fw-light">08:30</td>
-      </tr>
-      <tr id="18">
-        <td class="time">09:00</td>
-      </tr>
-      <tr id="19">
-        <td class="time fw-light">09:30</td>
-      </tr>
-      <tr id="20">
-        <td class="time">10:00</td>
-      </tr>
-      <tr id="21">
-        <td class="time fw-light">10:30</td>
-      </tr>
-      <tr id="22">
-        <td class="time">11:00</td>
-      </tr>
-      <tr id="23">
-        <td class="time fw-light">11:30</td>
-      </tr>
-      <tr id="24">
-        <td class="time"><span class="fw-lighter">pm </span> 12:00</td>
-      </tr>
-      <tr id="25">
-        <td class="time fw-light">12:30</td>
-      </tr>
-      <tr id="26">
-        <td class="time">01:00</td>
-      </tr>
-      <tr id="27">
-        <td class="time fw-light">01:30</td>
-      </tr>
-      <tr id="28">
-        <td class="time">02:00</td>
-      </tr>
-      <tr id="29">
-        <td class="time fw-light">02:30</td>
-      </tr>
-      <tr id="30">
-        <td class="time">03:00</td>
-      </tr>
-      <tr id="31">
-        <td class="time fw-light">03:30</td>
-      </tr>
-      <tr id="32">
-        <td class="time">04:00</td>
-      </tr>
-      <tr id="33">
-        <td class="time fw-light">04:30</td>
-      </tr>
-      <tr id="34">
-        <td class="time">05:00</td>
-      </tr>
-      <tr id="35">
-        <td class="time fw-light">05:30</td>
-      </tr>
-      <tr id="36">
-        <td class="time">06:00</td>
-      </tr>
-      <tr id="37">
-        <td class="time fw-light">06:30</td>
-      </tr>
-      <tr id="38">
-        <td class="time">07:00</td>
-      </tr>
-      <tr id="39">
-        <td class="time fw-light">07:30</td>
-      </tr>
-      <tr id="40">
-        <td class="time">08:00</td>
-      </tr>
-      <tr id="41">
-        <td class="time fw-light">08:30</td>
-      </tr>
-      <tr id="42">
-        <td class="time">09:00</td>
-      </tr>
-      <tr id="43">
-        <td class="time fw-light">09:30</td>
-      </tr>
-      <tr id="44">
-        <td class="time">10:00</td>
-      </tr>
-      <tr id="45">
-        <td class="time fw-light">10:30</td>
-      </tr>
-      <tr id="46">
-        <td class="time">11:00</td>
-      </tr>
-      <tr id="47">
-        <td class="time fw-light">11:30</td>
-      </tr>
-      <tr id="48">
-        <td class="time">11:59</td>
-        <td rowspan="1">
-          <div id="task-goes-here" style="height: 100%">
-          </div>
-        </td>
-      </tr>
-    </table>
+    <div class="d-flex justify-content-center mx-3">
+      <table class="calendar table table-sm table-striped-columns table-bordered p-1">
+        <tr id="0">
+          <td class="time" style="width:16%"><span class="fw-lighter">am </span>00:00</td>
+        </tr>
+        <tr id="1">
+          <td class="time fw-light">00:30</td>
+        </tr>
+        <tr id="2">
+          <td class="time">01:00</td>
+        </tr>
+        <tr id="3">
+          <td class="time fw-light">01:30</td>
+        </tr>
+        <tr id="4">
+          <td class="time">02:00</td>
+        </tr>
+        <tr id="5">
+          <td class="time fw-light">02:30</td>
+        </tr>
+        <tr id="6">
+          <td class="time">03:00</td>
+        </tr>
+        <tr id="7">
+          <td class="time fw-light">03:30</td>
+        </tr>
+        <tr id="8">
+          <td class="time">04:00</td>
+        </tr>
+        <tr id="9">
+          <td class="time fw-light">04:30</td>
+        </tr>
+        <tr id="10">
+          <td class="time">05:00</td>
+        </tr>
+        <tr id="11">
+          <td class="time fw-light">05:30</td>
+        </tr>
+        <tr id="12">
+          <td class="time">06:00</td>
+        </tr>
+        <tr id="13">
+          <td class="time fw-light">06:30</td>
+        </tr>
+        <tr id="14">
+          <td class="time">07:00</td>
+        </tr>
+        <tr id="15">
+          <td class="time fw-light">07:30</td>
+        </tr>
+        <tr id="16">
+          <td class="time">08:00</td>
+        </tr>
+        <tr id="17">
+          <td class="time fw-light">08:30</td>
+        </tr>
+        <tr id="18">
+          <td class="time">09:00</td>
+        </tr>
+        <tr id="19">
+          <td class="time fw-light">09:30</td>
+        </tr>
+        <tr id="20">
+          <td class="time">10:00</td>
+        </tr>
+        <tr id="21">
+          <td class="time fw-light">10:30</td>
+        </tr>
+        <tr id="22">
+          <td class="time">11:00</td>
+        </tr>
+        <tr id="23">
+          <td class="time fw-light">11:30</td>
+        </tr>
+        <tr id="24">
+          <td class="time"><span class="fw-lighter">pm </span> 12:00</td>
+        </tr>
+        <tr id="25">
+          <td class="time fw-light">12:30</td>
+        </tr>
+        <tr id="26">
+          <td class="time">01:00</td>
+        </tr>
+        <tr id="27">
+          <td class="time fw-light">01:30</td>
+        </tr>
+        <tr id="28">
+          <td class="time">02:00</td>
+        </tr>
+        <tr id="29">
+          <td class="time fw-light">02:30</td>
+        </tr>
+        <tr id="30">
+          <td class="time">03:00</td>
+        </tr>
+        <tr id="31">
+          <td class="time fw-light">03:30</td>
+        </tr>
+        <tr id="32">
+          <td class="time">04:00</td>
+        </tr>
+        <tr id="33">
+          <td class="time fw-light">04:30</td>
+        </tr>
+        <tr id="34">
+          <td class="time">05:00</td>
+        </tr>
+        <tr id="35">
+          <td class="time fw-light">05:30</td>
+        </tr>
+        <tr id="36">
+          <td class="time">06:00</td>
+        </tr>
+        <tr id="37">
+          <td class="time fw-light">06:30</td>
+        </tr>
+        <tr id="38">
+          <td class="time">07:00</td>
+        </tr>
+        <tr id="39">
+          <td class="time fw-light">07:30</td>
+        </tr>
+        <tr id="40">
+          <td class="time">08:00</td>
+        </tr>
+        <tr id="41">
+          <td class="time fw-light">08:30</td>
+        </tr>
+        <tr id="42">
+          <td class="time">09:00</td>
+        </tr>
+        <tr id="43">
+          <td class="time fw-light">09:30</td>
+        </tr>
+        <tr id="44">
+          <td class="time">10:00</td>
+        </tr>
+        <tr id="45">
+          <td class="time fw-light">10:30</td>
+        </tr>
+        <tr id="46">
+          <td class="time">11:00</td>
+        </tr>
+        <tr id="47">
+          <td class="time fw-light">11:30</td>
+        </tr>
+        <tr id="48">
+          <td class="time">11:59</td>
+          <td rowspan="1">
+            <div id="task-goes-here" style="height: 100%">
+            </div>
+          </td>
+        </tr>
+      </table>
 
-    <footer id="footerTemplate" class="sticky-bottom"></footer>
+      <footer id="footerTemplate" class="sticky-bottom"></footer>
 
-  </div>
-  <!---------------------------------------------->
-  <!-- Your own JavaScript functions go here    -->
-  <!---------------------------------------------->
+    </div>
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
 
-  <!-- Link to scripts of your own -->
-  <script src="./scripts/firebaseAPI_TEAM10.js"></script>
-  <script src="./scripts/skeleton.js"></script>
-  <script src="./scripts/script.js"></script>
-  <script src="./scripts/timelineView.js" type="module"></script>
-  <script src="./scripts/addTask.js"></script>
-  <script src="./scripts/completeTask.js" type="module"></script>
-  <script src="./scripts/expiredTask.js" type="module"></script>
+    <!-- Link to scripts of your own -->
+    <script src="./scripts/firebaseAPI_TEAM10.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/timelineView.js" type="module"></script>
+    <script src="./scripts/addTask.js"></script>
+    <script src="./scripts/completeTask.js" type="module"></script>
+    <script src="./scripts/expiredTask.js" type="module"></script>
 </body>
 
 
