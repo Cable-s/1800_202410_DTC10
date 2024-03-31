@@ -30,18 +30,5 @@ function getNameFromAuth() {
     }
   });
 }
-function displayCategoryModal() {
-  firebase.auth().onAuthStateChanged((user) => {
-    lastSignIn = user.metadata.lastSignInTime;
-    console.log(lastSignIn);
-    creationTime = user.metadata.creationTime;
-    console.log(creationTime);
-    if (lastSignIn === creationTime) {
-      let modal = new bootstrap.Modal(document.getElementById("categoryModal"));
-      modal.show();
-      console.log("Category Modal displayed");
-    }
-  });
-}
+
 getNameFromAuth(); //run the function
-displayCategoryModal(); //displays the category modal if the user is a new user
