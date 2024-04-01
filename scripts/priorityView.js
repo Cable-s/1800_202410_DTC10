@@ -8,7 +8,7 @@ async function priorityTasks(selectedDate) {
   tasks.forEach(task => {
     const zeroPad = (num, places) => String(num).padStart(places, '0')
     let taskStartDate = new Date(task.startDate.seconds * 1000)
-    taskStartDate = taskStartDate.getFullYear() + "-" + zeroPad((taskStartDate.getMonth() + 1), 2) + "-" + taskStartDate.getDate()
+    taskStartDate = taskStartDate.getFullYear() + "-" + zeroPad((taskStartDate.getMonth() + 1), 2) + "-" + zeroPad(taskStartDate.getDate(), 2)
 
     console.log(taskStartDate)
     console.log(taskStartDate == selectedDate)
