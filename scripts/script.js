@@ -6,6 +6,7 @@ function logout() {
         // Sign-out successful.
         window.location.href = "../index.html";
         console.log("logging out user");
+        localStorage.clear();
       }).catch((error) => {
         // An error happened.
       });

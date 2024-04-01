@@ -14,6 +14,7 @@ function submitCategoryForm() {
   checkboxes.forEach(function (checkbox) {
     categoriesChecked.push(checkbox.value);
   });
+  categoriesChecked.push("Un-categorized");
 
   // Add a blank category, grab it's id in "docRef" then add all of the info for the task
   const categories = db

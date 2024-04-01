@@ -38,7 +38,7 @@ function checkExpiredTasks() {
     // console.log(todayDate > endDate)
     // console.log(todayDate == endDate)
 
-    if ((todayDate > endDate || todayDate == endDate && endTime < timeNow)) {
+    if (((todayDate > endDate || todayDate == endDate && endTime < timeNow) && localStorage.getItem("notifications") == 'true')) {
       counter++
       document.getElementById("expiredTasks").innerHTML +=
         `
