@@ -44,9 +44,10 @@ async function displayTasksByDate(selectedDate) {
             <div id="task-goes-here" style="height: ${height}px">
               <div style="height: 100%; display: flex;justify-content: center;align-items: center; flex-direction: column;" class="border border-secondary bg-blush rounded-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
                 <h3>${title}</h3>
-                <button class="edit" style="display:none;">Edit</button>
                 <p>${desc}</p>
-                <button class="complete" onclick="complete('${id}')">Complete</button>
+                <button class="edit" style="display:none;">Edit</button>
+                <button class="complete" style ="display:none;">Complete</button>
+                
               </div>
             </div>
           </td>
@@ -79,9 +80,10 @@ async function displayTasksByDate(selectedDate) {
           <div id="task-goes-here" style="height: ${height}px">
           <div style="height: 100%; display: flex;justify-content: center;align-items: center; flex-direction: column;" class="border border-secondary border-bottom-0 bg-blush rounded-top-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
                 <h3>${title}</h3>
-                <button class="edit" style="display:none;">Edit</button>
                 <p>${desc}</p>
-                <button class="complete" onclick="complete('${id}')">Complete</button>
+                <button class="edit" style="display:none;">Edit</button>
+                <button class="complete" style ="display:none;">Complete</button>
+                
               </div>
             </div>
           </td>
@@ -115,9 +117,10 @@ async function displayTasksByDate(selectedDate) {
           <div id="task-goes-here" style="height: ${height}px">
           <div style="height: 100%; display: flex;justify-content: center;align-items: center; flex-direction: column;" class="border border-secondary border-top-0 bg-blush rounded-bottom-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
                 <h3>${title}</h3>
-                <button class="edit" style="display:none;">Edit</button>
                 <p>${desc}</p>
-                <button class="complete" onclick="complete('${id}')">Complete</button>
+                <button class="edit" style="display:none;">Edit</button>
+                <button class="complete" style ="display:none;">Complete</button>
+                
               </div>
             </div>
           </td>

@@ -103,6 +103,14 @@ function updateTask(id) {
     }
   }
 }
+
+function complete(id) {
+  for (let i = 0; i < tasks.length; i++) {
+    if (id == tasks[i].id) {
+      db.collection("users").doc(firebase.auth().currentUser.uid).collection("tasks").doc(id).delete().then(() => { location.reload() })
+    }
+  }
+}
 function showButton(element, state) {
   state === "show"
     ? (element.style.display = "flex")
@@ -113,16 +121,24 @@ export function addHandlers() {
   const taskCards = document.getElementsByClassName("task-card");
   for (let i = 0; i < taskCards.length; i++) {
     let editButton = taskCards[i].querySelector(".edit");
+    let completeButton = taskCards[i].querySelector(".complete");
     let id = taskCards[i].id;
     taskCards[i].addEventListener("mouseover", () => {
       showButton(editButton, "show");
+      showButton(completeButton, "show");
     });
     taskCards[i].addEventListener("mouseout", () => {
       showButton(editButton, "hide");
+      showButton(completeButton, "hide");
     });
     editButton.addEventListener("click", () => {
       updateTask(id);
     });
+    completeButton.addEventListener("click", () => {
+      complete(id);
+    });
   }
 }
+
+window.complete = complete
 window.updateTask = updateTask;
