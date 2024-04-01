@@ -1,6 +1,28 @@
 import { query } from './queryTasks.js';
 import { addHandlers } from './updateTasks.js';
 
+async function descFormattor(desc) {
+  let descSplit = desc.split(" ")
+  let description = ""
+  let counter = 0
+  for (let i = 0; i < descSplit.length; i++) {
+    if (descSplit[i].length > 60) {
+      counter++
+      let newDesc = descSplit[i].slice(0, 60) + " " + descSplit[i].slice(60)
+      description += newDesc + " "
+    }
+    else {
+      description += descSplit[i] + " "
+    }
+  }
+  if (counter != 0) {
+    return descFormattor(description)
+  }
+  return description
+}
+
+
+
 async function displayTasksByDate(selectedDate) {
   let tasks = await query();
   //console.log(tasks);
@@ -25,6 +47,9 @@ async function displayTasksByDate(selectedDate) {
         let end = tasks[i].endTime;
         let start = tasks[i].startTime;
 
+        let descFormatted = await descFormattor(desc)
+        let descriptionLines = Math.ceil(desc.length / 60)
+
         let startArray = start.split(":");
         let startHour = parseInt(startArray[0]);
         let startMinute = parseInt(startArray[1]);
@@ -37,14 +62,14 @@ async function displayTasksByDate(selectedDate) {
         let rowspan = (endHour * 2) + (endMinute) - (startHour * 2) + (startMinute);
         let startID = (startHour * 2) + (startMinute);
         console.log("on overflow " + rowspan, startID)
-        let height = rowspan * 35;
+        let height = 115 + (rowspan * 35) + ((descriptionLines - 1) * 30);
         document.getElementById(startID).innerHTML +=
           `
           <td rowspan = "${rowspan}">
             <div id="task-goes-here" style="height: ${height}px">
               <div style="height: 100%; display: flex;justify-content: center;align-items: center; flex-direction: column;" class="border border-secondary bg-blush rounded-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
                 <h3>${title}</h3>
-                <p>${desc}</p>
+                <p>${descFormatted}</p>
                 <button class="edit" style="display:none;">Edit</button>
                 <button class="complete" style ="display:none;">Complete</button>
                 
