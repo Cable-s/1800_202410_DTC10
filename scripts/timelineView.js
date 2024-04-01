@@ -42,7 +42,8 @@ async function displayTasksByDate(selectedDate) {
           `
           <td rowspan = "${rowspan}">
             <div id="task-goes-here" style="height: ${height}px">
-              <div style="height: 100%; display: flex;justify-content: center;align-items: center; flex-direction: column;" class="border border-secondary rounded-3 text-wrap p-3 task-card" id=${tasks[i].id}>
+              <div style="height: 100%; display: flex;justify-content: center;align-items: center; flex-direction: column;" 
+              class="border border-secondary rounded-3 text-wrap p-3 task-card" id=${tasks[i].id}>
                 <h3>${title}</h3>
                 <button class ="edit" style="display:none"><img src="./images/edit-icon.png" style="width:25px"></button>
                 <button class="complete" style ="display:none"><img src="./images/check-icon.png" style="width:25px"></button>   

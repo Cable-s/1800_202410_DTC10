@@ -20,8 +20,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 
   <!-- Google Icons (Material Design) -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -45,7 +45,7 @@
   <!------------------  ------------>
   <!-- Your HTML Layout go here -->
   <!------------------------------>
-  <div class="container">
+  <div class="container-fluid" style="background-color: #e1e5f7">
     <nav id="navbarTemplate" class="sticky-top"></nav>
     <br>
 
@@ -54,17 +54,14 @@
       <label for="selectedDate">Select Date:</label>
       <input type="date" id="selectedDate">
     </div>
-    <br>  
-    <!-- Day Scheduler -->
-
+    <br>
+    
     <div id="addTaskModal"></div>
-
+    
     <div id="expiredTaskModal"></div>
 
-
-    <div class="priority my-3" style="margin-bottom:130px">
-      <h1 class="text-center">Tasks in Priority</h1>
-
+    <!-- Task cards go here -->
+    <div class="priority m-3" style="margin-bottom:130px">
       <div class="priority-high my-4"><span class="bg-danger px-2 py-1 text-white">High Priority</span>
         <div id="high-tasks"></div>
       </div>
@@ -78,7 +75,6 @@
 
     <!-- Footer goes here -->
     <footer id="footerTemplate" class="sticky-bottom"></footer>
-
   </div>
   <!---------------------------------------------->
   <!-- Your own JavaScript functions go here    -->
