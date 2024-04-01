@@ -64,3 +64,13 @@ hr {
 .modal {
   margin-top: 100px;
 }
+
+.edit {
+  background-color: #5398ff;
+  color: white;
+}
+
+.complete {
+  background-color: #104f16;
+  color: white;
+}
