@@ -64,7 +64,7 @@ function updateTask(id) {
       category.setAttribute("value", tasks[i].category);
 
       startDate.setAttribute("value", tasks[i].startDate);
-      endDate.setAttribute("value", tasks[i].endDate);
+      endDate.setAttribute("value", tasks[i].endDate + "T00:00:00");
       startTime.setAttribute("value", tasks[i].startTime);
       endTime.setAttribute("value", tasks[i].endTime);
 
@@ -81,8 +81,8 @@ function updateTask(id) {
           title: titleInput.value,
           description: descriptionInput.value,
           category: category.value,
-          startDate: startDate.value,
-          endDate: endDate.value,
+          startDate: startDate.value + "T00:00:00",
+          endDate: endDate.value + "T00:00:00",
           startTime: startTime.value,
           endTime: endTime.value,
           importance: importance.value,
