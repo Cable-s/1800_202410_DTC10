@@ -107,18 +107,11 @@ function uploadPic(postDocID) {
             .doc(postDocID)
             .update({
               image: url, // Save the URL into users collection
-            })
-            // AFTER .update is done
-            .then(function () {
-              console.log("4. Added pic URL to Firestore.");
-              // One last thing to do:
-              // save this postID into an array for the OWNER
-              // so we can show "my posts" in the future
             });
+        })
+        .catch((error) => {
+          console.log("error uploading to cloud storage");
         });
-    })
-    .catch((error) => {
-      console.log("error uploading to cloud storage");
     });
 }
 
@@ -136,7 +129,6 @@ function loadProfile() {
       birthday.value = result.birthday;
       joinDate.innerText = "Member since " + accountDate;
       if (result.image != null) {
-        console.log(result.image);
         userPortrait.src = result.image;
       } else {
         userPortrait.src = "../images/user-icon.png";
@@ -278,11 +270,6 @@ function deleteCategory(deletedCategory) {
   });
 }
 
-function showButton(element, state) {
-  state === "show"
-    ? (element.style.display = "flex")
-    : (element.style.display = "none");
-}
 submit.addEventListener("click", () => {
   db.collection("users")
     .doc(`${userID}`)
@@ -298,13 +285,6 @@ submit.addEventListener("click", () => {
     .catch((error) => {
       console.log(error);
     });
-});
-
-userPortrait.addEventListener("mouseover", () => {
-  showButton(button, "show");
-});
-userPortrait.addEventListener("mouseout", () => {
-  showButton(button, "hide");
 });
 
 listenFileSelect();

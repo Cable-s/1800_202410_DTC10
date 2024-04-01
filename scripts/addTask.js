@@ -138,37 +138,62 @@ function populateCategories() {
     document.getElementById("category-input").innerHTML += `
     <option value = "${category}">${category}</option>
     `;
+    addNewCategory();
   });
 }
-// function addNewCategory () {
-//   document.getElementById("add-category").addEventListener("click", () => {
-//     console.log("clicked")
-//     document.getElementById("category-name").style.display = "block"
-//     document.getElementById("add-category").style.display = "none"
-//     document.getElementById("submit-category").style.display = "block"
-//   })
 
-//   document.getElementById("submit-category").addEventListener("click", () => {
-//     newcategory = document.getElementById("category-name").value
-//     console.log(newcategory)
-//     queryCategories().then((docID) => db.collection("users")
-//       .doc(`${userID}`)
-//       .collection("categories")
-//       .doc(`${docID}`)
-//       .update({
-//         categories: firebase.firestore.FieldValue.arrayUnion(newcategory)
-//       })
-//       .then(console.log("hello there"), Categories()
-//       ))
-//     document.getElementById("category-name").style.display = "none"
-//     document.getElementById("add-category").style.display = "block"
-//     document.getElementById("submit-category").style.display = "none"
-//   })
-// }
+function queryCategories() {
+  var categories;
+  return new Promise((resolve, reject) => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        userID = user.uid;
+        accountDate = user.metadata.creationTime;
+        // User is signed in.
+        categories = db
+          .collection("users")
+          .doc(`${userID}`)
+          .collection("categories")
+          .get()
+          .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              categoriesDocID = doc.id;
+              resolve(doc.id);
+            });
+          })
+      }
+    });
+  });
+}
+
+function addNewCategory () {
+  document.getElementById("add-category").addEventListener("click", () => {
+    console.log("clicked")
+    document.getElementById("category-name").style.display = "block"
+    document.getElementById("add-category").style.display = "none"
+    document.getElementById("submit-category").style.display = "block"
+  })
+
+  document.getElementById("submit-category").addEventListener("click", () => {
+    newcategory = document.getElementById("category-name").value
+    console.log(newcategory)
+    queryCategories().then((docID) => db.collection("users")
+      .doc(`${userID}`)
+      .collection("categories")
+      .doc(`${docID}`)
+      .update({
+        categories: firebase.firestore.FieldValue.arrayUnion(newcategory)
+      })
+      .then(console.log("hello there")
+      ))
+    document.getElementById("category-name").style.display = "none"
+    document.getElementById("add-category").style.display = "block"
+    document.getElementById("submit-category").style.display = "none"
+  })
+}
 
 function addTask() {
   console.log($("#taskModal").load("./text/addTaskModal.html"));
-  addNewCategory();
 }
 
 function setup() {
