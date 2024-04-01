@@ -14,12 +14,11 @@ function sendUpdate(id, valuesArray) {
           title: valuesArray.title,
           description: valuesArray.description,
           category: valuesArray.category,
-          startDate: valuesArray.startDate,
-          endDate: valuesArray.endDate,
+          startDate: new Date(valuesArray.startDate),
+          endDate: new Date(valuesArray.endDate),
           startTime: valuesArray.startTime,
           endTime: valuesArray.endTime,
           importance: valuesArray.importance,
-          repeat: valuesArray.repeat,
         })
         .then(() => {
           location.reload();
@@ -33,6 +32,7 @@ function updateTask(id) {
     if (id === tasks[i].id) {
       let modal = new bootstrap.Modal(document.getElementById("exampleModal"));
       modal.show();
+      console.log("task in modal:", tasks[i].id);
 
       let label = document.getElementById("exampleModalLabel");
       let form = document.getElementById("input-form");
@@ -45,10 +45,10 @@ function updateTask(id) {
       let endTime = document.getElementById("endTime");
       let importance = document.getElementById("importanceSelect");
 
-      let repeatSelect = document.getElementById("repeatSelect");
       let submitButton = document.getElementById("addTaskBtn");
       let closeButton = document.getElementById("closeModal");
 
+      submitButton.removeAttribute("onclick");
       closeButton.addEventListener("click", () => {
         location.reload();
         checkExpiredTasks();
@@ -76,16 +76,7 @@ function updateTask(id) {
         }
       }
 
-      // set repeat dropdown to the correct value
-      if (tasks[i].repeat !== "noRepeat") {
-        for (var j, k = 0; (j = repeatSelect.options[k]); k++) {
-          if (j.value == tasks[i].repeat) {
-            repeatSelect.selectedIndex = k;
-            break;
-          }
-        }
-      }
-      submitButton.onclick = function () {
+      submitButton.addEventListener("click", function () {
         let adjustedValues = {
           title: titleInput.value,
           description: descriptionInput.value,
@@ -95,11 +86,9 @@ function updateTask(id) {
           startTime: startTime.value,
           endTime: endTime.value,
           importance: importance.value,
-          repeat: repeatSelect.value,
         };
-
         sendUpdate(tasks[i].id, adjustedValues);
-      };
+      });
     }
   }
 }
@@ -107,7 +96,14 @@ function updateTask(id) {
 function complete(id) {
   for (let i = 0; i < tasks.length; i++) {
     if (id == tasks[i].id) {
-      db.collection("users").doc(firebase.auth().currentUser.uid).collection("tasks").doc(id).delete().then(() => { location.reload() })
+      db.collection("users")
+        .doc(firebase.auth().currentUser.uid)
+        .collection("tasks")
+        .doc(id)
+        .delete()
+        .then(() => {
+          location.reload();
+        });
     }
   }
 }
@@ -132,6 +128,7 @@ export function addHandlers() {
       showButton(completeButton, "hide");
     });
     editButton.addEventListener("click", () => {
+      console.log("id:", id);
       updateTask(id);
     });
     completeButton.addEventListener("click", () => {
@@ -140,5 +137,5 @@ export function addHandlers() {
   }
 }
 
-window.complete = complete
+window.complete = complete;
 window.updateTask = updateTask;
