@@ -63,7 +63,7 @@ function displayTask(task) {
 function setDefaultDate() {
   const zeroPad = (num, places) => String(num).padStart(places, '0')
   let today = new Date()
-  today = today.getFullYear() + "-" + zeroPad((today.getMonth() + 1), 2) + "-" + today.getDate()
+  today = today.getFullYear() + "-" + zeroPad((today.getMonth() + 1), 2) + "-" + zeroPad(today.getDate(), 2)
   document.getElementById('selectedDate').value = today;
   priorityTasks(today);
 }

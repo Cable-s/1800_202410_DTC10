@@ -91,10 +91,37 @@ function populateCategories() {
 
   })
 };
+// function addNewCategory () {
+//   document.getElementById("add-category").addEventListener("click", () => {
+//     console.log("clicked")
+//     document.getElementById("category-name").style.display = "block"
+//     document.getElementById("add-category").style.display = "none"
+//     document.getElementById("submit-category").style.display = "block"
+//   })
+  
+//   document.getElementById("submit-category").addEventListener("click", () => {
+//     newcategory = document.getElementById("category-name").value
+//     console.log(newcategory)
+//     queryCategories().then((docID) => db.collection("users")
+//       .doc(`${userID}`)
+//       .collection("categories")
+//       .doc(`${docID}`)
+//       .update({
+//         categories: firebase.firestore.FieldValue.arrayUnion(newcategory)
+//       })
+//       .then(console.log("hello there"), Categories()
+//       ))
+//     document.getElementById("category-name").style.display = "none"
+//     document.getElementById("add-category").style.display = "block"
+//     document.getElementById("submit-category").style.display = "none"
+//   })
+// }
+
 
 
 function addTask() {
   console.log($('#taskModal').load('./text/addTaskModal.html'));
+  addNewCategory();
 
 }
 
