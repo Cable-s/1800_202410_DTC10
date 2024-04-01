@@ -5,7 +5,7 @@ var timezoneSelect = document.getElementById("timezoneSelect");
 var flexSwitch = document.getElementById("flexSwitchCheckChecked");
 var fontSelect = document.getElementById("fontSelect");
 var themeSelect = document.getElementById("themeSelect");
-var submitBtn = document.getElementById("submitBtn");
+var submitBtn = document.getElementById("submit");
 
 function query() {
   var data;
@@ -32,16 +32,16 @@ function query() {
 async function userSettings() {
   let settings = await query().then((doc) => {
     let result = doc.data();
-    localStorage.setItem("language", result.language);
-    localStorage.setItem("fontSelect", result.fontSelect);
+    // localStorage.setItem("language", result.language);
+    // localStorage.setItem("fontSelect", result.fontSelect);
     localStorage.setItem("notifications", result.notifications);
-    localStorage.setItem("themeSelect", result.themeSelect);
-    localStorage.setItem("timezoneSelect", result.timezoneSelect);
+    // localStorage.setItem("themeSelect", result.themeSelect);
+    // localStorage.setItem("timezoneSelect", result.timezoneSelect);
 
-    languageSelect.value = localStorage.getItem("language");
-    timezoneSelect.value = localStorage.getItem("timezoneSelect");
-    themeSelect.value = localStorage.getItem("themeSelect");
-    fontSelect.value = localStorage.getItem("fontSelect");
+    // languageSelect.value = localStorage.getItem("language");
+    // timezoneSelect.value = localStorage.getItem("timezoneSelect");
+    // themeSelect.value = localStorage.getItem("themeSelect");
+    // fontSelect.value = localStorage.getItem("fontSelect");
     flexSwitch.value = localStorage.getItem("notifications");
     if (localStorage.getItem("notifications") == "true") {
       flexSwitch.checked = true;
@@ -69,11 +69,11 @@ function updateSettings(newSetting) {
 }
 function submitForm() {
   updateSettings({
-    language: languageSelect.value,
-    fontSelect: fontSelect.value,
-    themeSelect: themeSelect.value,
+    // language: languageSelect.value,
+    // fontSelect: fontSelect.value,
+    // themeSelect: themeSelect.value,
     notifications: flexSwitch.checked,
-    timezoneSelect: timezoneSelect.value,
+    // timezoneSelect: timezoneSelect.value,
   });
 }
 
