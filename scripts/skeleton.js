@@ -8,7 +8,9 @@ function load(url, element) {
   fetch(url)
     .then((response) => response.text())
     .then((html) => {
-      element.innerHTML = html;
+      if (element !== null) {
+        element.innerHTML = html;
+      }
     });
 }
 
