@@ -3,19 +3,19 @@ let tasks = await query();
 console.log(tasks);
 
 
-function getCategoryLabels() {
-
+function getCategoryLabels(selectedDate) {
+    const zeroPad = (num, places) => String(num).padStart(places, '0')
     let categoryLabels = [];
     for (let i = 0; i < tasks.length; i++) {
-        let startDate = tasks[i].startDate.seconds*1000
-        let endDate = tasks[i].endDate.seconds*1000
-        let d = new Date()
-        let todayDate = new Date(`${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`);
-        console.log(startDate);
-        console.log(todayDate);
-        console.log(endDate);
-        console.log(i, startDate <= todayDate && todayDate <= endDate)
-        if ((startDate <= todayDate && todayDate <= endDate)) {
+        let startDate = new Date(tasks[i].startDate.seconds*1000)
+        let endDate = new Date(tasks[i].endDate.seconds*1000)
+        let start = startDate.getFullYear() + "-" + zeroPad((startDate.getMonth() + 1), 2) + "-" + zeroPad(startDate.getDate(),2)
+        let end = endDate.getFullYear() + "-" + zeroPad((endDate.getMonth() + 1), 2) + "-" + zeroPad(endDate.getDate(),2)
+        // console.log(start);
+        // console.log(selectedDate);
+        // console.log(end);
+        console.log(i, start <= selectedDate && selectedDate <= end)
+        if ((start <= selectedDate && selectedDate <= end)) {
             let category = tasks[i].category;
             categoryLabels.push(category);
         }
@@ -30,20 +30,26 @@ function getCategoryLabels() {
 //     console.log(tasks)
 // }
 
-function displayCategorized() {
-    let categories = getCategoryLabels();
-    //console.log(categories)
+function displayCategorized(selectedDate) {
+    const zeroPad = (num, places) => String(num).padStart(places, '0')
+    // console.log(selectedDate)
+    let categories = getCategoryLabels(selectedDate);
+    console.log(categories)
     for (let i = 0; i < categories.length; i++) {
         document.getElementById('categorized').innerHTML +=
             `
             <h1> `+ categories[i] + ` </h1>
             `
         for (let j = 0; j < tasks.length; j++) {
-            let startDate = tasks[j].startDate.seconds*1000
-            let endDate = tasks[j].endDate.seconds*1000
-            let d = new Date()
-            let todayDate = new Date(`${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`)
-            if ((startDate <= todayDate && todayDate <= endDate)) {
+            let startDate = new Date(tasks[j].startDate.seconds*1000)
+            let endDate = new Date(tasks[j].endDate.seconds*1000)
+            let start = startDate.getFullYear() + "-" + zeroPad((startDate.getMonth() + 1), 2) + "-" + zeroPad(startDate.getDate(),2)
+            let end = endDate.getFullYear() + "-" + zeroPad((endDate.getMonth() + 1), 2) + "-" + zeroPad(endDate.getDate(),2)
+            // console.log(start);
+            // console.log(selectedDate);
+            // console.log(end);
+            console.log(start <= selectedDate && selectedDate <= end)
+            if ((start <= selectedDate && selectedDate <= end)) {
                 if (categories[i] == tasks[j].category) {
                     document.getElementById('categorized').innerHTML +=
                         `<div style="border-style:dotted">
@@ -63,6 +69,7 @@ function setDefaultDate() {
     let today = new Date()
     today = today.getFullYear() + "-" + zeroPad((today.getMonth() + 1), 2) + "-" + zeroPad(today.getDate(),2)
     document.getElementById('selectedDate').value = today;
+    getCategoryLabels(today);
     displayCategorized(today);
   }
   
@@ -72,9 +79,14 @@ function setDefaultDate() {
   // Add event listener to update displayed date when date input changes
   document.getElementById('selectedDate').addEventListener('input', function () {
     clearTasks()
-    displayTasksByDate(this.value);
+    getCategoryLabels(this.value)
+    displayCategorized(this.value)
   });
 
+  function clearTasks() {
+    console.log("clear")
+    document.getElementById('categorized').innerHTML = ""
+  }
 //getCategoryLabels()
 // uncategorizedLabel()
 // displayCategorized()
