@@ -10,8 +10,8 @@ async function displayTasksByDate(selectedDate) {
     let taskStartDate = new Date(tasks[i].startDate.seconds * 1000)
     let taskEndDate = new Date(tasks[i].endDate.seconds * 1000)
 
-    taskStartDate = taskStartDate.getFullYear() + "-" + zeroPad((taskStartDate.getMonth() + 1), 2) + "-" + taskStartDate.getDate()
-    taskEndDate = taskEndDate.getFullYear() + "-" + zeroPad((taskEndDate.getMonth() + 1), 2) + "-" + taskEndDate.getDate()
+    taskStartDate = taskStartDate.getFullYear() + "-" + zeroPad((taskStartDate.getMonth() + 1), 2) + "-" + zeroPad(taskStartDate.getDate(), 2)
+    taskEndDate = taskEndDate.getFullYear() + "-" + zeroPad((taskEndDate.getMonth() + 1), 2) + "-" + zeroPad(taskEndDate.getDate(), 2)
 
 
 
@@ -162,7 +162,7 @@ function clearTasks() {
 function setDefaultDate() {
   const zeroPad = (num, places) => String(num).padStart(places, '0')
   let today = new Date()
-  today = today.getFullYear() + "-" + zeroPad((today.getMonth() + 1), 2) + "-" + today.getDate()
+  today = today.getFullYear() + "-" + zeroPad((today.getMonth() + 1), 2) + "-" + zeroPad(today.getDate(), 2)
   document.getElementById('selectedDate').value = today;
   displayTasksByDate(today);
 }
