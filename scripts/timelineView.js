@@ -1,27 +1,6 @@
 import { query } from './queryTasks.js';
 import { addHandlers } from './updateTasks.js';
 
-async function descFormattor(desc) {
-  let descSplit = desc.split(" ")
-  let description = ""
-  let counter = 0
-  for (let i = 0; i < descSplit.length; i++) {
-    if (descSplit[i].length > 60) {
-      counter++
-      let newDesc = descSplit[i].slice(0, 60) + " " + descSplit[i].slice(60)
-      description += newDesc + " "
-    }
-    else {
-      description += descSplit[i] + " "
-    }
-  }
-  if (counter != 0) {
-    return descFormattor(description)
-  }
-  return description
-}
-
-
 
 async function displayTasksByDate(selectedDate) {
   let tasks = await query();
@@ -43,12 +22,8 @@ async function displayTasksByDate(selectedDate) {
         console.log("same day")
         let title = tasks[i].title;
         let id = tasks[i].id;
-        let desc = tasks[i].description;
         let end = tasks[i].endTime;
         let start = tasks[i].startTime;
-
-        let descFormatted = await descFormattor(desc)
-        let descriptionLines = Math.ceil(desc.length / 60)
 
         let startArray = start.split(":");
         let startHour = parseInt(startArray[0]);
@@ -63,7 +38,7 @@ async function displayTasksByDate(selectedDate) {
         let startID = (startHour * 2) + (startMinute);
         console.log("on overflow " + rowspan, startID)
 
-        let height = 115 + (rowspan * 35) + ((descriptionLines - 1) * 30);
+        let height = (rowspan * 35)
 
         document.getElementById(startID).innerHTML +=
           `
@@ -72,7 +47,6 @@ async function displayTasksByDate(selectedDate) {
               <div style="height: 100%; display: flex;justify-content: center;align-items: center; flex-direction: column;" 
               class="border border-secondary rounded-3 text-wrap p-3 task-card" id=${tasks[i].id}>
                 <h3>${title}</h3>
-                <p>${descFormatted}</p>
                 <button class ="edit" style="display:none"><img src="./images/edit-icon.png" style="width:25px"></button>
                 <button class="complete" style ="display:none"><img src="./images/check-icon.png" style="width:25px"></button>   
               </div>
@@ -84,11 +58,8 @@ async function displayTasksByDate(selectedDate) {
         console.log("start day")
         let title = tasks[i].title;
         let id = tasks[i].id;
-        let desc = tasks[i].description;
         let end = "24:00";
         let start = tasks[i].startTime;
-        let descFormatted = await descFormattor(desc)
-        let descriptionLines = Math.ceil(desc.length / 60)
         let startArray = start.split(":");
         let startHour = parseInt(startArray[0]);
         let startMinute = parseInt(startArray[1]);
@@ -101,14 +72,13 @@ async function displayTasksByDate(selectedDate) {
         let rowspan = (endHour * 2) + (endMinute) - (startHour * 2) + (startMinute);
         let startID = (startHour * 2) + (startMinute);
         console.log("end overflow" + rowspan, startID)
-        let height = 115 + (rowspan * 35) + ((descriptionLines - 1) * 30);
+        let height = (rowspan * 35)
         document.getElementById(startID).innerHTML +=
           `
           <td rowspan = "${rowspan}">
             <div id="task-goes-here" style="height: ${height}px">
               <div style="height: 100%; display: flex;justify-content: center;align-items: center; flex-direction: column;" class="border border-secondary border-bottom-0 rounded-top-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
                 <h3>${title}</h3>
-                <p>${descFormatted}</p>
                 <button class ="edit" style="display:none"><img src="./images/edit-icon.png" style="width:25px"></button>
                 <button class="complete" style ="display:none"><img src="./images/check-icon.png" style="width:25px"></button>   
               </div>
@@ -120,11 +90,8 @@ async function displayTasksByDate(selectedDate) {
         console.log("end day")
         let title = tasks[i].title;
         let id = tasks[i].id;
-        let desc = tasks[i].description;
         let end = tasks[i].endTime;
         let start = "00:00";
-        let descFormatted = await descFormattor(desc)
-        let descriptionLines = Math.ceil(desc.length / 60)
         let startArray = start.split(":");
         let startHour = parseInt(startArray[0]);
         let startMinute = parseInt(startArray[1]);
@@ -138,14 +105,13 @@ async function displayTasksByDate(selectedDate) {
         let startID = (startHour * 2) + (startMinute);
         console.log("start overflow" + rowspan, startID)
 
-        let height = 115 + (rowspan * 35) + ((descriptionLines - 1) * 30);
+        let height = (rowspan * 35)
         document.getElementById(startID).innerHTML +=
           `
           <td rowspan = "${rowspan}">
             <div id="task-goes-here" style="height: ${height}px">
               <div style="height: 100%; display: flex;justify-content: center;align-items: center; flex-direction: column;" class="border border-secondary border-top-0 rounded-bottom-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
                 <h3>${title}</h3>
-                <p>${descFormatted}</p>
                 <button class ="edit" style="display:none"><img src="./images/edit-icon.png" style="width:25px"></button>
                 <button class="complete" style ="display:none"><img src="./images/check-icon.png" style="width:25px"></button>   
               </div>
