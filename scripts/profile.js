@@ -82,7 +82,7 @@ function listenFileSelect() {
 //------------------------------------------------
 function uploadPic(postDocID) {
   console.log("inside uploadPic " + postDocID);
-  var storageRef = storage.ref("images/" + postDocID + ".jpg");
+  var storageRef = firebase.storage().ref("images/" + postDocID + ".jpg");
 
   storageRef
     .put(ImageFile) //global variable ImageFile
