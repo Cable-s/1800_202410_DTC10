@@ -32,9 +32,11 @@ function listenFileSelect() {
   });
 }
 
-function uploadPic(postDocID) {
-  console.log("inside uploadPic " + postDocID);
-  var storageRef = firebase.storage().ref("images/" + postDocID + ".jpg");
+function uploadPic() {
+  console.log("inside uploadPic " + profileData[0].docId);
+  var storageRef = firebase
+    .storage()
+    .ref("images/" + profileData[0].docId + ".jpg");
 
   storageRef
     .put(ImageFile) //global variable ImageFile
@@ -56,7 +58,7 @@ function uploadPic(postDocID) {
           db.collection("users")
             .doc(userID)
             .collection("profile")
-            .doc(postDocID)
+            .doc(profileData[0].docId)
             .update({
               image: url, // Save the URL into users collection
             });
