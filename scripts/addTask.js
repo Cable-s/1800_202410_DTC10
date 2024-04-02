@@ -128,40 +128,44 @@ function submitForm() {
       });
   }
 }
-
-const categoryNames = categories[0].categories;
-console.log(categoryNames);
-categoryNames.sort();
-categoryNames.forEach((category) => {
-  document.getElementById("category-input").innerHTML += `
-    <option value = "${category}">${category}</option>
+async function populateCategories() {
+  let categoryNames = await query("categories");
+  categoryNames = categoryNames[0].categories;
+  categoryNames.sort();
+  document.getElementById("category-input").innerHTML = ``;
+  categoryNames.forEach((category, index) => {
+    document.getElementById("category-input").innerHTML += `
+    <option value="${category}" >${category}</option>
     `;
-  addNewCategory();
-});
-
+  });
+}
 function addNewCategory() {
   document.getElementById("add-category").addEventListener("click", () => {
     console.log("clicked");
     document.getElementById("category-name").style.display = "block";
     document.getElementById("add-category").style.display = "none";
     document.getElementById("submit-category").style.display = "block";
+    submitNewCategory();
   });
-
+}
+function submitNewCategory() {
   document.getElementById("submit-category").addEventListener("click", () => {
     let newcategory = document.getElementById("category-name").value;
     console.log(newcategory);
-    db
-      .collection("users")
+    db.collection("users")
       .doc(userID)
       .collection("categories")
       .doc(categories[0].docId)
       .update({
         categories: firebase.firestore.FieldValue.arrayUnion(newcategory),
       })
-      .then(console.log("hello there")),
-      (document.getElementById("category-name").style.display = "none");
-    document.getElementById("add-category").style.display = "block";
-    document.getElementById("submit-category").style.display = "none";
+      .then(() => {
+        populateCategories();
+        document.getElementById("category-name").style.display = "none";
+        document.getElementById("category-name").value = "";
+        document.getElementById("add-category").style.display = "block";
+        document.getElementById("submit-category").style.display = "none";
+      });
   });
 }
 
@@ -170,6 +174,8 @@ function addTask() {
 }
 
 function setup() {
+  populateCategories();
+  addNewCategory();
   document.getElementById("addTaskBtn").addEventListener("click", () => {
     submitForm();
   });
