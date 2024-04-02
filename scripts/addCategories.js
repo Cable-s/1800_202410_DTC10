@@ -1,3 +1,4 @@
+var userId = localStorage.getItem("userId");
 // check all checkboxes
 function checkAll() {
   var inputs = document.querySelectorAll(".aspect");
@@ -19,13 +20,13 @@ function submitCategoryForm() {
   // Add a blank category, grab it's id in "docRef" then add all of the info for the task
   const categories = db
     .collection("users")
-    .doc(firebase.auth().currentUser.uid)
+    .doc(userId)
     .collection("categories");
   categories
     .add({})
     .then((docRef) => {
       categories.doc(docRef.id).set({
-        categories: categoriesChecked
+        categories: categoriesChecked,
       });
     })
     .then(function () {

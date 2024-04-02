@@ -6,6 +6,7 @@ function getCategoryLabels(selectedDate) {
   const zeroPad = (num, places) => String(num).padStart(places, "0");
   let categoryLabels = [];
   for (let i = 0; i < tasks.length; i++) {
+    console.log("tasks", tasks[i]);
     let startDate = new Date(tasks[i].startDate.seconds * 1000);
     let endDate = new Date(tasks[i].endDate.seconds * 1000);
     let start =

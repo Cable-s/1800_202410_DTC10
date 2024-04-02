@@ -11,7 +11,7 @@ function performQuery(userID, collectionType) {
         dataObject.docId = doc.id;
         returnArray.push(dataObject);
       });
-
+      returnArray.shift();
       return returnArray;
     });
 }

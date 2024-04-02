@@ -177,6 +177,11 @@ function addTask() {
 }
 
 function setup() {
+  let addCategories = document.getElementById("add-category");
+  let addTaskBtn = document.getElementById("addTaskBtn");
+  addTaskBtn.addEventListener("click", () => {
+    submitForm();
+  });
   console.log("setup complete");
 }
 
