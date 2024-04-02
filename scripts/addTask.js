@@ -1,7 +1,7 @@
 import { query } from "./queryDocuments.js";
 
+var userID = localStorage.getItem("userId");
 var categories = await query("categories");
-
 function showError(inputId, errorMessage) {
   document.getElementById(inputId + "-error").textContent = errorMessage;
 }
@@ -87,7 +87,7 @@ function submitForm() {
   }
 
   if (endDate.getTime() < startDate.getTime()) {
-    error = true;
+    error = trued;
     console.log("true");
     showError("endDate", "End date cannot be before start date");
   }
@@ -105,10 +105,7 @@ function submitForm() {
     !error
   ) {
     // Proceed with form submission
-    const task = db
-      .collection("users")
-      .doc(firebase.auth().currentUser.uid)
-      .collection("tasks");
+    const task = db.collection("users").doc(userID).collection("tasks");
     task
       .add({})
       .then((docRef) => {
@@ -132,19 +129,15 @@ function submitForm() {
   }
 }
 
-function populateCategories() {
-  const categoryNames = JSON.parse(localStorage.getItem("categories"))[0]
-    .categories;
-  console.log(categoryNames);
-  categoryNames.sort();
-  document.getElementById("category-input").innerHTML = ``;
-  categoryNames.forEach((category) => {
-    document.getElementById("category-input").innerHTML += `
+const categoryNames = categories[0].categories;
+console.log(categoryNames);
+categoryNames.sort();
+categoryNames.forEach((category) => {
+  document.getElementById("category-input").innerHTML += `
     <option value = "${category}">${category}</option>
     `;
-    addNewCategory();
-  });
-}
+  addNewCategory();
+});
 
 function addNewCategory() {
   document.getElementById("add-category").addEventListener("click", () => {
@@ -155,13 +148,13 @@ function addNewCategory() {
   });
 
   document.getElementById("submit-category").addEventListener("click", () => {
-    newcategory = document.getElementById("category-name").value;
+    let newcategory = document.getElementById("category-name").value;
     console.log(newcategory);
     db
       .collection("users")
-      .doc(`${userID}`)
+      .doc(userID)
       .collection("categories")
-      .doc(`${categories[0].docId}`)
+      .doc(categories[0].docId)
       .update({
         categories: firebase.firestore.FieldValue.arrayUnion(newcategory),
       })
@@ -177,11 +170,6 @@ function addTask() {
 }
 
 function setup() {
-  let addCategories = document.getElementById("add-category");
-  let addTaskBtn = document.getElementById("addTaskBtn");
-  addTaskBtn.addEventListener("click", () => {
-    submitForm();
-  });
   console.log("setup complete");
 }
 

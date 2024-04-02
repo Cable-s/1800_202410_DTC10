@@ -21,9 +21,6 @@ function loadSkeleton() {
       // User is signed in.
       // Do something for the user here.
 
-      // Old jQuery code - causes browser to warn about deprecated feature
-      // console.log($('#navbarTemplate').load('./text/nav_after_login.html'));
-      // console.log($('#footerTemplate').load('./text/footer_after_login.html'));
       // console.log($('#addTaskModal').load('./text/addTaskModal.html'));
       load(
         "./text/nav_after_login.html",
@@ -34,7 +31,6 @@ function loadSkeleton() {
         document.getElementById("footerTemplate"),
       );
       load("./text/addTaskModal.html", document.getElementById("addTaskModal"));
-      //load("./text/defineCategoriesModal.html", document.getElementById("CategoriesModal"));
       load(
         "./text/expiredTaskModal.html",
         document.getElementById("expiredTaskModal"),

@@ -16,7 +16,6 @@ function getNameFromAuth() {
       userName = user.displayName;
       lastSignIn = getDate(user);
 
-      //method #1:  insert with JS
       document.getElementById("name-goes-here").innerText = userName;
 
       //method #2:  insert using jquery

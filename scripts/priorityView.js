@@ -40,8 +40,7 @@ function displayTask(task) {
       break;
   }
 
-  let taskCard = 
-    `
+  let taskCard = `
     <div class="bg-${task.importance} task-card border border-secondary rounded-3" id="${task.id}" 
     style="display:flex; flex-direction:column; margin: 5px; padding: 10px;">
       <div style="display:flex; place-content:space-between"> 

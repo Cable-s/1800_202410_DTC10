@@ -9,11 +9,12 @@ function performQuery(userID, collectionType) {
       dataDoc.forEach((doc) => {
         let dataObject = doc.data();
         dataObject.docId = doc.id;
-        returnArray.push(dataObject);
+        if (collectionType == "tasks" && dataObject.title == undefined) {
+          return;
+        } else {
+          returnArray.push(dataObject);
+        }
       });
-      if (collectionType == "tasks") {
-        returnArray.shift();
-      }
       return returnArray;
     });
 }

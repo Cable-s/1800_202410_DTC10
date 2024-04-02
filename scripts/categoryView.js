@@ -1,6 +1,5 @@
 import { query } from "./queryDocuments.js";
 let tasks = await query("tasks");
-console.log(tasks);
 
 function getCategoryLabels(selectedDate) {
   const zeroPad = (num, places) => String(num).padStart(places, "0");
