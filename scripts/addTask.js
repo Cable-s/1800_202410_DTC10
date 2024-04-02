@@ -110,7 +110,7 @@ function submitForm() {
       .add({})
       .then((docRef) => {
         task.doc(docRef.id).set({
-          user: firebase.auth().currentUser.uid,
+          user: userID,
           category: category,
           description: description,
           importance: importance,
@@ -170,6 +170,9 @@ function addTask() {
 }
 
 function setup() {
+  document.getElementById("addTaskBtn").addEventListener("click", () => {
+    submitForm();
+  });
   console.log("setup complete");
 }
 
