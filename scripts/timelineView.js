@@ -1,7 +1,6 @@
 import { query } from "./queryDocuments.js";
 import { addHandlers } from "./updateTasks.js";
 
-
 async function displayTasksByDate(selectedDate) {
   let tasks = await query("tasks");
   //console.log(tasks);
@@ -42,14 +41,13 @@ async function displayTasksByDate(selectedDate) {
 
         startMinute = minuteRound(startMinute);
         endMinute = minuteRound(endMinute);
-        let rowspan = (endHour * 2) + (endMinute) - (startHour * 2) + (startMinute);
-        let startID = (startHour * 2) + (startMinute);
-        console.log("on overflow " + rowspan, startID)
+        let rowspan = endHour * 2 + endMinute - startHour * 2 + startMinute;
+        let startID = startHour * 2 + startMinute;
+        console.log("on overflow " + rowspan, startID);
 
-        let height = (rowspan * 35)
+        let height = rowspan * 35;
 
-        document.getElementById(startID).innerHTML +=
-          `
+        document.getElementById(startID).innerHTML += `
           <td rowspan = "${rowspan}">
             <div id="task-goes-here" style="height: ${height}px">
               <div style="height: 100%; display: flex;justify-content: center;align-items: center; flex-direction: column;" 
@@ -61,18 +59,26 @@ async function displayTasksByDate(selectedDate) {
             </div>
           </td>
           `;
-      }
-      else if (taskStartDate == selectedDate) {
-        console.log("start day")
-        `;
       } else if (taskStartDate == selectedDate) {
         console.log("start day");
-        let rowspan = (endHour * 2) + (endMinute) - (startHour * 2) + (startMinute);
-        let startID = (startHour * 2) + (startMinute);
-        console.log("end overflow" + rowspan, startID)
-        let height = (rowspan * 35)
-        document.getElementById(startID).innerHTML +=
-          `
+        let title = tasks[i].title;
+        let id = tasks[i].id;
+        let end = "24:00";
+        let start = tasks[i].startTime;
+        let startArray = start.split(":");
+        let startHour = parseInt(startArray[0]);
+        let startMinute = parseInt(startArray[1]);
+        let endArray = end.split(":");
+        let endHour = parseInt(endArray[0]);
+        let endMinute = parseInt(endArray[1]);
+
+        startMinute = minuteRound(startMinute);
+        endMinute = minuteRound(endMinute);
+        let rowspan = endHour * 2 + endMinute - startHour * 2 + startMinute;
+        let startID = startHour * 2 + startMinute;
+        console.log("end overflow" + rowspan, startID);
+        let height = rowspan * 35;
+        document.getElementById(startID).innerHTML += `
           <td rowspan = "${rowspan}">
             <div id="task-goes-here" style="height: ${height}px">
               <div style="height: 100%; display: flex;justify-content: center;align-items: center; flex-direction: column;" class="border border-secondary border-bottom-0 rounded-top-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
@@ -83,9 +89,8 @@ async function displayTasksByDate(selectedDate) {
             </div>
           </td>
           `;
-      }
-      else if (taskEndDate == selectedDate) {
-        console.log("end day")
+      } else if (taskEndDate == selectedDate) {
+        console.log("end day");
         let title = tasks[i].title;
         let id = tasks[i].id;
         let end = tasks[i].endTime;
@@ -103,9 +108,8 @@ async function displayTasksByDate(selectedDate) {
         let startID = startHour * 2 + startMinute;
         console.log("start overflow" + rowspan, startID);
 
-        let height = (rowspan * 35)
-        document.getElementById(startID).innerHTML +=
-          `
+        let height = rowspan * 35;
+        document.getElementById(startID).innerHTML += `
           <td rowspan = "${rowspan}">
             <div id="task-goes-here" style="height: ${height}px">
               <div style="height: 100%; display: flex;justify-content: center;align-items: center; flex-direction: column;" class="border border-secondary border-top-0 rounded-bottom-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
