@@ -1,3 +1,7 @@
+import { query } from "./queryDocuments.js";
+
+var categories = await query("categories");
+
 function showError(inputId, errorMessage) {
   document.getElementById(inputId + "-error").textContent = errorMessage;
 }
@@ -142,54 +146,30 @@ function populateCategories() {
   });
 }
 
-function queryCategories() {
-  var categories;
-  return new Promise((resolve, reject) => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        userID = user.uid;
-        accountDate = user.metadata.creationTime;
-        // User is signed in.
-        categories = db
-          .collection("users")
-          .doc(`${userID}`)
-          .collection("categories")
-          .get()
-          .then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-              categoriesDocID = doc.id;
-              resolve(doc.id);
-            });
-          })
-      }
-    });
-  });
-}
-
-function addNewCategory () {
+function addNewCategory() {
   document.getElementById("add-category").addEventListener("click", () => {
-    console.log("clicked")
-    document.getElementById("category-name").style.display = "block"
-    document.getElementById("add-category").style.display = "none"
-    document.getElementById("submit-category").style.display = "block"
-  })
+    console.log("clicked");
+    document.getElementById("category-name").style.display = "block";
+    document.getElementById("add-category").style.display = "none";
+    document.getElementById("submit-category").style.display = "block";
+  });
 
   document.getElementById("submit-category").addEventListener("click", () => {
-    newcategory = document.getElementById("category-name").value
-    console.log(newcategory)
-    queryCategories().then((docID) => db.collection("users")
+    newcategory = document.getElementById("category-name").value;
+    console.log(newcategory);
+    db
+      .collection("users")
       .doc(`${userID}`)
       .collection("categories")
-      .doc(`${docID}`)
+      .doc(`${categories[0].docId}`)
       .update({
-        categories: firebase.firestore.FieldValue.arrayUnion(newcategory)
+        categories: firebase.firestore.FieldValue.arrayUnion(newcategory),
       })
-      .then(console.log("hello there")
-      ))
-    document.getElementById("category-name").style.display = "none"
-    document.getElementById("add-category").style.display = "block"
-    document.getElementById("submit-category").style.display = "none"
-  })
+      .then(console.log("hello there")),
+      (document.getElementById("category-name").style.display = "none");
+    document.getElementById("add-category").style.display = "block";
+    document.getElementById("submit-category").style.display = "none";
+  });
 }
 
 function addTask() {

@@ -1,34 +1,41 @@
-import { query } from './queryTasks.js';
-import { addHandlers } from './updateTasks.js';
-let tasks = await query();
+import { query } from "./queryDocuments.js";
+import { addHandlers } from "./updateTasks.js";
+let tasks = await query("tasks");
 
 $(document).ready(() => {
-  checkExpiredTasks()
-})
-
+  checkExpiredTasks();
+});
 
 function checkExpiredTasks() {
-  let counter = 0
-  document.getElementById("expiredTasks").innerHTML = ""
+  let counter = 0;
+  document.getElementById("expiredTasks").innerHTML = "";
   for (let i = 0; i < tasks.length; i++) {
-    const zeroPad = (num, places) => String(num).padStart(places, '0')
+    const zeroPad = (num, places) => String(num).padStart(places, "0");
 
-    let title = tasks[i].title
-    let id = tasks[i].id
-    let desc = tasks[i].description
+    let title = tasks[i].title;
+    let id = tasks[i].id;
+    let desc = tasks[i].description;
 
-    let endTime = tasks[i].endTime
+    let endTime = tasks[i].endTime;
 
-    let endDate = new Date(tasks[i].endDate.seconds * 1000)
-    endDate = endDate.getFullYear() + "-" + zeroPad((endDate.getMonth() + 1), 2) + "-" + endDate.getDate()
+    let endDate = new Date(tasks[i].endDate.seconds * 1000);
+    endDate =
+      endDate.getFullYear() +
+      "-" +
+      zeroPad(endDate.getMonth() + 1, 2) +
+      "-" +
+      endDate.getDate();
 
+    let todayDate = new Date();
+    todayDate =
+      todayDate.getFullYear() +
+      "-" +
+      zeroPad(todayDate.getMonth() + 1, 2) +
+      "-" +
+      todayDate.getDate();
 
-    let todayDate = new Date()
-    todayDate = todayDate.getFullYear() + "-" + zeroPad((todayDate.getMonth() + 1), 2) + "-" + todayDate.getDate()
-
-    let timeNow = new Date()
-    timeNow = timeNow.getHours() + ":" + zeroPad(timeNow.getMinutes(), 2)
-
+    let timeNow = new Date();
+    timeNow = timeNow.getHours() + ":" + zeroPad(timeNow.getMinutes(), 2);
 
     // console.log("timeNow " + timeNow)
     // console.log("endTime " + endTime)
@@ -38,10 +45,12 @@ function checkExpiredTasks() {
     // console.log(todayDate > endDate)
     // console.log(todayDate == endDate)
 
-    if (((todayDate > endDate || todayDate == endDate && endTime < timeNow) && localStorage.getItem("notifications") == 'true')) {
-      counter++
-      document.getElementById("expiredTasks").innerHTML +=
-        `
+    if (
+      (todayDate > endDate || (todayDate == endDate && endTime < timeNow)) &&
+      localStorage.getItem("notifications") == "true"
+    ) {
+      counter++;
+      document.getElementById("expiredTasks").innerHTML += `
         <div class="border border-secondary bg-blush rounded-3 text-center text-wrap p-3 task-card" id="task-goes-here" style="height: 100%; display: flex;justify-content: space-between;">
           <div style="width:50% align-self: start" id=${tasks[i].id}>
             <h3>${title}</h3>
@@ -53,13 +62,13 @@ function checkExpiredTasks() {
             <button class="complete" onclick="complete('${id}')">Delete</button>
           </div>
         </div>
-      `
+      `;
     }
   }
   if (counter > 0) {
-    $('#expiredModal').modal('show')
+    $("#expiredModal").modal("show");
   }
 }
-window.checkExpiredTasks = checkExpiredTasks
+window.checkExpiredTasks = checkExpiredTasks;
 
-addHandlers()
+addHandlers();

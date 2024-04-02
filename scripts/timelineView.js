@@ -1,25 +1,33 @@
-import { query } from './queryTasks.js';
-import { addHandlers } from './updateTasks.js';
+import { query } from "./queryDocuments.js";
+import { addHandlers } from "./updateTasks.js";
 
 
 async function displayTasksByDate(selectedDate) {
-  let tasks = await query();
+  let tasks = await query("tasks");
   //console.log(tasks);
   for (let i = 0; i < tasks.length; i++) {
-    const zeroPad = (num, places) => String(num).padStart(places, '0')
+    const zeroPad = (num, places) => String(num).padStart(places, "0");
 
-    let taskStartDate = new Date(tasks[i].startDate.seconds * 1000)
-    let taskEndDate = new Date(tasks[i].endDate.seconds * 1000)
+    let taskStartDate = new Date(tasks[i].startDate.seconds * 1000);
+    let taskEndDate = new Date(tasks[i].endDate.seconds * 1000);
 
-    taskStartDate = taskStartDate.getFullYear() + "-" + zeroPad((taskStartDate.getMonth() + 1), 2) + "-" + zeroPad(taskStartDate.getDate(), 2)
-    taskEndDate = taskEndDate.getFullYear() + "-" + zeroPad((taskEndDate.getMonth() + 1), 2) + "-" + zeroPad(taskEndDate.getDate(), 2)
-
-
+    taskStartDate =
+      taskStartDate.getFullYear() +
+      "-" +
+      zeroPad(taskStartDate.getMonth() + 1, 2) +
+      "-" +
+      zeroPad(taskStartDate.getDate(), 2);
+    taskEndDate =
+      taskEndDate.getFullYear() +
+      "-" +
+      zeroPad(taskEndDate.getMonth() + 1, 2) +
+      "-" +
+      zeroPad(taskEndDate.getDate(), 2);
 
     // Check if the selected date falls within the range of task's start and end dates
     if (selectedDate >= taskStartDate && selectedDate <= taskEndDate) {
       if (taskStartDate == taskEndDate) {
-        console.log("same day")
+        console.log("same day");
         let title = tasks[i].title;
         let id = tasks[i].id;
         let end = tasks[i].endTime;
@@ -56,19 +64,9 @@ async function displayTasksByDate(selectedDate) {
       }
       else if (taskStartDate == selectedDate) {
         console.log("start day")
-        let title = tasks[i].title;
-        let id = tasks[i].id;
-        let end = "24:00";
-        let start = tasks[i].startTime;
-        let startArray = start.split(":");
-        let startHour = parseInt(startArray[0]);
-        let startMinute = parseInt(startArray[1]);
-        let endArray = end.split(":");
-        let endHour = parseInt(endArray[0]);
-        let endMinute = parseInt(endArray[1]);
-
-        startMinute = minuteRound(startMinute);
-        endMinute = minuteRound(endMinute);
+        `;
+      } else if (taskStartDate == selectedDate) {
+        console.log("start day");
         let rowspan = (endHour * 2) + (endMinute) - (startHour * 2) + (startMinute);
         let startID = (startHour * 2) + (startMinute);
         console.log("end overflow" + rowspan, startID)
@@ -101,9 +99,9 @@ async function displayTasksByDate(selectedDate) {
 
         startMinute = minuteRound(startMinute);
         endMinute = minuteRound(endMinute);
-        let rowspan = (endHour * 2) + (endMinute) - (startHour * 2) + (startMinute);
-        let startID = (startHour * 2) + (startMinute);
-        console.log("start overflow" + rowspan, startID)
+        let rowspan = endHour * 2 + endMinute - startHour * 2 + startMinute;
+        let startID = startHour * 2 + startMinute;
+        console.log("start overflow" + rowspan, startID);
 
         let height = (rowspan * 35)
         document.getElementById(startID).innerHTML +=
@@ -137,25 +135,79 @@ function minuteRound(minute) {
 }
 
 function clearTasks() {
-  console.log("clearing")
+  console.log("clearing");
   for (let i = 0; i < 48; i++) {
-    let times = ["am 00:00", "00:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "11:59"]
-    document.getElementById(i).innerHTML = ""
+    let times = [
+      "am 00:00",
+      "00:30",
+      "01:00",
+      "01:30",
+      "02:00",
+      "02:30",
+      "03:00",
+      "03:30",
+      "04:00",
+      "04:30",
+      "05:00",
+      "05:30",
+      "06:00",
+      "06:30",
+      "07:00",
+      "07:30",
+      "08:00",
+      "08:30",
+      "09:00",
+      "09:30",
+      "10:00",
+      "10:30",
+      "11:00",
+      "11:30",
+      "12:00",
+      "12:30",
+      "01:00",
+      "01:30",
+      "02:00",
+      "02:30",
+      "03:00",
+      "03:30",
+      "04:00",
+      "04:30",
+      "05:00",
+      "05:30",
+      "06:00",
+      "06:30",
+      "07:00",
+      "07:30",
+      "08:00",
+      "08:30",
+      "09:00",
+      "09:30",
+      "10:00",
+      "10:30",
+      "11:00",
+      "11:30",
+      "11:59",
+    ];
+    document.getElementById(i).innerHTML = "";
     document.getElementById(i).innerHTML = `
     <tr id="${i}">
     <td class="time" style="width:19%">${times[i]}</td>
     </tr>
-    `
-
+    `;
   }
 }
 
 // Change today's date
 function setDefaultDate() {
-  const zeroPad = (num, places) => String(num).padStart(places, '0')
-  let today = new Date()
-  today = today.getFullYear() + "-" + zeroPad((today.getMonth() + 1), 2) + "-" + zeroPad(today.getDate(), 2)
-  document.getElementById('selectedDate').value = today;
+  const zeroPad = (num, places) => String(num).padStart(places, "0");
+  let today = new Date();
+  today =
+    today.getFullYear() +
+    "-" +
+    zeroPad(today.getMonth() + 1, 2) +
+    "-" +
+    zeroPad(today.getDate(), 2);
+  document.getElementById("selectedDate").value = today;
   displayTasksByDate(today);
 }
 
@@ -163,7 +215,7 @@ function setDefaultDate() {
 setDefaultDate();
 
 // Add event listener to update displayed date when date input changes
-document.getElementById('selectedDate').addEventListener('input', function () {
-  clearTasks()
+document.getElementById("selectedDate").addEventListener("input", function () {
+  clearTasks();
   displayTasksByDate(this.value);
 });

@@ -16,6 +16,8 @@ var uiConfig = {
       // The Firestore rules must allow the user to write.
       //------------------------------------------------------------------------------------------
       var user = authResult.user; // get the user object from the Firebase authentication database
+      var userID = localStorage.setItem("userId", user.uid);
+      var docRef; //used to delete empty task doc
       if (authResult.additionalUserInfo.isNewUser) {
         //if new user
         db.collection("users")
@@ -34,15 +36,15 @@ var uiConfig = {
               .add({
                 // Add 'tasks' collection to users
               })
-              .then(function () {
+              .then((docRef) => {
                 console.log("User collections added");
+                docRef = docRef.id;
               })
               .catch(function (error) {
                 console.log(error);
               });
-
             console.log("New user added to firestore");
-            window.location.assign("defineCategories.html"); //set up categories after signup
+            //window.location.assign("defineCategories.html"); //set up categories after signup
           })
           .catch(function (error) {
             console.log("Error adding new user: " + error);

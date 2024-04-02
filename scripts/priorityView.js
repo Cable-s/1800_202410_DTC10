@@ -1,17 +1,22 @@
-import { query } from './queryTasks.js';
-import { addHandlers } from './updateTasks.js';
+import { query } from "./queryDocuments.js";
+import { addHandlers } from "./updateTasks.js";
 
 async function priorityTasks(selectedDate) {
-  console.log(selectedDate)
-  let tasks = await query();
+  console.log(selectedDate);
+  let tasks = await query("tasks");
 
-  tasks.forEach(task => {
-    const zeroPad = (num, places) => String(num).padStart(places, '0')
-    let taskStartDate = new Date(task.startDate.seconds * 1000)
-    taskStartDate = taskStartDate.getFullYear() + "-" + zeroPad((taskStartDate.getMonth() + 1), 2) + "-" + zeroPad(taskStartDate.getDate(), 2)
+  tasks.forEach((task) => {
+    const zeroPad = (num, places) => String(num).padStart(places, "0");
+    let taskStartDate = new Date(task.startDate.seconds * 1000);
+    taskStartDate =
+      taskStartDate.getFullYear() +
+      "-" +
+      zeroPad(taskStartDate.getMonth() + 1, 2) +
+      "-" +
+      zeroPad(taskStartDate.getDate(), 2);
 
-    console.log(taskStartDate)
-    console.log(taskStartDate == selectedDate)
+    console.log(taskStartDate);
+    console.log(taskStartDate == selectedDate);
     if (taskStartDate === selectedDate) {
       displayTask(task);
     }
@@ -24,14 +29,14 @@ async function priorityTasks(selectedDate) {
 function displayTask(task) {
   let taskContainer;
   switch (task.importance) {
-    case 'high':
-      taskContainer = document.getElementById('high-tasks');
+    case "high":
+      taskContainer = document.getElementById("high-tasks");
       break;
-    case 'medium':
-      taskContainer = document.getElementById('medium-tasks');
+    case "medium":
+      taskContainer = document.getElementById("medium-tasks");
       break;
-    case 'low':
-      taskContainer = document.getElementById('low-tasks');
+    case "low":
+      taskContainer = document.getElementById("low-tasks");
       break;
   }
 
@@ -61,10 +66,15 @@ function displayTask(task) {
 
 // Change today's date
 function setDefaultDate() {
-  const zeroPad = (num, places) => String(num).padStart(places, '0')
-  let today = new Date()
-  today = today.getFullYear() + "-" + zeroPad((today.getMonth() + 1), 2) + "-" + zeroPad(today.getDate(), 2)
-  document.getElementById('selectedDate').value = today;
+  const zeroPad = (num, places) => String(num).padStart(places, "0");
+  let today = new Date();
+  today =
+    today.getFullYear() +
+    "-" +
+    zeroPad(today.getMonth() + 1, 2) +
+    "-" +
+    zeroPad(today.getDate(), 2);
+  document.getElementById("selectedDate").value = today;
   priorityTasks(today);
 }
 
@@ -72,15 +82,15 @@ function setDefaultDate() {
 setDefaultDate();
 
 // Add event listener to update displayed date when date input changes
-document.getElementById('selectedDate').addEventListener('input', function () {
-  clearTasks()
+document.getElementById("selectedDate").addEventListener("input", function () {
+  clearTasks();
   priorityTasks(this.value);
 });
 
 // Initial display of tasks based on today's date
 function clearTasks() {
-  console.log("clear")
-  document.getElementById('high-tasks').innerHTML = ""
-  document.getElementById('medium-tasks').innerHTML = ""
-  document.getElementById('low-tasks').innerHTML = ""
+  console.log("clear");
+  document.getElementById("high-tasks").innerHTML = "";
+  document.getElementById("medium-tasks").innerHTML = "";
+  document.getElementById("low-tasks").innerHTML = "";
 }

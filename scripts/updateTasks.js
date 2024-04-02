@@ -1,6 +1,6 @@
-import { query } from "./queryTasks.js";
+import { query } from "./queryDocuments.js";
 
-let tasks = await query();
+let tasks = await query("tasks");
 function sendUpdate(id, valuesArray) {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
