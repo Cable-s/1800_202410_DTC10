@@ -124,7 +124,7 @@ function submitForm() {
         });
       })
       .then(function () {
-        location.href = "categoryView.html";
+        location.reload();
       });
   }
 }
