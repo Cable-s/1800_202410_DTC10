@@ -193,10 +193,34 @@ function addTask() {
 function setup() {
   populateCategories();
   addNewCategory();
+  setDefaultDate()
+  setDefaultEndDate()
   document.getElementById("addTaskBtn").addEventListener("click", () => {
     submitForm();
   });
   console.log("setup complete");
 }
+
+function setDefaultDate() {
+  const zeroPad = (num, places) => String(num).padStart(places, "0");
+  let today = new Date();
+  today =
+    today.getFullYear() +
+    "-" +
+    zeroPad(today.getMonth() + 1, 2) +
+    "-" +
+    zeroPad(today.getDate(), 2);
+  document.getElementById("startDate").value = today;
+}
+
+document.getElementById("startDate").addEventListener("input", () => {
+  setDefaultEndDate()
+})
+
+function setDefaultEndDate() {
+  let today = document.getElementById("startDate").value;
+  document.getElementById("endDate").value = today;
+}
+
 
 $(document).ready(setup);
