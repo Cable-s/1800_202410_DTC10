@@ -169,6 +169,23 @@ function submitNewCategory() {
   });
 }
 
+function displayCharactersLeft() {
+  let currentDescLetters = document.getElementById("description-input").value.length
+  let currentTitleLetters = document.getElementById("title-input").value.length
+  let maxTitleLength = 25
+  let maxDescLength = 60
+  document.getElementById("spanDescAmount").innerHTML = `  ${currentDescLetters} / ${maxDescLength}`
+  document.getElementById("spanTitleAmount").innerHTML = `  ${currentTitleLetters} / ${maxTitleLength}`
+}
+
+document.getElementById("description-input").addEventListener('input', () => {
+  displayCharactersLeft()
+})
+
+document.getElementById("title-input").addEventListener('input', () => {
+  displayCharactersLeft()
+})
+
 function addTask() {
   console.log($("#taskModal").load("./text/addTaskModal.html"));
 }
