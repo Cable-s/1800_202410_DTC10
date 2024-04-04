@@ -124,7 +124,7 @@ function submitForm() {
         });
       })
       .then(function () {
-        location.href = "categoryView.html";
+        location.reload();
       });
   }
 }
@@ -138,6 +138,7 @@ async function populateCategories() {
     <option value="${category}" >${category}</option>
     `;
   });
+  setDefaultCategoryInput()
 }
 function addNewCategory() {
   document.getElementById("add-category").addEventListener("click", () => {
@@ -169,6 +170,23 @@ function submitNewCategory() {
   });
 }
 
+function displayCharactersLeft() {
+  let currentDescLetters = document.getElementById("description-input").value.length
+  let currentTitleLetters = document.getElementById("title-input").value.length
+  let maxTitleLength = 25
+  let maxDescLength = 60
+  document.getElementById("spanDescAmount").innerHTML = `  ${currentDescLetters} / ${maxDescLength}`
+  document.getElementById("spanTitleAmount").innerHTML = `  ${currentTitleLetters} / ${maxTitleLength}`
+}
+
+document.getElementById("description-input").addEventListener('input', () => {
+  displayCharactersLeft()
+})
+
+document.getElementById("title-input").addEventListener('input', () => {
+  displayCharactersLeft()
+})
+
 function addTask() {
   console.log($("#taskModal").load("./text/addTaskModal.html"));
 }
@@ -176,10 +194,38 @@ function addTask() {
 function setup() {
   populateCategories();
   addNewCategory();
+  setDefaultDate();
+  setDefaultEndDate();
   document.getElementById("addTaskBtn").addEventListener("click", () => {
     submitForm();
   });
   console.log("setup complete");
 }
+
+function setDefaultDate() {
+  const zeroPad = (num, places) => String(num).padStart(places, "0");
+  let today = new Date();
+  today =
+    today.getFullYear() +
+    "-" +
+    zeroPad(today.getMonth() + 1, 2) +
+    "-" +
+    zeroPad(today.getDate(), 2);
+  document.getElementById("startDate").value = today;
+}
+
+document.getElementById("startDate").addEventListener("input", () => {
+  setDefaultEndDate()
+})
+
+function setDefaultEndDate() {
+  let today = document.getElementById("startDate").value;
+  document.getElementById("endDate").value = today;
+}
+
+function setDefaultCategoryInput() {
+  document.getElementById("category-input").value = "Un-categorized"
+}
+
 
 $(document).ready(setup);
