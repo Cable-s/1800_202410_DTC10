@@ -138,6 +138,7 @@ async function populateCategories() {
     <option value="${category}" >${category}</option>
     `;
   });
+  setDefaultCategoryInput()
 }
 function addNewCategory() {
   document.getElementById("add-category").addEventListener("click", () => {
@@ -193,8 +194,8 @@ function addTask() {
 function setup() {
   populateCategories();
   addNewCategory();
-  setDefaultDate()
-  setDefaultEndDate()
+  setDefaultDate();
+  setDefaultEndDate();
   document.getElementById("addTaskBtn").addEventListener("click", () => {
     submitForm();
   });
@@ -220,6 +221,10 @@ document.getElementById("startDate").addEventListener("input", () => {
 function setDefaultEndDate() {
   let today = document.getElementById("startDate").value;
   document.getElementById("endDate").value = today;
+}
+
+function setDefaultCategoryInput() {
+  document.getElementById("category-input").value = "Un-categorized"
 }
 
 
