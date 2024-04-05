@@ -8,12 +8,14 @@
       <div class="modal-body">
         <form id="input-form">
           Title: <Br>
-          <input type="text" placeholder="Name Of Task" id="title-input">
+          <input type="text" maxlength="25" placeholder="Name Of Task" id="title-input"><span
+            id="spanTitleAmount"></span>
           <span id="title-error" style="color: red;"></span> <!-- Error message for title -->
           <br>
           Description:
           <br>
-          <textarea placeholder="description" id="description-input"></textarea>
+          <textarea placeholder="description" maxlength="60" id="description-input"></textarea><span
+            id="spanDescAmount"></span>
           <br><br>
           Categories
           <br>
@@ -23,8 +25,11 @@
           <div id="add-category-text">
             <input type="text" id="category-name" style="display: none" class="form-text mt-1"></input>
           </div>
-          <button id="add-category" style="display: block">Add Category</button>
-          <button id="submit-category" style="display: none">Submit</button>
+          <br><br>
+          <div>
+            <button class="btn btn-warning" id="add-category" style="display: block">Create New Category</button>
+            <button class="btn btn-primary" id="submit-category" style="display: none">Submit</button>
+          </div>
           <br><br>
           Start Date:
           <input type="date" id="startDate"></input>
