@@ -110,7 +110,7 @@ function Categories() {
 
     // Add styling and classes
     newPar.classList.add("badge");
-    newPar.style.width = "100%";
+    newPar.style.width = "50%";
     newPar.style.backgroundColor = color;
     newPar.innerText = `${categoryArray[i]}`;
 
