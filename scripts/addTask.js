@@ -6,7 +6,7 @@ function showError(inputId, errorMessage) {
   document.getElementById(inputId + "-error").textContent = errorMessage;
 }
 
-function submitForm() {
+export function submitForm() {
   var fieldsToValidate = [
     {
       inputId: "title",
@@ -142,7 +142,6 @@ async function populateCategories() {
 }
 function addNewCategory() {
   document.getElementById("add-category").addEventListener("click", () => {
-    console.log("clicked");
     document.getElementById("category-name").style.display = "block";
     document.getElementById("add-category").style.display = "none";
     document.getElementById("submit-category").style.display = "block";
@@ -152,7 +151,6 @@ function addNewCategory() {
 function submitNewCategory() {
   document.getElementById("submit-category").addEventListener("click", () => {
     let newcategory = document.getElementById("category-name").value;
-    console.log(newcategory);
     db.collection("users")
       .doc(userID)
       .collection("categories")
@@ -191,7 +189,6 @@ document.getElementById("title-input").addEventListener("input", () => {
 });
 
 function addTask() {
-  //console.log($("#taskModal").load("./text/addTaskModal.html"));
   fetch("./text/addTaskModal.html")
     .then((res) => res.text())
     .then((html) => {
@@ -208,9 +205,7 @@ function setup() {
   addNewCategory();
   setDefaultDate();
   setDefaultEndDate();
-  document.getElementById("addTaskBtn").addEventListener("click", () => {
-    submitForm();
-  });
+  document.getElementById("addTaskBtn").addEventListener("click", submitForm);
   console.log("setup complete");
 }
 

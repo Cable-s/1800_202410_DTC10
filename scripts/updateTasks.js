@@ -1,7 +1,9 @@
 import { query } from "./queryDocuments.js";
+import { submitForm } from "./addTask.js";
 var userID = sessionStorage.getItem("userId");
 let tasks = await query("tasks");
-function sendUpdate(valuesArray) {
+
+function sendUpdate(valuesArray, id) {
   if (userID) {
     // User is signed in.
     db.collection("users")
@@ -45,7 +47,6 @@ function updateTask(id) {
       let submitButton = document.getElementById("addTaskBtn");
       let closeButton = document.getElementById("closeModal");
 
-      submitButton.removeAttribute("onclick");
       closeButton.addEventListener("click", () => {
         location.reload();
         checkExpiredTasks();
@@ -60,7 +61,7 @@ function updateTask(id) {
 
       category.setAttribute("value", tasks[i].category);
 
-      startDate.setAttribute("value", tasks[i].startDate);
+      startDate.setAttribute("value", tasks[i].startDate + "T00:00:00");
       endDate.setAttribute("value", tasks[i].endDate + "T00:00:00");
       startTime.setAttribute("value", tasks[i].startTime);
       endTime.setAttribute("value", tasks[i].endTime);
@@ -73,6 +74,7 @@ function updateTask(id) {
         }
       }
 
+      submitButton.removeEventListener("click", submitForm);
       submitButton.addEventListener("click", function () {
         let adjustedValues = {
           title: titleInput.value,
@@ -84,7 +86,7 @@ function updateTask(id) {
           endTime: endTime.value,
           importance: importance.value,
         };
-        sendUpdate(adjustedValues);
+        sendUpdate(adjustedValues, id);
       });
     }
   }
