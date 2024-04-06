@@ -41,8 +41,8 @@ function displayTask(task) {
   }
 
   let taskCard = `
-    <div class="bg-${task.importance} task-card border border-secondary rounded-3" id="${task.id}" 
-    style="display:flex; flex-direction:column; margin: 5px; padding: 10px;">
+    <div class="bg-${task.importance} task-card" id="${task.id}" 
+    style="border-style:outset; border-radius:10px; background-color:white; display:flex; flex-direction:column; margin: 5px; padding: 10px;">
       <div style="display:flex; place-content:space-between"> 
         <div>   
           <p class="title" style="font-weight:bold">${task.title}</p>
@@ -53,8 +53,10 @@ function displayTask(task) {
             <p class="start-time">${task.startTime}</p>
             <p class="end-time">-${task.endTime}</p>
           </div>
-          <button class ="edit" style="display:none"><img src="./images/edit-icon.png" style="width:25px"></button>
-          <button class="complete" style ="display:none"><img src="./images/check-icon.png" style="width:25px"></button>   
+          <div style="display: flex">
+            <button class ="edit" style="display:none"><img src="./images/edit-icon.png" style="width:25px"></button>
+            <button class="complete" style ="display:none"><img src="./images/check-icon.png" style="width:25px"></button>   
+          </div>
         </div>
       </div>
     <div>

@@ -71,6 +71,7 @@ hr {
   border: none;
   color: white;
   margin: 1px;
+  width: 38px;
 }
 
 .complete {
@@ -79,4 +80,5 @@ hr {
   border: none;
   color: white;
   margin: 1px;
+  width: 38px;
 }
