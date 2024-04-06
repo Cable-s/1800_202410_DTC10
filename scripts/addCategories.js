@@ -1,4 +1,4 @@
-var userId = localStorage.getItem("userId");
+var userId = sessionStorage.getItem("userId");
 // check all checkboxes
 function checkAll() {
   var inputs = document.querySelectorAll(".aspect");

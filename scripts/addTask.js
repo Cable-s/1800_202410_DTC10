@@ -1,6 +1,6 @@
 import { query } from "./queryDocuments.js";
 
-var userID = localStorage.getItem("userId");
+var userID = sessionStorage.getItem("userId");
 var categories = await query("categories");
 function showError(inputId, errorMessage) {
   document.getElementById(inputId + "-error").textContent = errorMessage;

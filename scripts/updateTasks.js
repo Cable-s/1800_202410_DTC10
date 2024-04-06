@@ -1,30 +1,27 @@
 import { query } from "./queryDocuments.js";
-
+var userID = sessionStorage.getItem("userId");
 let tasks = await query("tasks");
-function sendUpdate(id, valuesArray) {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      let userID = user.uid;
-      // User is signed in.
-      db.collection("users")
-        .doc(userID)
-        .collection("tasks")
-        .doc(id)
-        .update({
-          title: valuesArray.title,
-          description: valuesArray.description,
-          category: valuesArray.category,
-          startDate: new Date(valuesArray.startDate),
-          endDate: new Date(valuesArray.endDate),
-          startTime: valuesArray.startTime,
-          endTime: valuesArray.endTime,
-          importance: valuesArray.importance,
-        })
-        .then(() => {
-          location.reload();
-        });
-    }
-  });
+function sendUpdate(valuesArray) {
+  if (userID) {
+    // User is signed in.
+    db.collection("users")
+      .doc(userID)
+      .collection("tasks")
+      .doc(id)
+      .update({
+        title: valuesArray.title,
+        description: valuesArray.description,
+        category: valuesArray.category,
+        startDate: new Date(valuesArray.startDate),
+        endDate: new Date(valuesArray.endDate),
+        startTime: valuesArray.startTime,
+        endTime: valuesArray.endTime,
+        importance: valuesArray.importance,
+      })
+      .then(() => {
+        location.reload();
+      });
+  }
 }
 
 function updateTask(id) {
@@ -87,7 +84,7 @@ function updateTask(id) {
           endTime: endTime.value,
           importance: importance.value,
         };
-        sendUpdate(tasks[i].id, adjustedValues);
+        sendUpdate(adjustedValues);
       });
     }
   }
@@ -97,7 +94,7 @@ function complete(id) {
   for (let i = 0; i < tasks.length; i++) {
     if (id == tasks[i].id) {
       db.collection("users")
-        .doc(firebase.auth().currentUser.uid)
+        .doc(userID)
         .collection("tasks")
         .doc(id)
         .delete()

@@ -1,14 +1,15 @@
 import { query } from "./queryDocuments.js";
+import { getUser } from "./getUser.js";
 
-var userID = localStorage.getItem("userId");
+const user = await getUser();
+var userID = sessionStorage.getItem("userId");
 var docID;
 var categoriesDocID;
 var ImageFile;
 var profileData;
 var categoryData;
 var accountDate;
-const firstName = document.getElementById("firstName");
-const lastName = document.getElementById("lastName");
+const username = document.getElementById("username");
 const about = document.getElementById("about");
 const birthday = document.getElementById("birthday");
 const submit = document.getElementById("submit");
@@ -17,9 +18,7 @@ const userPortrait = document.getElementById("userImg");
 const button = document.getElementById("updateImg");
 
 profileData = await query("profile");
-console.log(profileData);
 categoryData = await query("categories");
-console.log(categoryData);
 function listenFileSelect() {
   // listen for file selection
 
@@ -70,8 +69,8 @@ function uploadPic() {
 }
 
 function loadProfile() {
-  firstName.value = profileData[0].firstName;
-  lastName.value = profileData[0].lastName;
+  console.log(user);
+  username.value = user.displayName;
   about.value = profileData[0].about;
   birthday.value = profileData[0].birthday;
   joinDate.innerText = "Member since " + accountDate;
@@ -99,7 +98,6 @@ Categories();
 
 function Categories() {
   let categoryArray = categoryData[0].categories;
-  console.log("categoryArray", categoryArray);
 
   for (let i = 0; i < categoryArray.length; i++) {
     let color = "rgb(255, 197, 74)";
@@ -130,7 +128,6 @@ function Categories() {
 }
 
 document.getElementById("add-category").addEventListener("click", () => {
-  console.log("clicked");
   document.getElementById("category-name").style.display = "block";
   document.getElementById("add-category").style.display = "none";
   document.getElementById("submit-category").style.display = "block";
@@ -154,19 +151,23 @@ document.getElementById("submit-category").addEventListener("click", () => {
 });
 
 submit.addEventListener("click", () => {
-  db.collection("users")
-    .doc(`${userID}`)
-    .collection("profile")
-    .doc(`${profileData[0].docId}`)
-    .update({
-      firstName: `${firstName.value}`,
-      lastName: `${lastName.value}`,
-      about: `${about.value}`,
-      birthday: `${birthday.value}`,
+  user
+    .updateProfile({
+      displayName: `${username.value}`,
     })
-    .then(console.log("Document written"))
-    .catch((error) => {
-      console.log(error);
+    .then(() => {
+      db.collection("users")
+        .doc(`${userID}`)
+        .collection("profile")
+        .doc(`${profileData[0].docId}`)
+        .update({
+          about: `${about.value}`,
+          birthday: `${birthday.value}`,
+        })
+        .then(console.log("Document written"))
+        .catch((error) => {
+          console.log(error);
+        });
     });
 });
 

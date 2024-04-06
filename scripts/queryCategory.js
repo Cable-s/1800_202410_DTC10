@@ -1,7 +1,9 @@
-
 function performCategoryQuery(userID) {
   var returnArray = [];
-  return db.collection("users").doc(`${userID}`).collection("categories")
+  return db
+    .collection("users")
+    .doc(`${userID}`)
+    .collection("categories")
     .get()
     .then((categories) => {
       categories.forEach((doc) => {
@@ -27,7 +29,7 @@ function categoryQuery() {
 }
 
 categoryQuery().then((diffCat) => {
-  localStorage.setItem("categories", JSON.stringify(diffCat));
+  sessionStorage.setItem("categories", JSON.stringify(diffCat));
   // testing = JSON.parse(localStorage.getItem("categories"));
   // console.log(testing);
 });

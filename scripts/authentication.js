@@ -16,7 +16,7 @@ var uiConfig = {
       // The Firestore rules must allow the user to write.
       //------------------------------------------------------------------------------------------
       var user = authResult.user; // get the user object from the Firebase authentication database
-      var userID = localStorage.setItem("userId", user.uid);
+      var userID = sessionStorage.setItem("userId", user.uid);
       var docRef; //used to delete empty task doc
       if (authResult.additionalUserInfo.isNewUser) {
         //if new user
@@ -61,8 +61,7 @@ var uiConfig = {
         db.collection("users").doc(user.uid).collection("profile").add({
           about: null,
           birthday: null,
-          firstName: null,
-          lastName: null,
+          name: user.displayName,
           image: null,
           interests: null,
           lastName: null,
