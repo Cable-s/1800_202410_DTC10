@@ -138,7 +138,7 @@ async function populateCategories() {
     <option value="${category}" >${category}</option>
     `;
   });
-  setDefaultCategoryInput()
+  setDefaultCategoryInput();
 }
 function addNewCategory() {
   document.getElementById("add-category").addEventListener("click", () => {
@@ -171,24 +171,36 @@ function submitNewCategory() {
 }
 
 function displayCharactersLeft() {
-  let currentDescLetters = document.getElementById("description-input").value.length
-  let currentTitleLetters = document.getElementById("title-input").value.length
-  let maxTitleLength = 25
-  let maxDescLength = 60
-  document.getElementById("spanDescAmount").innerHTML = `  ${currentDescLetters} / ${maxDescLength}`
-  document.getElementById("spanTitleAmount").innerHTML = `  ${currentTitleLetters} / ${maxTitleLength}`
+  let currentDescLetters =
+    document.getElementById("description-input").value.length;
+  let currentTitleLetters = document.getElementById("title-input").value.length;
+  let maxTitleLength = 25;
+  let maxDescLength = 60;
+  document.getElementById("spanDescAmount").innerHTML =
+    `  ${currentDescLetters} / ${maxDescLength}`;
+  document.getElementById("spanTitleAmount").innerHTML =
+    `  ${currentTitleLetters} / ${maxTitleLength}`;
 }
 
-document.getElementById("description-input").addEventListener('input', () => {
-  displayCharactersLeft()
-})
+document.getElementById("description-input").addEventListener("input", () => {
+  displayCharactersLeft();
+});
 
-document.getElementById("title-input").addEventListener('input', () => {
-  displayCharactersLeft()
-})
+document.getElementById("title-input").addEventListener("input", () => {
+  displayCharactersLeft();
+});
 
 function addTask() {
-  console.log($("#taskModal").load("./text/addTaskModal.html"));
+  //console.log($("#taskModal").load("./text/addTaskModal.html"));
+  fetch("./text/addTaskModal.html")
+    .then((res) => res.text())
+    .then((html) => {
+      const nodes = new DOMParser().parseFromString(html, "text/html");
+      const body = nodes.querySelector("#taskModal");
+
+      document.documentElement.removeChild(document.body);
+      document.documentElement.appendChild(body);
+    });
 }
 
 function setup() {
@@ -215,8 +227,8 @@ function setDefaultDate() {
 }
 
 document.getElementById("startDate").addEventListener("input", () => {
-  setDefaultEndDate()
-})
+  setDefaultEndDate();
+});
 
 function setDefaultEndDate() {
   let today = document.getElementById("startDate").value;
@@ -224,8 +236,7 @@ function setDefaultEndDate() {
 }
 
 function setDefaultCategoryInput() {
-  document.getElementById("category-input").value = "Un-categorized"
+  document.getElementById("category-input").value = "Un-categorized";
 }
-
 
 $(document).ready(setup);
