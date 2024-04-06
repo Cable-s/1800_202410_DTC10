@@ -43,7 +43,3 @@ function getNameFromAuth() {
 }
 
 getNameFromAuth(); //run the function
-
-document.getElementById("logoutButton").addEventListener("click", function () {
-  logout();
-});
