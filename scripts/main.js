@@ -1,5 +1,6 @@
 import { query } from "./queryDocuments.js";
 import { getUser } from "./getUser.js";
+import { logout } from "./script.js";
 
 const user = await getUser();
 const profileData = await query("profile");
@@ -42,3 +43,7 @@ function getNameFromAuth() {
 }
 
 getNameFromAuth(); //run the function
+
+document.getElementById("logoutButton").addEventListener("click", function () {
+  logout();
+});
