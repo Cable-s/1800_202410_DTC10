@@ -1,4 +1,5 @@
 import { query } from "./queryDocuments.js";
+import { formatDate } from "./date.js";
 
 var userID = sessionStorage.getItem("userId");
 var categories = await query("categories");
@@ -200,14 +201,7 @@ function setup() {
 }
 
 function setDefaultDate() {
-  const zeroPad = (num, places) => String(num).padStart(places, "0");
-  let today = new Date();
-  today =
-    today.getFullYear() +
-    "-" +
-    zeroPad(today.getMonth() + 1, 2) +
-    "-" +
-    zeroPad(today.getDate(), 2);
+  let today = formatDate(new Date());
   document.getElementById("startDate").value = today;
 }
 

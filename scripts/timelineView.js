@@ -1,27 +1,12 @@
 import { query } from "./queryDocuments.js";
 import { addHandlers } from "./updateTasks.js";
-
+import { formatDate } from "./date.js";
 async function displayTasksByDate(selectedDate) {
   let tasks = await query("tasks");
 
   for (let i = 0; i < tasks.length; i++) {
-    const zeroPad = (num, places) => String(num).padStart(places, "0");
-
-    let taskStartDate = new Date(tasks[i].startDate.seconds * 1000);
-    let taskEndDate = new Date(tasks[i].endDate.seconds * 1000);
-
-    taskStartDate =
-      taskStartDate.getFullYear() +
-      "-" +
-      zeroPad(taskStartDate.getMonth() + 1, 2) +
-      "-" +
-      zeroPad(taskStartDate.getDate(), 2);
-    taskEndDate =
-      taskEndDate.getFullYear() +
-      "-" +
-      zeroPad(taskEndDate.getMonth() + 1, 2) +
-      "-" +
-      zeroPad(taskEndDate.getDate(), 2);
+    let taskStartDate = formatDate(tasks[i].startDate.toDate());
+    let taskEndDate = formatDate(tasks[i].endDate.toDate());
 
     // Check if the selected date falls within the range of task's start and end dates
     if (selectedDate >= taskStartDate && selectedDate <= taskEndDate) {
@@ -202,14 +187,8 @@ function clearTasks() {
 
 // Change today's date
 function setDefaultDate() {
-  const zeroPad = (num, places) => String(num).padStart(places, "0");
-  let today = new Date();
-  today =
-    today.getFullYear() +
-    "-" +
-    zeroPad(today.getMonth() + 1, 2) +
-    "-" +
-    zeroPad(today.getDate(), 2);
+  //const zeroPad = (num, places) => String(num).padStart(places, "0");
+  let today = formatDate(new Date());
   document.getElementById("selectedDate").value = today;
   displayTasksByDate(today);
 }

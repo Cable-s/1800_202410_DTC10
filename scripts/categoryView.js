@@ -1,26 +1,16 @@
 import { query } from "./queryDocuments.js";
 import { addHandlers } from "./updateTasks.js";
+import { formatDate } from "./date.js";
+
 let tasks = await query("tasks");
 
 function getCategoryLabels(selectedDate) {
   const zeroPad = (num, places) => String(num).padStart(places, "0");
   let categoryLabels = [];
   for (let i = 0; i < tasks.length; i++) {
-    let startDate = new Date(tasks[i].startDate.seconds * 1000);
-    let endDate = new Date(tasks[i].endDate.seconds * 1000);
-    let start =
-      startDate.getFullYear() +
-      "-" +
-      zeroPad(startDate.getMonth() + 1, 2) +
-      "-" +
-      zeroPad(startDate.getDate(), 2);
-    let end =
-      endDate.getFullYear() +
-      "-" +
-      zeroPad(endDate.getMonth() + 1, 2) +
-      "-" +
-      zeroPad(endDate.getDate(), 2);
-    if (start <= selectedDate && selectedDate <= end) {
+    let startDate = formatDate(tasks[i].startDate.toDate());
+    let endDate = formatDate(tasks[i].endDate.toDate());
+    if (startDate <= selectedDate && selectedDate <= endDate) {
       let category = tasks[i].category;
       categoryLabels.push(category);
     }
@@ -41,21 +31,9 @@ async function displayCategorized(selectedDate) {
       ` </h1>
             `;
     for (let j = 0; j < tasks.length; j++) {
-      let startDate = new Date(tasks[j].startDate.seconds * 1000);
-      let endDate = new Date(tasks[j].endDate.seconds * 1000);
-      let start =
-        startDate.getFullYear() +
-        "-" +
-        zeroPad(startDate.getMonth() + 1, 2) +
-        "-" +
-        zeroPad(startDate.getDate(), 2);
-      let end =
-        endDate.getFullYear() +
-        "-" +
-        zeroPad(endDate.getMonth() + 1, 2) +
-        "-" +
-        zeroPad(endDate.getDate(), 2);
-      if (start <= selectedDate && selectedDate <= end) {
+      let startDate = formatDate(tasks[j].startDate.toDate());
+      let endDate = formatDate(tasks[j].endDate.toDate());
+      if (startDate <= selectedDate && selectedDate <= endDate) {
         if (categories[i] == tasks[j].category) {
           document.getElementById("categorized").innerHTML +=
             `<div style="border-style:dotted; display: flex; flex-direction: row; justify-content: space-between;" class="task-card" id='${tasks[j].id}'>
@@ -85,14 +63,7 @@ async function displayCategorized(selectedDate) {
 
 // Change today's date
 function setDefaultDate() {
-  const zeroPad = (num, places) => String(num).padStart(places, "0");
-  let today = new Date();
-  today =
-    today.getFullYear() +
-    "-" +
-    zeroPad(today.getMonth() + 1, 2) +
-    "-" +
-    zeroPad(today.getDate(), 2);
+  let today = formatDate(new Date());
   document.getElementById("selectedDate").value = today;
   getCategoryLabels(today);
   displayCategorized(today);

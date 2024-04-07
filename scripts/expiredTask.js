@@ -1,5 +1,6 @@
 import { query } from "./queryDocuments.js";
 import { addHandlers } from "./updateTasks.js";
+import { formatDate } from "./date.js";
 let tasks = await query("tasks");
 
 $(document).ready(() => {
@@ -18,36 +19,16 @@ export function checkExpiredTasks() {
 
     let endTime = tasks[i].endTime;
 
-    let endDate = new Date(tasks[i].endDate.seconds * 1000);
-    endDate =
-      endDate.getFullYear() +
-      "-" +
-      zeroPad(endDate.getMonth() + 1, 2) +
-      "-" +
-      endDate.getDate();
+    let endDate = formatDate(tasks[i].endDate.toDate());
 
-    let todayDate = new Date();
-    todayDate =
-      todayDate.getFullYear() +
-      "-" +
-      zeroPad(todayDate.getMonth() + 1, 2) +
-      "-" +
-      todayDate.getDate();
+    let todayDate = formatDate(new Date());
 
     let timeNow = new Date();
     timeNow = timeNow.getHours() + ":" + zeroPad(timeNow.getMinutes(), 2);
 
-    // console.log("timeNow " + timeNow)
-    // console.log("endTime " + endTime)
-    // console.log(endTime < timeNow)
-    // console.log("endDate " + endDate)
-    // console.log("todayDate " + todayDate)
-    // console.log(todayDate > endDate)
-    // console.log(todayDate == endDate)
-
     if (
       (todayDate > endDate || (todayDate == endDate && endTime < timeNow)) &&
-      sessionStorage.getItem("notifications") == "true"
+      sessionStorage.getItem("notifications") == "on"
     ) {
       counter++;
       document.getElementById("expiredTasks").innerHTML += `
