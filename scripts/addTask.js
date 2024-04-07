@@ -65,7 +65,6 @@ export function submitForm() {
   var endDate = new Date(
     document.getElementById("endDate").value + "T00:00:00",
   );
-  );
   var startTime = document.getElementById("startTime").value;
   var endTime = document.getElementById("endTime").value;
   var error = false;
