@@ -76,7 +76,8 @@ function loadProfile() {
   username.value = user.displayName;
   about.value = profileData[0].about;
   birthday.value = profileData[0].birthday;
-  joinDate.innerText = "Member since " + accountDate;
+  joinDate.innerText =
+    "Member since " + user.metadata.creationTime.slice(0, 16);
   flexSwitch.checked = sessionStorage.getItem("notifications");
   if (sessionStorage.getItem("notifications") == "on") {
     flexSwitch.checked = true;
