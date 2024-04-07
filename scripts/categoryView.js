@@ -34,24 +34,26 @@ async function displayCategorized(selectedDate) {
       if (startDate <= selectedDate && selectedDate <= endDate) {
         if (categories[i] == tasks[j].category) {
           document.getElementById("categorized").innerHTML +=
-            `<div style="border-style:dotted; display: flex; flex-direction: row; justify-content: space-between;" class="task-card" id='${tasks[j].id}'>
-            <div style="display: flex; flex-direction: column;">
-                        <p> ` +
-            tasks[j].title +
-            ` </p>
-                        <p> ` +
-            tasks[j].description +
-            `</p>
-          </div>
-          <div style="display: flex; flex-direction: column;">
-          <div style="display: flex; flex-direction: row;">
-            <button class ="edit" ><img src="./images/edit-icon.png" style="width:25px"></button>
-            <button class="complete"><img src="./images/check-icon.png" style="width:25px"></button>
-          </div>
-          </div>
-
-                        </div>   
-                        `;
+            `<div style="border-style:outset; border-radius:10px; background-color:white; display:flex; flex-direction:column; margin: 5px; padding: 10px;" 
+            class="task-card" id='${tasks[j].id}'>
+              <div style="display: flex; place-content:space-between">
+                <div>
+                  <p style="font-weight:bold"> `+ tasks[j].title + ` </p>
+                  <p> `+ tasks[j].description + ` </p>
+                </div>
+                <div>
+                  <div style="display:flex;">
+                    <p class="start-time">${tasks[j].startTime}</p>
+                    <p class="end-time">-${tasks[j].endTime}</p>
+                  </div>
+                  <div style="display: flex; flex-direction: row; justify-content-flex-end">
+                    <button class ="edit" ><img src="./images/edit-icon.png" style="width:25px"></button>
+                    <button class="complete"><img src="./images/check-icon.png" style="width:25px"></button>
+                  </div>
+                </div>
+              </div>
+            </div>   
+            `;
         }
       }
     }
