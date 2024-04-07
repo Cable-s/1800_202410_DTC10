@@ -9,6 +9,7 @@ var ImageFile;
 var profileData;
 var categoryData;
 var accountDate;
+var notifications;
 const username = document.getElementById("username");
 const about = document.getElementById("about");
 const birthday = document.getElementById("birthday");
@@ -16,9 +17,10 @@ const submit = document.getElementById("submit");
 const joinDate = document.getElementById("joinDate");
 const userPortrait = document.getElementById("userImg");
 const button = document.getElementById("updateImg");
+var flexSwitch = document.getElementById("flexSwitchCheckChecked");
 
-profileData = await query("profile");
-categoryData = await query("categories");
+var profileData = await query("profile");
+var categoryData = await query("categories");
 function listenFileSelect() {
   // listen for file selection
 
@@ -32,7 +34,6 @@ function listenFileSelect() {
 }
 
 function uploadPic() {
-  console.log("inside uploadPic " + profileData[0].docId);
   var storageRef = firebase
     .storage()
     .ref("images/" + profileData[0].docId + ".jpg");
@@ -69,11 +70,17 @@ function uploadPic() {
 }
 
 function loadProfile() {
-  console.log(user);
+  sessionStorage.setItem("notifications", profileData[0].notifications);
   username.value = user.displayName;
   about.value = profileData[0].about;
   birthday.value = profileData[0].birthday;
   joinDate.innerText = "Member since " + accountDate;
+  flexSwitch.checked = sessionStorage.getItem("notifications");
+  if (sessionStorage.getItem("notifications") == "on") {
+    flexSwitch.checked = true;
+  } else {
+    flexSwitch.checked = false;
+  }
   if (profileData[0].image != null) {
     userPortrait.src = profileData[0].image;
   } else {
@@ -151,25 +158,32 @@ document.getElementById("submit-category").addEventListener("click", () => {
 });
 
 submit.addEventListener("click", () => {
-  user
-    .updateProfile({
-      displayName: `${username.value}`,
+  sessionStorage.setItem("notifications", flexSwitch.value);
+  user.updateProfile({
+    displayName: `${username.value}`,
+  });
+  db.collection("users")
+    .doc(`${userID}`)
+    .collection("profile")
+    .doc(`${profileData[0].docId}`)
+    .update({
+      about: `${about.value}`,
+      birthday: `${birthday.value}`,
+      notifications: `${flexSwitch.value}`,
     })
-    .then(() => {
-      db.collection("users")
-        .doc(`${userID}`)
-        .collection("profile")
-        .doc(`${profileData[0].docId}`)
-        .update({
-          about: `${about.value}`,
-          birthday: `${birthday.value}`,
-        })
-        .then(console.log("Document written"))
-        .catch((error) => {
-          console.log(error);
-        });
+    .then(function () {
+      location.reload();
+    })
+    .catch((error) => {
+      console.log(error);
     });
 });
-
+flexSwitch.addEventListener("change", function () {
+  if (this.checked) {
+    flexSwitch.value = "on";
+  } else {
+    flexSwitch.value = "off";
+  }
+});
 loadProfile();
 listenFileSelect();
