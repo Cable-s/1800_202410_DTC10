@@ -24,6 +24,9 @@ function getNameFromAuth() {
   if (user) {
     // Do something for the currently logged-in user here:
 
+    if (!sessionStorage.getItem("notifications")) {
+      sessionStorage.setItem("notifications", profileData[0].notifications);
+    }
     let userName = user.displayName;
     let lastSignIn = getDate(user);
     if (profileData[0].image != null) {
