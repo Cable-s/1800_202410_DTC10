@@ -1,12 +1,12 @@
 import { query } from "./queryDocuments.js";
 
-var userID = localStorage.getItem("userId");
+var userID = sessionStorage.getItem("userId");
 var categories = await query("categories");
 function showError(inputId, errorMessage) {
   document.getElementById(inputId + "-error").textContent = errorMessage;
 }
 
-function submitForm() {
+export function submitForm() {
   var fieldsToValidate = [
     {
       inputId: "title",
@@ -59,36 +59,27 @@ function submitForm() {
   // Check for start and end date/time validation
   var category = document.getElementById("category-input").value;
   var description = document.getElementById("description-input").value;
-  console.log(document.getElementById("endDate").value);
   var startDate = new Date(
     document.getElementById("startDate").value + "T00:00:00",
   );
   var endDate = new Date(
     document.getElementById("endDate").value + "T00:00:00",
   );
-  console.log(
-    "documents",
-    document.getElementById("startDate").value,
-    document.getElementById("endDate").value,
-  );
   var startTime = document.getElementById("startTime").value;
   var endTime = document.getElementById("endTime").value;
   var error = false;
   if (startDate.getTime() > endDate.getTime()) {
     error = true;
-    console.log("true");
     showError("endDate", "End date must be after start date");
   }
 
   if (startDate.getTime() == endDate.getTime() && startTime >= endTime) {
     error = true;
-    console.log("true");
     showError("endTime", "End time must be after start time");
   }
 
   if (endDate.getTime() < startDate.getTime()) {
     error = trued;
-    console.log("true");
     showError("endDate", "End date cannot be before start date");
   }
 
@@ -138,11 +129,10 @@ async function populateCategories() {
     <option value="${category}" >${category}</option>
     `;
   });
-  setDefaultCategoryInput()
+  setDefaultCategoryInput();
 }
 function addNewCategory() {
   document.getElementById("add-category").addEventListener("click", () => {
-    console.log("clicked");
     document.getElementById("category-name").style.display = "block";
     document.getElementById("add-category").style.display = "none";
     document.getElementById("submit-category").style.display = "block";
@@ -152,7 +142,6 @@ function addNewCategory() {
 function submitNewCategory() {
   document.getElementById("submit-category").addEventListener("click", () => {
     let newcategory = document.getElementById("category-name").value;
-    console.log(newcategory);
     db.collection("users")
       .doc(userID)
       .collection("categories")
@@ -170,25 +159,36 @@ function submitNewCategory() {
   });
 }
 
-function displayCharactersLeft() {
-  let currentDescLetters = document.getElementById("description-input").value.length
-  let currentTitleLetters = document.getElementById("title-input").value.length
-  let maxTitleLength = 25
-  let maxDescLength = 60
-  document.getElementById("spanDescAmount").innerHTML = `  ${currentDescLetters} / ${maxDescLength}`
-  document.getElementById("spanTitleAmount").innerHTML = `  ${currentTitleLetters} / ${maxTitleLength}`
+export function displayCharactersLeft() {
+  let currentDescLetters =
+    document.getElementById("description-input").value.length;
+  let currentTitleLetters = document.getElementById("title-input").value.length;
+  let maxTitleLength = 25;
+  let maxDescLength = 60;
+  document.getElementById("spanDescAmount").innerHTML =
+    `  ${currentDescLetters} / ${maxDescLength}`;
+  document.getElementById("spanTitleAmount").innerHTML =
+    `  ${currentTitleLetters} / ${maxTitleLength}`;
 }
 
-document.getElementById("description-input").addEventListener('input', () => {
-  displayCharactersLeft()
-})
+document.getElementById("description-input").addEventListener("input", () => {
+  displayCharactersLeft();
+});
 
-document.getElementById("title-input").addEventListener('input', () => {
-  displayCharactersLeft()
-})
+document.getElementById("title-input").addEventListener("input", () => {
+  displayCharactersLeft();
+});
 
 function addTask() {
-  console.log($("#taskModal").load("./text/addTaskModal.html"));
+  fetch("./text/addTaskModal.html")
+    .then((res) => res.text())
+    .then((html) => {
+      const nodes = new DOMParser().parseFromString(html, "text/html");
+      let modal = nodes.querySelector("#taskModal");
+
+      document.documentElement.removeChild(document.modal);
+      document.documentElement.appendChild(modal);
+    });
 }
 
 function setup() {
@@ -196,10 +196,7 @@ function setup() {
   addNewCategory();
   setDefaultDate();
   setDefaultEndDate();
-  document.getElementById("addTaskBtn").addEventListener("click", () => {
-    submitForm();
-  });
-  console.log("setup complete");
+  document.getElementById("addTaskBtn").addEventListener("click", submitForm);
 }
 
 function setDefaultDate() {
@@ -215,8 +212,15 @@ function setDefaultDate() {
 }
 
 document.getElementById("startDate").addEventListener("input", () => {
-  setDefaultEndDate()
-})
+  setDefaultEndDate();
+});
+
+document.getElementById("closeModal").addEventListener("click", () => {
+  document.getElementById("input-form").reset();
+  displayCharactersLeft();
+  let modal = bootstrap.Modal.getOrCreateInstance("#exampleModal");
+  modal.hide();
+});
 
 function setDefaultEndDate() {
   let today = document.getElementById("startDate").value;
@@ -224,8 +228,7 @@ function setDefaultEndDate() {
 }
 
 function setDefaultCategoryInput() {
-  document.getElementById("category-input").value = "Un-categorized"
+  document.getElementById("category-input").value = "Un-categorized";
 }
-
 
 $(document).ready(setup);

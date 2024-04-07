@@ -21,7 +21,7 @@ function query() {
           .get()
           .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-              localStorage.setItem("settingsID", doc.id);
+              sessionStorage.setItem("settingsID", doc.id);
               resolve(doc);
             });
           });
@@ -34,7 +34,7 @@ async function userSettings() {
     let result = doc.data();
     // localStorage.setItem("language", result.language);
     // localStorage.setItem("fontSelect", result.fontSelect);
-    localStorage.setItem("notifications", result.notifications);
+    sessionStorage.setItem("notifications", result.notifications);
     // localStorage.setItem("themeSelect", result.themeSelect);
     // localStorage.setItem("timezoneSelect", result.timezoneSelect);
 
@@ -42,8 +42,8 @@ async function userSettings() {
     // timezoneSelect.value = localStorage.getItem("timezoneSelect");
     // themeSelect.value = localStorage.getItem("themeSelect");
     // fontSelect.value = localStorage.getItem("fontSelect");
-    flexSwitch.value = localStorage.getItem("notifications");
-    if (localStorage.getItem("notifications") == "true") {
+    flexSwitch.value = sessionStorage.getItem("notifications");
+    if (sessionStorage.getItem("notifications") == "true") {
       flexSwitch.checked = true;
     } else {
       flexSwitch.checked = false;
@@ -56,7 +56,7 @@ function updateSettings(newSetting) {
     db.collection("users")
       .doc(`${userID}`)
       .collection("settings")
-      .doc(`${localStorage.getItem("settingsID")}`)
+      .doc(`${sessionStorage.getItem("settingsID")}`)
       .update({ [key]: value })
       .then(() => {
         console.log("Document successfully written!");

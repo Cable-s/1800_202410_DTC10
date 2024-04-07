@@ -1,34 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Timecraft</title>
-    <meta name="comp1800 template" content="My 1800 App">
+    <meta name="comp1800 template" content="My 1800 App" />
 
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Bootstrap Library CSS CDN go here -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- Boostrap Library JS CDN  go here -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        </script>
-    <!-- Other libraries go here -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- Boostrap Library JS CDN  go here -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Other libraries go here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Google Icons (Material Design) -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
     <!-- Link to styles of your own -->
-    <link rel="stylesheet" href="./styles/style.css">
-
+    <link rel="stylesheet" href="./styles/style.css" />
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -36,57 +44,159 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
+    />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <div class="container">
-        <nav id="navbarTemplate" class="sticky-top"></nav>
-        <div style="display:flex; flex-direction:column; place-items:center; margin:10px">
-            <div>
-                <h5 class="modal-title" id="exampleModalLabel">Tell us about yourself!</h5>
-            </div>
-            <div>
-                <p style="margin-bottom:-10px; text-align:center"> Select some Categories you can use to organize your
-                    tasks. You can
-                    always change these later if you
-                    choose or even make your own!</p>
-                <form id="input-form" style="display:flex; flex-direction:column; place-items:center">
-                    <!-- only show up when repeat option is "everyweek"-->
-                    <div id="categorySelect">
-                        <br>
-                        <input type="checkbox" id="work" class="aspect" value="Work"> Work <br>
-                        <input type="checkbox" id="school" class="aspect" value="School"> School <br>
-                        <input type="checkbox" id="gym" class="aspect" value="Gym"> Gym <br>
-                        <input type="checkbox" id="shopping" class="aspect" value="Shopping"> Shopping <br>
-                        <input type="checkbox" id="dining" class="aspect" value="Dining"> Dining <br>
-                        <input type="checkbox" id="medical" class="aspect" value="Medical"> Medical <br>
-                        <input type="checkbox" id="dental" class="aspect" value="Dental"> Dental <br>
-                        <input type="checkbox" id="selfcare" class="aspect" value="Selfcare"> Self-care <br>
-                        <input type="checkbox" id="family" class="aspect" value="Family"> Family <br>
-                        <input type="checkbox" id="friends" class="aspect" value="Friends"> Friends <br>
-                        <input type="checkbox" id="movies" class="aspect" value="Movies"> Movies <br>
-                        <input type="checkbox" id="travel" class="aspect" value="Travel"> Travel <br>
-                        <input type="checkbox" id="music" class="aspect" value="Music"> Music <br>
-                        <input type="checkbox" id="gaming" class="aspect" value="Gaming"> Gaming <br>
-                        <input type="checkbox" id="reading" class="aspect" value="Reading"> Reading <br>
-                        <br>
-                    </div>
-                    <button type="button" class="btn btn-warning" style="max-width:fit-content; margin-bottom:10px"
-                        onclick="checkAll()">Check all</button>
-                </form>
-            </div>
-            <div style="display:flex; place-items:center">
-                <button id="addCatBtn" type="button" class="btn btn-primary" onclick="submitCategoryForm()">Add
-                    Categories</button>
-            </div>
+      <nav id="navbarTemplate" class="sticky-top"></nav>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          place-items: center;
+          margin: 10px;
+        "
+      >
+        <div>
+          <h5 class="modal-title" id="exampleModalLabel">
+            Tell us about yourself!
+          </h5>
         </div>
-        <footer id="footerTemplate" class="sticky-bottom"></footer>
+        <div>
+          <p style="margin-bottom: -10px; text-align: center">
+            Select some Categories you can use to organize your tasks. You can
+            always change these later if you choose or even make your own!
+          </p>
+          <form
+            id="input-form"
+            style="display: flex; flex-direction: column; place-items: center"
+          >
+            <!-- only show up when repeat option is "everyweek"-->
+            <div id="categorySelect">
+              <br />
+              <input type="checkbox" id="work" class="aspect" value="Work" />
+              Work <br />
+              <input
+                type="checkbox"
+                id="school"
+                class="aspect"
+                value="School"
+              />
+              School <br />
+              <input type="checkbox" id="gym" class="aspect" value="Gym" /> Gym
+              <br />
+              <input
+                type="checkbox"
+                id="shopping"
+                class="aspect"
+                value="Shopping"
+              />
+              Shopping <br />
+              <input
+                type="checkbox"
+                id="dining"
+                class="aspect"
+                value="Dining"
+              />
+              Dining <br />
+              <input
+                type="checkbox"
+                id="medical"
+                class="aspect"
+                value="Medical"
+              />
+              Medical <br />
+              <input
+                type="checkbox"
+                id="dental"
+                class="aspect"
+                value="Dental"
+              />
+              Dental <br />
+              <input
+                type="checkbox"
+                id="selfcare"
+                class="aspect"
+                value="Selfcare"
+              />
+              Self-care <br />
+              <input
+                type="checkbox"
+                id="family"
+                class="aspect"
+                value="Family"
+              />
+              Family <br />
+              <input
+                type="checkbox"
+                id="friends"
+                class="aspect"
+                value="Friends"
+              />
+              Friends <br />
+              <input
+                type="checkbox"
+                id="movies"
+                class="aspect"
+                value="Movies"
+              />
+              Movies <br />
+              <input
+                type="checkbox"
+                id="travel"
+                class="aspect"
+                value="Travel"
+              />
+              Travel <br />
+              <input type="checkbox" id="music" class="aspect" value="Music" />
+              Music <br />
+              <input
+                type="checkbox"
+                id="gaming"
+                class="aspect"
+                value="Gaming"
+              />
+              Gaming <br />
+              <input
+                type="checkbox"
+                id="reading"
+                class="aspect"
+                value="Reading"
+              />
+              Reading <br />
+              <br />
+            </div>
+            <button
+              type="button"
+              class="btn btn-warning"
+              style="max-width: fit-content; margin-bottom: 10px"
+              onclick="checkAll()"
+            >
+              Check all
+            </button>
+          </form>
+        </div>
+        <div style="display: flex; place-items: center">
+          <button
+            id="addCatBtn"
+            type="button"
+            class="btn btn-primary"
+            onclick="submitCategoryForm()"
+          >
+            Add Categories
+          </button>
+        </div>
+      </div>
+      <footer id="footerTemplate" class="sticky-bottom"></footer>
     </div>
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
@@ -94,10 +204,8 @@
 
     <!-- Link to scripts of your own -->
     <script src="./scripts/firebaseAPI_TEAM10.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/skeleton.js" type="module"></script>
+    <script src="./scripts/script.js" type="module"></script>
     <script src="./scripts/addCategories.js"></script>
-</body>
-
-
+  </body>
 </html>

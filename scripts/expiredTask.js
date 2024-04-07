@@ -47,7 +47,7 @@ function checkExpiredTasks() {
 
     if (
       (todayDate > endDate || (todayDate == endDate && endTime < timeNow)) &&
-      localStorage.getItem("notifications") == "true"
+      sessionStorage.getItem("notifications") == "true"
     ) {
       counter++;
       document.getElementById("expiredTasks").innerHTML += `

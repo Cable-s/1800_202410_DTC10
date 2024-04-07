@@ -2,7 +2,6 @@ import { query } from "./queryDocuments.js";
 import { addHandlers } from "./updateTasks.js";
 
 async function priorityTasks(selectedDate) {
-  console.log(selectedDate);
   let tasks = await query("tasks");
 
   tasks.forEach((task) => {
@@ -15,8 +14,6 @@ async function priorityTasks(selectedDate) {
       "-" +
       zeroPad(taskStartDate.getDate(), 2);
 
-    console.log(taskStartDate);
-    console.log(taskStartDate == selectedDate);
     if (taskStartDate === selectedDate) {
       displayTask(task);
     }
@@ -54,8 +51,8 @@ function displayTask(task) {
             <p class="end-time">-${task.endTime}</p>
           </div>
           <div style="display: flex">
-            <button class ="edit" style="display:none"><img src="./images/edit-icon.png" style="width:25px"></button>
-            <button class="complete" style ="display:none"><img src="./images/check-icon.png" style="width:25px"></button>   
+            <button class ="edit" ><img src="./images/edit-icon.png" style="width:25px"></button>
+            <button class="complete"><img src="./images/check-icon.png" style="width:25px"></button>   
           </div>
         </div>
       </div>
