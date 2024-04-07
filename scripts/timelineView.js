@@ -75,7 +75,7 @@ async function displayTasksByDate(selectedDate) {
           <td rowspan = "${rowspan}">
             <div id="task-goes-here" style="height: ${height}px">
             <div style="background-color: #E8EBED; height: ${height}px; display: flex; flex-direction: column;" 
-              class="shadow-sm border rounded-top-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
+              class="shadow-sm border rounded-top-3 text-center text-wrap task-card" id=${tasks[i].id}>
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
                 <div style="display: flex; flex-direction: column;" class="p-1">
                   <h3>${title}</h3>
@@ -112,7 +112,7 @@ async function displayTasksByDate(selectedDate) {
         <td rowspan = "${rowspan}">
         <div id="task-goes-here" style="height: ${height}px">
         <div style="background-color: #E8EBED; height: ${height}px; display: flex; flex-direction: column;" 
-          class="shadow-sm border rounded-bottom-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
+          class="shadow-sm border rounded-bottom-3 text-center text-wrap task-card" id=${tasks[i].id}>
             <div style="display: flex; flex-direction: row; justify-content: space-between;">
             <div style="display: flex; flex-direction: column;" class="p-1">
               <h3>${title}</h3>
