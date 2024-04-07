@@ -117,8 +117,12 @@ function Categories() {
 
     // Add styling and classes
     newPar.classList.add("badge");
-    newPar.style.width = "50%";
+    newPar.style.width = "100%";
     newPar.style.backgroundColor = color;
+    newPar.style.color = "black";
+    newPar.style.display = "flex";
+    newPar.style.alignItems = "center";
+    newPar.style.fontSize = "1rem";
     newPar.innerText = `${categoryArray[i]}`;
 
     // create a delete button and add styling
@@ -126,6 +130,11 @@ function Categories() {
     input.setAttribute("id", categoryArray[i]);
     input.setAttribute("type", "button");
     input.value = "x";
+    input.style.backgroundColor = "transparent";
+    input.style.border = "none";
+    input.style.color = "#C70039";
+    input.style.fontWeight = "bold";
+    input.style.marginLeft = "auto";
     input.addEventListener("click", () => {
       deleteCategory(categoryArray[i]);
     });

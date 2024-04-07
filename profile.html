@@ -48,27 +48,31 @@
     <nav id="navbarTemplate" class="sticky-top"></nav>
     <br>
     <!-- Stuff for body goes here -->
-    <div id="profile" class="d-flex justify-content-center m-5">
+    <div id="profile" class="d-flex justify-content-between m-3">
       <div id="user-portrait">
-        <div class="position-relative d-flex flex-column align-items-center justify-content-center">
+        <div class="position-relative d-flex flex-column align-items-center justify-content-between">
           <img id="userImg" width="150px" height="150px" />
-          <input type="file" accept="image/*" id="updateImg" style="color: transparent;" />
+          <label for="updateImg" class="btn btn-secondary my-2" style="padding: 3px">Upload Image</label>
+          <input type="file" accept="image/*" id="updateImg" style="display: none;" />
         </div>
-        <p id="categories">categories:</p>
-        <div id="user-categories" class="d-flex flex-column align-items-center">
+        <div>
+          <p class="fw-bold mt-4" id="categories">Categories:</p>
+          <div id="user-categories" class="d-flex flex-column align-items-center">
+          </div>
+          <div id="add-category-text">
+            <input type="text" id="category-name" style="display: none" class="form-text mt-1"></input>
+          </div>
+          <button class="btn btn-secondary" id="add-category" style="padding: 3px; display: block; margin: 5px;">
+            Add Category</button>
+          <button class="btn btn-secondary" id="submit-category" style="padding: 3px; display: block; margin: 5px; display: none">Submit</button>
         </div>
-        <div id="add-category-text">
-          <input type="text" id="category-name" style="display: none" class="form-text mt-1"></input>
-        </div>
-        <button id="add-category" style="display: block; margin: 10px;">New Category</button>
-        <button id="submit-category" style="display: none">Submit</button>
       </div>
       <div id="user-details">
-        <p class="mt-1 mb-1">Username:</p>
+        <p class="mt-1 mb-1 fw-bold">Username:</p>
         <input type="text" value="User" id="username" class="form-text mt-1"></input>
-        <p class="mt-1 mb-1">About Me:</p>
-        <textarea class="form-control" id="about" rows="3">Hello!</textarea>
-        <p class="mt-1 mb-1">Birthday:</p>
+        <p class="mt-1 mb-1 fw-bold">About Me:</p>
+        <textarea class="form-control" id="about" rows="3"></textarea>
+        <p class="mt-1 mb-1 fw-bold">Birthday:</p>
         <input type="date" id="birthday" class="mb-1">
         <br>
         <em class="mt-1" id="joinDate">Member since Apr 1, 1901</em>
@@ -90,7 +94,7 @@
 
         <div class="d-flex justify-content-end">
           <button style="background-color: rgb(31, 60, 117); color: white;"
-            class="btn d-grid gap-2 mt-5 justify-content-end" type="button" id="submit">Update</button>
+            class="btn d-grid mt-5 justify-content-end" type="button" id="submit">Update</button>
         </div>
       </div>
 
