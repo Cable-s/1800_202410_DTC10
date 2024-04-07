@@ -53,14 +53,6 @@ var uiConfig = {
             console.log("Error adding new user: " + error);
           });
 
-        db.collection("users").doc(user.uid).collection("settings").add({
-          language: "English",
-          timezoneSelect: "America/Vancouver",
-          notifications: "on",
-          fontSelect: "medium",
-          themeSelect: "light",
-          // Add 'settings' collection to users
-        });
         db.collection("users").doc(user.uid).collection("profile").add({
           about: null,
           birthday: null,
@@ -68,6 +60,7 @@ var uiConfig = {
           image: null,
           interests: null,
           lastName: null,
+          notifications: "on",
         });
       } else {
         return true;
