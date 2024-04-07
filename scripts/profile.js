@@ -69,7 +69,9 @@ function uploadPic() {
     });
 }
 
+// populate the user's profile data
 function loadProfile() {
+  // Make sure we have the most current notification preference
   sessionStorage.setItem("notifications", profileData[0].notifications);
   username.value = user.displayName;
   about.value = profileData[0].about;
@@ -81,6 +83,7 @@ function loadProfile() {
   } else {
     flexSwitch.checked = false;
   }
+  // specify a default image if  the user hasn't uploaded one yet
   if (profileData[0].image != null) {
     userPortrait.src = profileData[0].image;
   } else {
@@ -100,8 +103,6 @@ function deleteCategory(deletedCategory) {
     })
     .then(() => location.reload());
 }
-
-Categories();
 
 function Categories() {
   let categoryArray = categoryData[0].categories;
@@ -157,8 +158,12 @@ document.getElementById("submit-category").addEventListener("click", () => {
     });
 });
 
+// Submit our profile update to Firestore and reload the page
 submit.addEventListener("click", () => {
   sessionStorage.setItem("notifications", flexSwitch.value);
+
+  // We need to update the username in a separate location
+  // since it's apart of "authentication" and not the firestore
   user.updateProfile({
     displayName: `${username.value}`,
   });
@@ -171,6 +176,7 @@ submit.addEventListener("click", () => {
       birthday: `${birthday.value}`,
       notifications: `${flexSwitch.value}`,
     })
+    // if we don't use the function here the page may reload before the changes are saved.
     .then(function () {
       location.reload();
     })
@@ -178,6 +184,8 @@ submit.addEventListener("click", () => {
       console.log(error);
     });
 });
+
+// Event listener for our checkbox
 flexSwitch.addEventListener("change", function () {
   if (this.checked) {
     flexSwitch.value = "on";
@@ -186,4 +194,5 @@ flexSwitch.addEventListener("change", function () {
   }
 });
 loadProfile();
+Categories();
 listenFileSelect();

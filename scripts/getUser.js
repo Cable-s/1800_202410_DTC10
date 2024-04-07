@@ -1,3 +1,5 @@
+// This function is for when we need more than just the user's uid
+// This likely means we want the account creation date, or the username
 export async function getUser() {
   return new Promise((resolve, reject) => {
     firebase.auth().onAuthStateChanged((user) => {

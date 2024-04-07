@@ -15,6 +15,7 @@ function load(url, element) {
     });
 }
 
+// Wait for an element to appear on the page - used to add eventListener to logout button
 function waitForDomNode(selector) {
   return new Promise((resolve) => {
     if (document.querySelector(selector)) {
@@ -38,11 +39,6 @@ function waitForDomNode(selector) {
 function loadSkeleton() {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-      //if the pointer to "user" object is not null, then someone is logged in
-      // User is signed in.
-      // Do something for the user here.
-
-      // console.log($('#addTaskModal').load('./text/addTaskModal.html'));
       load(
         "./text/nav_after_login.html",
         document.getElementById("navbarTemplate"),
@@ -67,9 +63,6 @@ function loadSkeleton() {
     } else {
       // No user is signed in.
 
-      // Old jQuery code - causes browser to warn about deprecated feature
-      //console.log($('#navbarTemplate').load('./text/nav_before_login.html'));
-      //console.log($('#footerTemplate').load('./text/footer.html'));
       load(
         "./text/nav_before_login.html",
         document.getElementById("navbarTemplate"),

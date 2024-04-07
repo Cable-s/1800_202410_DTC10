@@ -26,7 +26,6 @@ async function displayTasksByDate(selectedDate) {
     // Check if the selected date falls within the range of task's start and end dates
     if (selectedDate >= taskStartDate && selectedDate <= taskEndDate) {
       if (taskStartDate == taskEndDate) {
-        console.log("same day");
         let title = tasks[i].title;
         let id = tasks[i].id;
         let end = tasks[i].endTime;
@@ -43,7 +42,6 @@ async function displayTasksByDate(selectedDate) {
         endMinute = minuteRound(endMinute);
         let rowspan = endHour * 2 + endMinute - startHour * 2 + startMinute;
         let startID = startHour * 2 + startMinute;
-        console.log("on overflow " + rowspan, startID);
 
         let height = rowspan * 35;
 
@@ -66,7 +64,6 @@ async function displayTasksByDate(selectedDate) {
           </td>
           `;
       } else if (taskStartDate == selectedDate) {
-        console.log("start day");
         let title = tasks[i].title;
         let id = tasks[i].id;
         let end = "24:00";
@@ -82,7 +79,6 @@ async function displayTasksByDate(selectedDate) {
         endMinute = minuteRound(endMinute);
         let rowspan = endHour * 2 + endMinute - startHour * 2 + startMinute;
         let startID = startHour * 2 + startMinute;
-        console.log("end overflow" + rowspan, startID);
         let height = rowspan * 35;
         document.getElementById(startID).innerHTML += `
           <td rowspan = "${rowspan}">
@@ -96,7 +92,6 @@ async function displayTasksByDate(selectedDate) {
           </td>
           `;
       } else if (taskEndDate == selectedDate) {
-        console.log("end day");
         let title = tasks[i].title;
         let id = tasks[i].id;
         let end = tasks[i].endTime;
@@ -112,7 +107,6 @@ async function displayTasksByDate(selectedDate) {
         endMinute = minuteRound(endMinute);
         let rowspan = endHour * 2 + endMinute - startHour * 2 + startMinute;
         let startID = startHour * 2 + startMinute;
-        console.log("start overflow" + rowspan, startID);
 
         let height = rowspan * 35;
         document.getElementById(startID).innerHTML += `
@@ -145,7 +139,6 @@ function minuteRound(minute) {
 }
 
 function clearTasks() {
-  console.log("clearing");
   for (let i = 0; i < 48; i++) {
     let times = [
       "am 00:00",

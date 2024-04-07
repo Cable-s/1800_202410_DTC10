@@ -1,4 +1,5 @@
 import { query } from "./queryDocuments.js";
+import { checkExpiredTasks } from "./expiredTask.js";
 import { submitForm, displayCharactersLeft } from "./addTask.js";
 var userID = sessionStorage.getItem("userId");
 let tasks = await query("tasks");
@@ -68,6 +69,9 @@ function updateTask(id) {
       descriptionInput.innerText = tasks[i].description;
 
       category.value = `${tasks[i].category}`;
+
+      // firebase "timestamp" objects aren't compatible with JS Date objects by default
+      // We have to use the builtin toDate() method to do the conversion
       startDate.value = tasks[i].startDate.toDate().toISOString().slice(0, 10);
 
       endDate.value = tasks[i].startDate.toDate().toISOString().slice(0, 10);

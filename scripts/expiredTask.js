@@ -6,7 +6,7 @@ $(document).ready(() => {
   checkExpiredTasks();
 });
 
-function checkExpiredTasks() {
+export function checkExpiredTasks() {
   let counter = 0;
   document.getElementById("expiredTasks").innerHTML = "";
   for (let i = 0; i < tasks.length; i++) {

@@ -34,10 +34,7 @@ function getNameFromAuth() {
     }
     document.getElementById("name-goes-here").innerText = userName;
 
-    //method #2:  insert using jquery
-
     document.getElementById("last-signin").innerText = lastSignIn;
-    //method #3:  insert using querySelector
     document.getElementById("name-goes-here").innerText = userName;
   } else {
     // No user is signed in.

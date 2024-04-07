@@ -87,7 +87,6 @@ document.getElementById("selectedDate").addEventListener("input", function () {
 
 // Initial display of tasks based on today's date
 function clearTasks() {
-  console.log("clear");
   document.getElementById("high-tasks").innerHTML = "";
   document.getElementById("medium-tasks").innerHTML = "";
   document.getElementById("low-tasks").innerHTML = "";

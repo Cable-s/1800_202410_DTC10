@@ -1,3 +1,4 @@
+var userID = sessionStorage.getItem("userId");
 function performQuery(userID, collectionType) {
   var returnArray = [];
   return db
@@ -20,16 +21,10 @@ function performQuery(userID, collectionType) {
 }
 
 export function query(collectionType) {
-  var userID;
   return new Promise((resolve, reject) => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        userID = user.uid;
-        // User is signed in.
-        performQuery(userID, collectionType).then((result) => {
-          resolve(result);
-        });
-      }
+    // User is signed in.
+    performQuery(userID, collectionType).then((result) => {
+      resolve(result);
     });
   });
 }
