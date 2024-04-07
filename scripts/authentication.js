@@ -20,6 +20,7 @@ var uiConfig = {
       //------------------------------------------------------------------------------------------
       var user = authResult.user; // get the user object from the Firebase authentication database
       var userID = sessionStorage.setItem("userId", user.uid);
+      sessionStorage.setItem("warnExpiredTasks", 0);
       var docRef; //used to delete empty task doc
       if (authResult.additionalUserInfo.isNewUser) {
         //if new user

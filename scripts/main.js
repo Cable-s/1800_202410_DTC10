@@ -1,6 +1,7 @@
 import { query } from "./queryDocuments.js";
 import { getUser } from "./getUser.js";
 import { logout } from "./script.js";
+import { checkExpiredTasks } from "./expiredTask.js";
 
 const user = await getUser();
 const profileData = await query("profile");
@@ -41,5 +42,14 @@ function getNameFromAuth() {
     console.log("No user is logged in");
   }
 }
-
+function warnExpiredTasks() {
+  sessionStorage.setItem("warnExpiredTasks", 1);
+  checkExpiredTasks();
+}
 getNameFromAuth(); //run the function
+console.log("checking warnExpired tasks...");
+if (sessionStorage.getItem("warnExpiredTasks") !== "1") {
+  warnExpiredTasks();
+} else {
+  console.log("Warn expiredTasks already executed");
+}

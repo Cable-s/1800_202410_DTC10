@@ -55,7 +55,6 @@ function updateTask(id) {
         category.value = "Un-categorized";
         descriptionInput.innerText = "";
         submitButton.innerText = "Add Task";
-        checkExpiredTasks();
         displayCharactersLeft();
       });
       submitButton.innerText = "Update Task";

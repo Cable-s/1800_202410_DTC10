@@ -3,10 +3,6 @@ import { addHandlers } from "./updateTasks.js";
 import { formatDate } from "./date.js";
 let tasks = await query("tasks");
 
-$(document).ready(() => {
-  checkExpiredTasks();
-});
-
 export function checkExpiredTasks() {
   let counter = 0;
   document.getElementById("expiredTasks").innerHTML = "";
