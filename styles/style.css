@@ -57,8 +57,8 @@ hr {
 }
 
 .calendar {
-  background-color: white; 
-  margin-bottom:120px;
+  background-color: white;
+  margin-bottom: 120px;
 }
 
 .modal {
@@ -81,4 +81,25 @@ hr {
   color: white;
   margin: 1px;
   width: 38px;
+}
+
+#info-card {
+  position: relative;
+  width: 140px;
+  left: 32px;
+  padding: 10px;
+  border-radius: 20%;
+  color: #fff;
+  background-color: #000
+}
+
+#info-card::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
 }
