@@ -82,7 +82,7 @@ function updateTask(id) {
           break;
         }
       }
-
+      //Remove the addTask submitForm element so we don't create double our task
       submitButton.removeEventListener("click", submitForm);
       submitButton.addEventListener("click", function () {
         let adjustedValues = {
@@ -115,11 +115,6 @@ function complete(id) {
     }
   }
 }
-function showButton(element, state) {
-  state === "show"
-    ? (element.style.display = "flex")
-    : (element.style.display = "none");
-}
 
 export function addHandlers() {
   const taskCards = document.getElementsByClassName("task-card");
@@ -127,14 +122,6 @@ export function addHandlers() {
     let editButton = taskCards[i].querySelector(".edit");
     let completeButton = taskCards[i].querySelector(".complete");
     let id = taskCards[i].id;
-    taskCards[i].addEventListener("mouseover", () => {
-      showButton(editButton, "show");
-      showButton(completeButton, "show");
-    });
-    taskCards[i].addEventListener("mouseout", () => {
-      showButton(editButton, "hide");
-      showButton(completeButton, "hide");
-    });
     editButton.addEventListener("click", () => {
       updateTask(id);
     });

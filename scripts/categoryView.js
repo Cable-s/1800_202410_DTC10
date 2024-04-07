@@ -1,4 +1,5 @@
 import { query } from "./queryDocuments.js";
+import { addHandlers } from "./updateTasks.js";
 let tasks = await query("tasks");
 
 function getCategoryLabels(selectedDate) {
@@ -29,7 +30,7 @@ function getCategoryLabels(selectedDate) {
   return categories;
 }
 
-function displayCategorized(selectedDate) {
+async function displayCategorized(selectedDate) {
   const zeroPad = (num, places) => String(num).padStart(places, "0");
   let categories = getCategoryLabels(selectedDate);
   for (let i = 0; i < categories.length; i++) {
@@ -57,19 +58,29 @@ function displayCategorized(selectedDate) {
       if (start <= selectedDate && selectedDate <= end) {
         if (categories[i] == tasks[j].category) {
           document.getElementById("categorized").innerHTML +=
-            `<div style="border-style:dotted">
+            `<div style="border-style:dotted; display: flex; flex-direction: row; justify-content: space-between;" class="task-card" id='${tasks[j].id}'>
+            <div style="display: flex; flex-direction: column;">
                         <p> ` +
             tasks[j].title +
             ` </p>
                         <p> ` +
             tasks[j].description +
             `</p>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+          <div style="display: flex; flex-direction: row;">
+            <button class ="edit" ><img src="./images/edit-icon.png" style="width:25px"></button>
+            <button class="complete"><img src="./images/check-icon.png" style="width:25px"></button>
+          </div>
+          </div>
+
                         </div>   
                         `;
         }
       }
     }
   }
+  addHandlers();
 }
 
 // Change today's date
