@@ -28,8 +28,12 @@ async function displayTasksByDate(selectedDate) {
         endMinute = minuteRound(endMinute);
         let rowspan = endHour * 2 + endMinute - startHour * 2 + startMinute;
         let startID = startHour * 2 + startMinute;
-
+        if (rowspan == 0) {
+          rowspan++
+        }
         let height = rowspan * 35;
+
+
 
         document.getElementById(startID).innerHTML += `
           <td rowspan = "${rowspan}">
