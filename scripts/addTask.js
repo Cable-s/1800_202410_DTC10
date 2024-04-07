@@ -159,7 +159,7 @@ function submitNewCategory() {
   });
 }
 
-function displayCharactersLeft() {
+export function displayCharactersLeft() {
   let currentDescLetters =
     document.getElementById("description-input").value.length;
   let currentTitleLetters = document.getElementById("title-input").value.length;
@@ -184,10 +184,10 @@ function addTask() {
     .then((res) => res.text())
     .then((html) => {
       const nodes = new DOMParser().parseFromString(html, "text/html");
-      const body = nodes.querySelector("#taskModal");
+      let modal = nodes.querySelector("#taskModal");
 
-      document.documentElement.removeChild(document.body);
-      document.documentElement.appendChild(body);
+      document.documentElement.removeChild(document.modal);
+      document.documentElement.appendChild(modal);
     });
 }
 
@@ -213,6 +213,13 @@ function setDefaultDate() {
 
 document.getElementById("startDate").addEventListener("input", () => {
   setDefaultEndDate();
+});
+
+document.getElementById("closeModal").addEventListener("click", () => {
+  document.getElementById("input-form").reset();
+  displayCharactersLeft();
+  let modal = bootstrap.Modal.getOrCreateInstance("#exampleModal");
+  modal.hide();
 });
 
 function setDefaultEndDate() {

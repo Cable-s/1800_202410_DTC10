@@ -1,5 +1,5 @@
 import { query } from "./queryDocuments.js";
-import { submitForm } from "./addTask.js";
+import { submitForm, displayCharactersLeft } from "./addTask.js";
 var userID = sessionStorage.getItem("userId");
 let tasks = await query("tasks");
 
@@ -30,10 +30,11 @@ function updateTask(id) {
   for (let i = 0; i < tasks.length; i++) {
     if (id === tasks[i].id) {
       let modal = new bootstrap.Modal(document.getElementById("exampleModal"));
-      modal.show();
-      console.log("task in modal:", tasks[i].id);
-
-      let label = document.getElementById("exampleModalLabel");
+      //let modal = bootstrap.Modal.getOrCreateInstance("#exampleModal");
+      if (modal) {
+        modal.show();
+      }
+      let label = document.querySelector("#exampleModalLabel");
       let form = document.getElementById("input-form");
       let titleInput = document.getElementById("title-input");
       let descriptionInput = document.getElementById("description-input");
@@ -48,23 +49,31 @@ function updateTask(id) {
       let closeButton = document.getElementById("closeModal");
 
       closeButton.addEventListener("click", () => {
-        location.reload();
+        let form = document.getElementById("input-form");
+        let modal = bootstrap.Modal.getOrCreateInstance("#exampleModal");
+        modal.hide();
+        form.reset();
+        label.innerText = "Task Creation";
+        category.value = "Un-categorized";
+        descriptionInput.innerText = "";
+        submitButton.innerText = "Add Task";
+        displayCharactersLeft();
         checkExpiredTasks();
       });
       label.innerText = "Edit Task";
       submitButton.innerText = "Update Task";
-      form.reset();
 
-      titleInput.setAttribute("value", tasks[i].title);
+      titleInput.value = tasks[i].title;
       descriptionInput.removeAttribute("placeholder");
       descriptionInput.innerText = tasks[i].description;
 
-      category.setAttribute("value", tasks[i].category);
+      category.value = `${tasks[i].category}`;
+      startDate.value = tasks[i].startDate.toDate().toISOString().slice(0, 10);
 
-      startDate.setAttribute("value", tasks[i].startDate + "T00:00:00");
-      endDate.setAttribute("value", tasks[i].endDate + "T00:00:00");
-      startTime.setAttribute("value", tasks[i].startTime);
-      endTime.setAttribute("value", tasks[i].endTime);
+      endDate.value = tasks[i].startDate.toDate().toISOString().slice(0, 10);
+
+      startTime.value = tasks[i].startTime;
+      endTime.value = tasks[i].endTime;
 
       // set importance dropdown to the correct value
       for (var j, k = 0; (j = importance.options[k]); k++) {
@@ -127,7 +136,6 @@ export function addHandlers() {
       showButton(completeButton, "hide");
     });
     editButton.addEventListener("click", () => {
-      console.log("id:", id);
       updateTask(id);
     });
     completeButton.addEventListener("click", () => {

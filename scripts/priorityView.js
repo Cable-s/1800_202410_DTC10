@@ -2,7 +2,6 @@ import { query } from "./queryDocuments.js";
 import { addHandlers } from "./updateTasks.js";
 
 async function priorityTasks(selectedDate) {
-  console.log(selectedDate);
   let tasks = await query("tasks");
 
   tasks.forEach((task) => {
@@ -15,8 +14,6 @@ async function priorityTasks(selectedDate) {
       "-" +
       zeroPad(taskStartDate.getDate(), 2);
 
-    console.log(taskStartDate);
-    console.log(taskStartDate == selectedDate);
     if (taskStartDate === selectedDate) {
       displayTask(task);
     }
