@@ -84,9 +84,8 @@ hr {
 }
 
 #info-card {
-  position: relative;
+  position: absolute;
   width: 140px;
-  left: 32px;
   padding: 10px;
   border-radius: 20%;
   color: #fff;
