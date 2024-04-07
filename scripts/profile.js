@@ -186,6 +186,17 @@ submit.addEventListener("click", () => {
     });
 });
 
+// Event listener for checking if the info card has been clicked for the expiry alert
+document.getElementById("info-btn").addEventListener("click", () => {
+  let infoCard = document.getElementById("info-card")
+  if (infoCard.style.display == 'none') {
+    infoCard.style.display = 'block'
+  }
+  else {
+    infoCard.style.display = 'none'
+  }
+})
+
 // Event listener for our checkbox
 flexSwitch.addEventListener("change", function () {
   if (this.checked) {
