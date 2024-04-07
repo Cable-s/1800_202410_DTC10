@@ -38,19 +38,20 @@ async function displayTasksByDate(selectedDate) {
         document.getElementById(startID).innerHTML += `
           <td rowspan = "${rowspan}">
             <div id="task-goes-here" style="height: ${height}px">
-              <div style="height: ${height}px; display: flex; flex-direction: column;" 
-              class="border border-secondary rounded-3 text-wrap task-card" id=${tasks[i].id}><div style="display: flex; flex-direction: row; justify-content: space-between;">
+              <div style="background-color: #E8EBED; height: ${height}px; display: flex; flex-direction: column;" 
+              class="shadow-sm border rounded-3 text-wrap task-card" id=${tasks[i].id}>
+                <div style="display: flex; flex-direction: row; justify-content: space-between;">
                 <div style="display: flex; flex-direction: column;" class="p-1">
-                <h3>${title}</h3>
+                  <h3>${title}</h3>
                 </div>
                 <div style="display: flex; flex-direction: column;">
-                <div style="display: flex; flex-direction: row;">
-                <button class ="edit"><img src="./images/edit-icon.png" style="width:25px"></button>
-                <button class="complete"><img src="./images/check-icon.png" style="width:25px"></button>   
+                  <div style="display: flex; flex-direction: row;">
+                    <button class ="mt-2 edit"><img src="./images/edit-icon.png" style="width:25px"></button>
+                    <button class="mt-2 me-2 complete"><img src="./images/check-icon.png" style="width:25px"></button>   
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           </td>
           `;
       } else if (taskStartDate == selectedDate) {
@@ -73,10 +74,18 @@ async function displayTasksByDate(selectedDate) {
         document.getElementById(startID).innerHTML += `
           <td rowspan = "${rowspan}">
             <div id="task-goes-here" style="height: ${height}px">
-              <div style="height: 100%; display: flex;justify-content: center;align-items: center; flex-direction: column;" class="border border-secondary border-bottom-0 rounded-top-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
-                <h3>${title}</h3>
-                <button class ="edit" style="display:none"><img src="./images/edit-icon.png" style="width:25px"></button>
-                <button class="complete" style ="display:none"><img src="./images/check-icon.png" style="width:25px"></button>   
+            <div style="background-color: #E8EBED; height: ${height}px; display: flex; flex-direction: column;" 
+              class="shadow-sm border rounded-top-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
+                <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                <div style="display: flex; flex-direction: column;" class="p-1">
+                  <h3>${title}</h3>
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                  <div style="display: flex; flex-direction: row;">
+                    <button class ="mt-2 edit"><img src="./images/edit-icon.png" style="width:25px"></button>
+                    <button class="mt-2 me-2 complete"><img src="./images/check-icon.png" style="width:25px"></button>   
+                  </div>
+                </div>
               </div>
             </div>
           </td>
@@ -100,15 +109,23 @@ async function displayTasksByDate(selectedDate) {
 
         let height = rowspan * 35;
         document.getElementById(startID).innerHTML += `
-          <td rowspan = "${rowspan}">
-            <div id="task-goes-here" style="height: ${height}px">
-              <div style="height: 100%; display: flex;justify-content: center;align-items: center; flex-direction: column;" class="border border-secondary border-top-0 rounded-bottom-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
-                <h3>${title}</h3>
-                <button class ="edit" style="display:none"><img src="./images/edit-icon.png" style="width:25px"></button>
-                <button class="complete" style ="display:none"><img src="./images/check-icon.png" style="width:25px"></button>   
+        <td rowspan = "${rowspan}">
+        <div id="task-goes-here" style="height: ${height}px">
+        <div style="background-color: #E8EBED; height: ${height}px; display: flex; flex-direction: column;" 
+          class="shadow-sm border rounded-bottom-3 text-center text-wrap p-3 task-card" id=${tasks[i].id}>
+            <div style="display: flex; flex-direction: row; justify-content: space-between;">
+            <div style="display: flex; flex-direction: column;" class="p-1">
+              <h3>${title}</h3>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <div style="display: flex; flex-direction: row;">
+                <button class ="mt-2 edit"><img src="./images/edit-icon.png" style="width:25px"></button>
+                <button class="mt-2 me-2 complete"><img src="./images/check-icon.png" style="width:25px"></button>   
               </div>
             </div>
-          </td>
+          </div>
+        </div>
+      </td>
           `;
       }
     }
