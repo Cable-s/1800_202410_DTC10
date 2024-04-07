@@ -5,7 +5,6 @@ function getCategoryLabels(selectedDate) {
   const zeroPad = (num, places) => String(num).padStart(places, "0");
   let categoryLabels = [];
   for (let i = 0; i < tasks.length; i++) {
-    console.log("tasks", tasks[i]);
     let startDate = new Date(tasks[i].startDate.seconds * 1000);
     let endDate = new Date(tasks[i].endDate.seconds * 1000);
     let start =
@@ -20,10 +19,6 @@ function getCategoryLabels(selectedDate) {
       zeroPad(endDate.getMonth() + 1, 2) +
       "-" +
       zeroPad(endDate.getDate(), 2);
-    // console.log(start);
-    // console.log(selectedDate);
-    // console.log(end);
-    console.log(i, start <= selectedDate && selectedDate <= end);
     if (start <= selectedDate && selectedDate <= end) {
       let category = tasks[i].category;
       categoryLabels.push(category);
@@ -31,15 +26,12 @@ function getCategoryLabels(selectedDate) {
   }
   categoryLabels.sort();
   let categories = [...new Set(categoryLabels)];
-  //categories.shift();  // didn't know the purpose of this. It was deleting the first element which was a category
   return categories;
 }
 
 function displayCategorized(selectedDate) {
   const zeroPad = (num, places) => String(num).padStart(places, "0");
-  // console.log(selectedDate)
   let categories = getCategoryLabels(selectedDate);
-  console.log(categories);
   for (let i = 0; i < categories.length; i++) {
     document.getElementById("categorized").innerHTML +=
       `
@@ -62,10 +54,6 @@ function displayCategorized(selectedDate) {
         zeroPad(endDate.getMonth() + 1, 2) +
         "-" +
         zeroPad(endDate.getDate(), 2);
-      // console.log(start);
-      // console.log(selectedDate);
-      // console.log(end);
-      console.log(start <= selectedDate && selectedDate <= end);
       if (start <= selectedDate && selectedDate <= end) {
         if (categories[i] == tasks[j].category) {
           document.getElementById("categorized").innerHTML +=
@@ -110,6 +98,5 @@ document.getElementById("selectedDate").addEventListener("input", function () {
 });
 
 function clearTasks() {
-  console.log("clear");
   document.getElementById("categorized").innerHTML = "";
 }

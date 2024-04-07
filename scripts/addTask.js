@@ -59,36 +59,28 @@ export function submitForm() {
   // Check for start and end date/time validation
   var category = document.getElementById("category-input").value;
   var description = document.getElementById("description-input").value;
-  console.log(document.getElementById("endDate").value);
   var startDate = new Date(
     document.getElementById("startDate").value + "T00:00:00",
   );
   var endDate = new Date(
     document.getElementById("endDate").value + "T00:00:00",
   );
-  console.log(
-    "documents",
-    document.getElementById("startDate").value,
-    document.getElementById("endDate").value,
   );
   var startTime = document.getElementById("startTime").value;
   var endTime = document.getElementById("endTime").value;
   var error = false;
   if (startDate.getTime() > endDate.getTime()) {
     error = true;
-    console.log("true");
     showError("endDate", "End date must be after start date");
   }
 
   if (startDate.getTime() == endDate.getTime() && startTime >= endTime) {
     error = true;
-    console.log("true");
     showError("endTime", "End time must be after start time");
   }
 
   if (endDate.getTime() < startDate.getTime()) {
     error = trued;
-    console.log("true");
     showError("endDate", "End date cannot be before start date");
   }
 
@@ -206,7 +198,6 @@ function setup() {
   setDefaultDate();
   setDefaultEndDate();
   document.getElementById("addTaskBtn").addEventListener("click", submitForm);
-  console.log("setup complete");
 }
 
 function setDefaultDate() {

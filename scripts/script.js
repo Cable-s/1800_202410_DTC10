@@ -12,8 +12,8 @@ export function logout() {
     });
 }
 firebase.auth().onAuthStateChanged(function (user) {
-  if (!user) {
+  if (!user && window.location.pathname !== "/index.html") {
     // If user is signed out, redirect to login page
-    window.location.assign("login.html");
+    window.location.assign("index.html");
   }
 });
