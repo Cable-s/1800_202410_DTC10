@@ -5,7 +5,6 @@ import { formatDate } from "./date.js";
 let tasks = await query("tasks");
 
 function getCategoryLabels(selectedDate) {
-  const zeroPad = (num, places) => String(num).padStart(places, "0");
   let categoryLabels = [];
   for (let i = 0; i < tasks.length; i++) {
     let startDate = formatDate(tasks[i].startDate.toDate());
@@ -21,7 +20,6 @@ function getCategoryLabels(selectedDate) {
 }
 
 async function displayCategorized(selectedDate) {
-  const zeroPad = (num, places) => String(num).padStart(places, "0");
   let categories = getCategoryLabels(selectedDate);
   for (let i = 0; i < categories.length; i++) {
     document.getElementById("categorized").innerHTML +=

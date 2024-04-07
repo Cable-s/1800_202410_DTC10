@@ -1,6 +1,7 @@
 import { query } from "./queryDocuments.js";
 import { addHandlers } from "./updateTasks.js";
 import { formatDate } from "./date.js";
+
 async function displayTasksByDate(selectedDate) {
   let tasks = await query("tasks");
 

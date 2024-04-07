@@ -31,11 +31,7 @@ function updateTask(id) {
   for (let i = 0; i < tasks.length; i++) {
     if (id === tasks[i].id) {
       let modal = new bootstrap.Modal(document.getElementById("exampleModal"));
-      //let modal = bootstrap.Modal.getOrCreateInstance("#exampleModal");
-      if (modal) {
-        modal.show();
-      }
-      let label = document.querySelector("#exampleModalLabel");
+      let label = document.getElementById("exampleModalLabel");
       let form = document.getElementById("input-form");
       let titleInput = document.getElementById("title-input");
       let descriptionInput = document.getElementById("description-input");
@@ -49,6 +45,7 @@ function updateTask(id) {
       let submitButton = document.getElementById("addTaskBtn");
       let closeButton = document.getElementById("closeModal");
 
+      modal.show();
       closeButton.addEventListener("click", () => {
         let form = document.getElementById("input-form");
         let modal = bootstrap.Modal.getOrCreateInstance("#exampleModal");
@@ -61,9 +58,9 @@ function updateTask(id) {
         checkExpiredTasks();
         displayCharactersLeft();
       });
-      label.innerText = "Edit Task";
       submitButton.innerText = "Update Task";
 
+      label.innerText = "Edit Task";
       titleInput.value = tasks[i].title;
       descriptionInput.removeAttribute("placeholder");
       descriptionInput.innerText = tasks[i].description;

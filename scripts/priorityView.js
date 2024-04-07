@@ -4,7 +4,6 @@ import { formatDate } from "./date.js";
 
 async function priorityTasks(selectedDate) {
   let tasks = await query("tasks");
-
   tasks.forEach((task) => {
     let taskStartDate = formatDate(task.startDate.toDate());
     if (taskStartDate === selectedDate) {
