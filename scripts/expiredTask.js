@@ -35,8 +35,8 @@ export function checkExpiredTasks() {
             <p>Task expired on ${endDate} at ${endTime}</p>
           </div>
           <div class="task-card" style="align-self: end; display: flex; flex-direction: column">
-            <button class="edit" onclick="$('#expiredModal').modal('hide'); updateTask('${id}')">Edit Date</button>
-            <button class="complete" onclick="complete('${id}')">Delete</button>
+            <button class="edit"  style="width: fit-content" onclick="$('#expiredModal').modal('hide'); updateTask('${id}')">Edit Date</button>
+            <button class="complete" style="width: fit-content" fonclick="complete('${id}')">Delete</button>
           </div>
         </div>
       `;
