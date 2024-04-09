@@ -14,14 +14,16 @@ export function checkExpiredTasks() {
     let desc = tasks[i].description;
 
     let endTime = tasks[i].endTime;
-
     let endDate = formatDate(tasks[i].endDate.toDate());
-
     let todayDate = formatDate(new Date());
 
     let timeNow = new Date();
-    timeNow = timeNow.getHours() + ":" + zeroPad(timeNow.getMinutes(), 2);
+    timeNow = zeroPad(timeNow.getHours(), 2) + ":" + zeroPad(timeNow.getMinutes(), 2);
 
+    console.log("todayDate", todayDate)
+    console.log("endDate", endDate)
+    console.log("timeNow", timeNow)
+    console.log("endTime", endTime)
     if (
       (todayDate > endDate || (todayDate == endDate && endTime < timeNow)) &&
       sessionStorage.getItem("notifications") == "on"
