@@ -32,7 +32,7 @@ Content of the project folder:
 ├── README.md                # documentation for the project. What historians will use centures from now to decipher our work
 ├── template.html            # developer template for creating new html files with common defaults
 ├── timelineView.html        # timeline view HTML file, displayed when an authenticated user clicks on footer link for timeline view
-└── update.html              # ???
+└── update.html              # an update to template.html with scripts for querying information from firebase.
 
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
@@ -102,6 +102,7 @@ Firebase hosting files:
 
 ## Contact
 * Travis Gooden - tgooden@my.bcit.ca
+* Michael McBride - mmcbride21@my.bcit.ca
 * ...
 
 ## Acknowledgements
