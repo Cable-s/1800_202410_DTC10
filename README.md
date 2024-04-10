@@ -103,6 +103,7 @@ Firebase hosting files:
 ## Contact
 * Travis Gooden - tgooden@my.bcit.ca
 * Michael McBride - mmcbride21@my.bcit.ca
+* Jamie Kim - ykim229@my.bcit.ca
 * ...
 
 ## Acknowledgements
